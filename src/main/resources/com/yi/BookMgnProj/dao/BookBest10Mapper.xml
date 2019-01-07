@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yi.BookMgnProj.dao.BookBest10Mapper">
+	<sql id="selectSql">
+		SELECT bc, title, author, pub_name, rental_date, cate_b_no,
+		cate_m_no, cate_s_no,count(bc) as ranking
+		FROM bestsaler
+	</sql>
+	<sql id="where">
+		<where>
+			<if test="rentalDate != null">
+				rental_date REGEXP#{rentalDate}
+			</if>
+			<if test="cateBNo != null">
+				AND cate_b_no =#{cateBNo}
+			</if>
+			<if test="cateMNo != null">
+				AND cate_m_no =#{cateMNo}
+			</if>
+			<if test="cateSNo != null">
+				AND cate_s_no =#{cateSNo}
+			</if>
+			<if test="bookCodes != null">
+				and bc IN
+				<foreach item="bookCode" index="index" collection="bookCodes"
+					open="(" separator="," close=")">
+					#{bookCode}
+				</foreach>
+			</if>
+			<if test="days != null">
+				and rental_date IN
+				<foreach item="day" index="index" collection="days"
+					open="(" separator="," close=")">
+					#{day}
+				</foreach>
+			</if>
+		</where>
+	</sql>
+	<resultMap type="BookBest10" id="BookBest10">
+		<result property="bookCode.bookCode" column="bc" />
+		<result property="title.title" column="title" />
+		<result property="author.author" column="author" />
+		<result property="pubName.pubName" column="pub_name" />
+		<result property="ranking" column="ranking" />
+		<!-- <result property="rentalDate" column="rental_date"/> -->
+		<result property="cateBNo.bCode" column="cate_b_no" />
+		<result property="cateMNo.mCode" column="cate_m_no" />
+		<result property="cateSNo.sCode" column="cate_s_no" />
+		<result property="cateBNo.bName" column="cate_b_name" />
+	</resultMap>
+	<select id="selectBookBest10ByMap" resultMap="BookBest10"
+		parameterType="BookBest10">
+		<include refid="selectSql" />
+		<include refid="where" />
+		group by bc 
+		order by ranking desc
+		limit 0,10
+		
+	</select>
+	
+	<sql id="selectSqlForeline">
+	 	select cate_b_no,count(rental_date) as ranking,cate_b_name,rental_date
+	 	FROM bestsaler
+	</sql>
+	<select id="selectBookByMap" resultMap="BookBest10"
+		parameterType="BookBest10">
+		<include refid="selectSqlForeline" />
+		<include refid="where" />
+		group by rental_date
+	</select>
+	<select id="selectBookByMapForeSum" resultMap="BookBest10">
+		select rental_date,cate_b_name,count(cate_b_no)as ranking
+	 	FROM bestsaler
+	 	<include refid="where"/>
+	 	group by cate_b_no
+	</select>
+
+</mapper>
