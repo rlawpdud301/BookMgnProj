@@ -7,6 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
+
+	홈이다옿ㅁ
+	<a href="/BookMgnProj/rent/bookRent.do">대여</a>
 	<header>
 	</header>
 	<section>
