@@ -9,15 +9,15 @@ import com.yi.BookMgnProj.model.Book;
 public interface BookMapper {
 	List<Book> selectBookByAll();
 
-	Book selectBookbyno(int i);
-
 	List<Book> selectbookbybookCode(Book book);
-
+	
+	List<Book> selectbookbyOther(Map<String, Object> map);
+	
+	Book selectBookByBookNo(int i);
+		 
 	int insertBook(Book book);
 
 	int updateBook(Book book);
-
-	List<Book> selectbookbyOther(Map<String, Object> map);
 	
 	int updateBookPossible (Book book);
 	
@@ -27,5 +27,4 @@ public interface BookMapper {
 
 	int updateBookMap(Map<String, Object> map);
 	
-	Book selectBookUpdate(Book book);
 }

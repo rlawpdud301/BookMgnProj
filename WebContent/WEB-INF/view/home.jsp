@@ -7,7 +7,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-	홈이다옿ㅁ
+	<header>
+		<jsp:include page="FooterHeader/header.jsp" flush="false" />
+	</header>
 	
+		
+	<footer>
+		<jsp:include page="FooterHeader/footer.jsp" flush="false" />
+	</footer>
 </body>
 </html>
