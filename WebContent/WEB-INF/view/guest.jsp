@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	손님용 화면
 </body>
 </html>

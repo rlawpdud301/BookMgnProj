@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	관리자 화면
+
 </body>
 </html>

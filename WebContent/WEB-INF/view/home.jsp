@@ -11,6 +11,7 @@
 	</header>
 	<section>
 		<a href="${pageContext.request.contextPath }/book/insert.do">이거 누르셈</a>
+		<a href="${pageContext.request.contextPath }/member/login.do">이거 누르셈</a>
 	</section>
 	<footer>
 	</footer>

@@ -7,7 +7,7 @@
 <title>도서 추가</title>
 </head>
 <body>
-	<form>
+	<form action="${pageContext.request.contextPath }/book/insert.do">
 		<p>
 			<label>도서 번호</label>
 			<input type="text" name="bookCode">
@@ -16,13 +16,13 @@
 		<p>
 			<label>도서 분류</label>
 			<select>
-				<option></option>
+				<option value="${CategoryB.bCode }">${CategoryB.bName }</option>
 			</select>
 			<select>
-				<option></option>
+				<option value="${CategoryM.mCode }">${CategoryB.bName }</option>
 			</select>
 			<select>
-				<option></option>
+				<option value="${CategoryS.sCode }">${CategoryB.bName }</option>
 			</select>
 		</p>
 		
