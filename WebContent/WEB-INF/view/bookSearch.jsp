@@ -1,5 +1,8 @@
+<%@page import="com.yi.BookMgnProj.model.Book"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -14,20 +17,33 @@
 				type:"get",
 				data:{"BookCode":$("#BookCode").val()},
 				dataType:"json",
-				success:function(data){
-					alert(data);
+				success:function(list){
+					alert(list);
+					
+					
+					var output = '';
+				    for(var i=0;i<list.size;i++) {
+				    	output += "<div class='reply_info'>"+list[i]+"</div>";
+				    }
+				    $("#list").append(output);
 				}
 			})
+			
 		})
 	})
 </script>
 </head>
 <div id="SearchMethod">
 	<select name="Method">
-		<option value="도서 번호">도서 번호</option>
+		<option value="도서 번호">도서 번호로</option>
 		<option value="상세정보">상세정보</option>
+		<option value="제목">제목으로</option>
 	</select> <input type="text" id="BookCode">
 	<button id="bntBookSearch">검색</button>
+	<dir id="list">
+		
+	</dir>
+	
 
 </div>
 </html>
