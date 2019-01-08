@@ -1,17 +1,13 @@
 package com.yi.BookMgnProj.handler.member;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.yi.BookMgnProj.dao.BookMapper;
-import com.yi.BookMgnProj.dao.BookMapperImpl;
 import com.yi.BookMgnProj.dao.MemberMapper;
 import com.yi.BookMgnProj.dao.MemberMapperImpl;
-import com.yi.BookMgnProj.model.Book;
 import com.yi.BookMgnProj.model.Member;
 import com.yi.BookMgnProj.mvc.CommandHandler;
 
@@ -24,25 +20,28 @@ public class MemberLoginHandler implements CommandHandler {
 		} else if (req.getMethod().equalsIgnoreCase("post")) {
 			String id = req.getParameter("id");
 			String password = req.getParameter("password");
-			System.out.println(id);
-			System.out.println(password);
-			
-			MemberMapper mapper = MemberMapperImpl.getInstance();
+
+			MemberMapper service = MemberMapperImpl.getInstance();
 			Map<String, Object> map = new HashMap<>();
 			map.put("id", id);
 			map.put("password", password);
-			mapper.loginCheck(map);
-			Member member = mapper.selectMemberByNo(id);
-			
+			Member member = service.loginCheck(map);
+			System.out.println(id);
+			System.out.println(password);
 			System.out.println(member);
-			
-			if (member.getPassword().equals(password)) {
-				System.out.println("비밀번호 일치");
-			} else {
-				System.out.println("비밀번호 불일치");
+
+			try {
+				if (member != null) {
+					req.setAttribute("AUTH", member);
+					return "/WEB-INF/view/home.jsp";
+				} else {
+					System.out.println("로그인 실패");
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+
 			}
-			
-			res.sendRedirect("/WEB-INF/view/admin.jsp");
 		}
 		return null;
 	}

@@ -16,13 +16,13 @@
 		<p>
 			<label>도서 분류</label>
 			<select>
-				<option value="${CategoryB.bCode }">${CategoryB.bName }</option>
+				<option value="${CategoryB }">${CategoryB }</option>
 			</select>
 			<select>
-				<option value="${CategoryM.mCode }">${CategoryB.bName }</option>
+				<option value="${CategoryM }">${CategoryM }</option>
 			</select>
 			<select>
-				<option value="${CategoryS.sCode }">${CategoryB.bName }</option>
+				<option value="${CategoryS }">${CategoryS }</option>
 			</select>
 		</p>
 		
