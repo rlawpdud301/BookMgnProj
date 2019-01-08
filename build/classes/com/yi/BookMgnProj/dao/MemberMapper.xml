@@ -187,10 +187,10 @@
 	</update>
 
 
-	<select id="loginCheck" resultMap="MemberResult">
+	<select id="loginCheck" parameterType="map" resultMap="MemberResult">
 		select member_no, password, kor_name, eng_name, phone, jumin, email, address, photo, admin, uniqueness
 		from member
-		where member_no = #{memberNo} and password = password(#{password});
+		where member_no = #{id} and password = password(#{password});
 	</select>
 
 
