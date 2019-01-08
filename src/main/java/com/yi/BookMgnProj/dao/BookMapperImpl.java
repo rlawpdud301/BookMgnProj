@@ -46,7 +46,7 @@ public class BookMapperImpl implements BookMapper {
 	}
 
 	@Override
-	public Book selectBookbyno(int book) {
+	public Book selectBookByBookNo(int book) {
 		try (SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();) {
 			return sqlSession.selectOne(namespace + ".selectBookByBookNo", book);
 		}
@@ -102,11 +102,6 @@ public class BookMapperImpl implements BookMapper {
 		}
 	}
 
-	@Override
-	public Book selectBookUpdate(Book book) {
-		try (SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();) {
-			return sqlSession.selectOne(namespace + ".selectBookUpdate",book);
-		}
-	}
+	
 
 }

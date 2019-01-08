@@ -45,9 +45,8 @@
 		</where>
 	</sql>
 
-	<select id="selectBookByAll" parameterType="Book"
-		resultType="Book">
-		<include refid="selectSql" />
+	<select id="selectBookByAll" parameterType="Book" resultMap="BookTypeResult">
+		<include refid="selectSql"/>
 	</select>
 
 	<!-- updateSql -->
@@ -59,7 +58,7 @@
 		WHERE book_code=#{bookCode};
 	</sql>
 
-	<resultMap type="Book" id="Booktyepinsert">
+	<resultMap type="Book" id="BookTypeResult">
 		<id property="bookCode" column="book_code" />
 		<result property="bookNo" column="book_no" />
 		<result property="pubNo.pubNo" column="pub_no" />
@@ -76,18 +75,15 @@
 		<result property="cateBNo.bName" column="cate_b_name" />
 		<result property="cateMNo.mName" column="cate_m_name" />
 		<result property="cateSNo.sName" column="cate_s_name" />
-		
-		
 	</resultMap>
 	
 	<select id="selectbookbybookCode" parameterType="Book"
-		resultMap="Booktyepinsert">
+		resultMap="BookTypeResult">
 		<include refid="selectSql" />
 		<include refid="whereSql" />
 	</select>
 
-	<select id="selectbookbyOther" parameterType="hashmap"
-		resultMap="Booktyepinsert">
+	<select id="selectbookbyOther" parameterType="hashmap" resultMap="BookTypeResult">
 		<include refid="selectSql" />
 		<include refid="whereOtherSql" />
 	</select>
@@ -107,7 +103,7 @@
 	</update>
 
 	<select id="selectBookByBookNo" parameterType="Book"
-		resultMap="Booktyepinsert">
+		resultMap="BookTypeResult">
 		<include refid="selectSql" />
 		where book_no = #{bookNo}
 	</select>
@@ -130,25 +126,8 @@
 	</update>
 
 	<select id="selectBookBybookCodeOne" parameterType="Book"
-		resultMap="Booktyepinsert">
+		resultMap="BookTypeResult">
 		<include refid="selectSql" />
 		WHERE book_code=#{bookCode};
-	</select>
-	
-	<select id="selectBookUpdate"  parameterType="Book" resultMap="Booktyepinsert">
-	select b.*, cb.cate_b_name, cm.cate_m_name, cs.cate_s_name, p.pub_name,p.pub_no
-	from book as b
-	join category_b as cb on b.cate_b_no = cb.cate_b_no
-	join category_m as cm on b.cate_m_no = cm.cate_m_no
-	join category_s as cs on b.cate_m_no = cs.cate_m_no
-	join publisher as p on b.pub_no = p.pub_no
-	WHERE b.book_code=#{bookCode}
-	and cb.cate_b_no =b.cate_b_no
-	and cm.cate_m_no = b.cate_m_no
-	and cm.cate_b_no = cb.cate_b_no
-	and cs.cate_s_no = b.cate_s_no
-	and cs.cate_m_no = cm.cate_m_no
-	and cs.cate_b_no = cb.cate_b_no
-	and p.pub_no = b.pub_no;
 	</select>
 </mapper>

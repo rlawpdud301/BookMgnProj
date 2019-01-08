@@ -19,7 +19,7 @@
 			</if>
 		</where>		
 	</sql>
-	<resultMap type="kr.or.yi.java_web_male.dto.Publisher" id="selectAll">
+	<resultMap type="Publisher" id="selectAll">
 		<result property="pubNo" column="pub_no"/>
 		<result property="pubName" column="pub_name"/>
 	</resultMap>
