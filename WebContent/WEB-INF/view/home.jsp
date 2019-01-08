@@ -7,7 +7,15 @@
 <title>Insert title here</title>
 </head>
 <body>
+
 	홈이다옿ㅁ
 	<a href="/BookMgnProj/rent/bookRent.do">대여</a>
+	<header>
+	</header>
+	<section>
+		<a href="${pageContext.request.contextPath }/book/insert.do">이거 누르셈</a>
+	</section>
+	<footer>
+	</footer>
 </body>
 </html>

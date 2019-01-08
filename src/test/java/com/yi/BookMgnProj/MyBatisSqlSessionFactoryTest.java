@@ -6,8 +6,6 @@ import org.junit.Test;
 
 import com.yi.BookMgnProj.mvc.MyBatisSqlSessionFactory;
 
-
-
 public class MyBatisSqlSessionFactoryTest extends AbstractTest {
 
 	@Test
