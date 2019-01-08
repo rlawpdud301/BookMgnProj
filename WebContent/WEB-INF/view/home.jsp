@@ -8,6 +8,6 @@
 </head>
 <body>
 	홈이다옿ㅁ
-	
+	<a href="${pageContext.request.contextPath}/member/insert.do">회원 가입하기</a>
 </body>
 </html>
