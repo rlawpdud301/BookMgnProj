@@ -7,12 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<header>
-	</header>
-	<section>
-		<a href="${pageContext.request.contextPath }/book/insert.do">이거 누르셈</a>
-	</section>
-	<footer>
-	</footer>
+
 </body>
 </html>
