@@ -45,9 +45,8 @@
 		</where>
 	</sql>
 
-	<select id="selectBookByAll" parameterType="Book"
-		resultType="Book">
-		<include refid="selectSql" />
+	<select id="selectBookByAll" parameterType="Book" resultType="Booktyepinsert">
+		<include refid="selectSql"/>
 	</select>
 
 	<!-- updateSql -->

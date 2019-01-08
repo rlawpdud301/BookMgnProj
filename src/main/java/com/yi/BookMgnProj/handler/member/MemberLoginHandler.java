@@ -1,6 +1,8 @@
 package com.yi.BookMgnProj.handler.member;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,18 +22,19 @@ public class MemberLoginHandler implements CommandHandler {
 		if (req.getMethod().equalsIgnoreCase("get")) {
 			return "/WEB-INF/view/member/memberLoginForm.jsp";
 		} else if (req.getMethod().equalsIgnoreCase("post")) {
-			BookMapper bookMapper = BookMapperImpl.getInstance();
-			List<Book> book = bookMapper.selectBookByAll();
-			System.out.println(book);
-			/*String id = req.getParameter("id");
+			String id = req.getParameter("id");
 			String password = req.getParameter("password");
+			System.out.println(id);
+			System.out.println(password);
 			
 			MemberMapper mapper = MemberMapperImpl.getInstance();
+			Map<String, Object> map = new HashMap<>();
+			map.put("id", id);
+			map.put("password", password);
+			mapper.loginCheck(map);
 			Member member = mapper.selectMemberByNo(id);
 			
 			System.out.println(member);
-			System.out.println(id);
-			System.out.println(password);
 			
 			if (member.getPassword().equals(password)) {
 				System.out.println("비밀번호 일치");
@@ -39,7 +42,7 @@ public class MemberLoginHandler implements CommandHandler {
 				System.out.println("비밀번호 불일치");
 			}
 			
-			res.sendRedirect("/WEB-INF/view/admin.jsp");*/
+			res.sendRedirect("/WEB-INF/view/admin.jsp");
 		}
 		return null;
 	}
