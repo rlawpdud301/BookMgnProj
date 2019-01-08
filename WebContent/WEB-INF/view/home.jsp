@@ -10,6 +10,7 @@
 
 	홈이다옿ㅁ
 	<a href="/BookMgnProj/rent/bookRent.do">대여</a>
+	<a href="/BookMgnProj/rent/bookReturn.do">반납</a>
 	<header>
 	</header>
 	<section>

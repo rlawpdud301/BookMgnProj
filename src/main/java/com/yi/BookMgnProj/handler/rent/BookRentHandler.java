@@ -47,8 +47,9 @@ public class BookRentHandler implements CommandHandler {
 			
 			
 			BookRentalInfoMapperImpl impl = BookRentalInfoMapperImpl.getInstance();
-			impl.insertBookRentalInfo(bookRentalInfo);
 			impl.nextCode();
+			impl.insertBookRentalInfo(bookRentalInfo);
+			
 			
 			return "/WEB-INF/view/rent/BookRentResult.jsp";
 			

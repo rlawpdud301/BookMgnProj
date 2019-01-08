@@ -12,7 +12,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form>
+	<form action="bookReturn.do" method="post">
 		<fieldset>
 			<p>
 				<label>도서 코드</label>
