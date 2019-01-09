@@ -12,20 +12,19 @@
 <script type="text/javascript">
 	$(function() {
 		$("button").click(function() {
+			$("#list").empty()
 			$.ajax({
-				url:"bookSearchAjax.jsp",
+				url:"bookSearch.do",
 				type:"get",
 				data:{"BookCode":$("#BookCode").val()},
-				dataType:"json",
+				dataType:"json", 
 				success:function(list){
-					alert(list);
+
+					console.log(list);
+					$(list).each(function(index,obj){
+						$("#list").append("<li>"+ obj.title+"</li>");
+					})
 					
-					
-					var output = '';
-				    for(var i=0;i<list.size;i++) {
-				    	output += "<div class='reply_info'>"+list[i]+"</div>";
-				    }
-				    $("#list").append(output);
 				}
 			})
 			
@@ -41,7 +40,7 @@
 	</select> <input type="text" id="BookCode">
 	<button id="bntBookSearch">검색</button>
 	<dir id="list">
-		
+		 <img src="">
 	</dir>
 	
 

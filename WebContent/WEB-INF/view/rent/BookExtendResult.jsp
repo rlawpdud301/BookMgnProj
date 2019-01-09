@@ -12,21 +12,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="bookRent.do" method="post">
-		<fieldset>
-			<p>
-				<label>회원 번호</label>
-				<input type="text" name="memberNo">
-			</p>
-			<p>
-				<label>도서 코드</label>
-				<input type="text" name="bookCode">
-			</p>
-			<p>
-				<input type="submit" value="대여">
-				<input type="reset" value="취소">
-			</p>
-		</fieldset>
-	</form>
+	푸흡..,,,키킼,,,다,다들 아,안주무시고 뭐,,뭐,하십니까? 또,또 벼,변태같은... 새,생각하는거,다아,압니다 푸힉,,,,,
 </body>
 </html>

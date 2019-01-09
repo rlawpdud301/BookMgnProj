@@ -7,6 +7,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	
 	<settings>
 		<setting name="mapUnderscoreToCamelCase" value="true"/>
+		<setting name="logImpl" value="LOG4J2"/>
 	</settings>
 	
 	<typeAliases>
@@ -46,6 +47,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<mapper resource="com/yi/BookMgnProj/dao/CategoryBMapper.xml"/>
 		<mapper resource="com/yi/BookMgnProj/dao/CategoryMMapper.xml"/>
 		<mapper resource="com/yi/BookMgnProj/dao/CategorySMapper.xml"/>
+		<mapper resource="com/yi/BookMgnProj/dao/MemberRentalInfoMapper.xml"/>
 	</mappers>
 
 </configuration>
