@@ -38,8 +38,7 @@
 			window.open("/BookMgnProj/post.do",'window','width=400, height=200');
 		})
 	});
-	$(function(){
-			
+	$(function(){			
 		$("#f1").submit(function(){
 			$(".error").css("display","none");
 			var pass = $("input[name='password']").val();

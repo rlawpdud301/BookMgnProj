@@ -1,6 +1,7 @@
 package com.yi.BookMgnProj.handler.rent;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,34 +21,34 @@ public class BookRentHandler implements CommandHandler {
 			return "/WEB-INF/view/rent/BookRentForm.jsp";
 		}else if(req.getMethod().equalsIgnoreCase("post")){
 			
-			String rentalNo = req.getParameter("rentalNo");
-			String rentalDate = req.getParameter("rentalDate");
-			String returnDate = req.getParameter("returnDate");
-			String returnSchedule = req.getParameter("returnSchedule");
 			String memberNo = req.getParameter("memberNo");
 			String bookCode = req.getParameter("bookCode");
 			
-			int rentalNo1 = Integer.parseInt(rentalNo);
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-			Date rentalDate1 = sdf.parse(rentalDate);
-			Date returnDate1 = sdf.parse(returnDate);
-			Date returnSchedule1 = sdf.parse(returnSchedule);
 			Member member = new Member();
 			member.setMemberNo(memberNo);
 			Book book = new Book();
 			book.setBookCode(bookCode);
 			
+			BookRentalInfoMapperImpl impl = BookRentalInfoMapperImpl.getInstance();
+			int no = impl.nextCode();
+			Date date = new Date();
+			Date date1 = new Date();
+			
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			sdf.format(date1);
+			date1.setDate(date1.getDate() + 7);
+			
+			
 			BookRentalInfo bookRentalInfo = new BookRentalInfo();
-			bookRentalInfo.setRentalNo(rentalNo1);
-			bookRentalInfo.setRentalDate(rentalDate1);
-			bookRentalInfo.setReturnDate(returnDate1);
-			bookRentalInfo.setReturnSchedule(returnSchedule1);
+			bookRentalInfo.setRentalNo(no);
+			bookRentalInfo.setRentalDate(date);
+			bookRentalInfo.setReturnDate(null);
+			bookRentalInfo.setReturnSchedule(date1);
 			bookRentalInfo.setMemberNo(member);
 			bookRentalInfo.setBookCode(book);
 			
 			
-			BookRentalInfoMapperImpl impl = BookRentalInfoMapperImpl.getInstance();
-			impl.nextCode();
+			
 			impl.insertBookRentalInfo(bookRentalInfo);
 			
 			
