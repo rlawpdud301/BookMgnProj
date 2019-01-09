@@ -14,7 +14,6 @@ public class BookSearchService {
 	}
 	public List<Book> selectbookbybookCode(Book book) {
 		return bookMapper.selectbookbybookCode(book);
-		
 	}
 }
    
