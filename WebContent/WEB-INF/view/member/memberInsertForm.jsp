@@ -35,10 +35,11 @@
 	});
 	$(function(){
 		$("#button").click(function(){
-			window.open("/BookMgnProj/post.do",'window','window=400, height=200');
+			window.open("/BookMgnProj/post.do",'window','width=400, height=200');
 		})
 	});
 	$(function(){
+			
 		$("#f1").submit(function(){
 			$(".error").css("display","none");
 			var pass = $("input[name='password']").val();
@@ -56,62 +57,131 @@
 			var regName = /^[a-zA-Z]{3,20}$/;
 			if(pass == ""){
 				$("input[name='password']").nextAll(".error").css("display","inline");
-				pass.focus();
+				$("input[name='password']").focus();
 				return false;
 			}
 			if(!regpass.test(pass)){
 				$("input[name='password']").nextAll(".error2").css("display","inline");
+				$("input[name='password']").focus();
 				return false;
 			}	
 			if(pass2 == ""){
 				$("input[name='repassword']").nextAll(".error").css("display","inline");
+				$("input[name='repassword']").focus();
 				return false;
 			}
 			if(pass != pass2){
 				$("input[name='repassword']").nextAll(".error2").css("display","inline");
+				$("input[name='repassword']").focus();
 				return false;
 			}
 			if(korname == ""){
 				$("input[name='korName']").nextAll(".error").css("display","inline");
+				$("input[name='korName']").focus();
 				return false;
 			}	
 			if(engname == ""){
 				$("input[name='engName']").nextAll(".error2").css("display","inline");
+				$("input[name='engName']").focus();
 				return false;
 			}
 			if(!regName.test(engname)){
 				$("input[name='engName']").nextAll(".error").css("display","inline");
+				$("input[name='engName']").focus();
 				return false;
 			}	
 			if(tel1 == ""){
 				$("input[name='tel1']").nextAll(".error").css("display","inline");
+				$("input[name='tel1']").focus();
 				return false;
 			}
 			if(tel2 == ""){
 				$("input[name='tel2']").nextAll(".error2").css("display","inline");
+				$("input[name='tel2']").focus();
 				return false;
 			}
 			if(tel3 == ""){
 				$("input[name='tel3']").nextAll(".error3").css("display","inline");
+				$("input[name='tel3']").focus();
 				return false;
 			}
 			if(email1 == ""){
 				$("input[name='email1']").nextAll(".error").css("display","inline");
+				$("input[name='email1']").focus();
 				return false;
 			}
 			if(email2 == ""){
 				$("input[name='email2']").nextAll(".error2").css("display","inline");
+				$("input[name='email2']").focus();
 				return false;
 			}
 			if(address == ""){
 				$("input[name='address']").nextAll(".error").css("display","inline");
+				$("input[name='address']").focus();
 				return false;
 			}
 			if(address2 == ""){
 				$("input[name='address2']").nextAll(".error").css("display","inline");
+				$("input[name='address2']").focus();
 				return false;
 			}
+			alert("회원가입을 축하합니다.")
 		})
+		$("#password").keyup(function() {
+			if($(this).val().length > $("#input_text").attr('maxlength')){
+				$("input[name='password']").nextAll(".error").css("display","none");
+				$("input[name='password']").nextAll(".error2").css("display","none");
+			}
+		})
+		$("#repassword").keyup(function() {
+			if($(this).val().length > $("#input_text").attr('maxlength')){
+				$("input[name='repassword']").nextAll(".error").css("display","none");
+				$("input[name='repassword']").nextAll(".error2").css("display","none");
+			}
+		})
+		$("#korName").keyup(function() {
+			if($(this).val().length > $("#input_text").attr('maxlength')){
+				$("input[name='korName']").nextAll(".error").css("display","none");
+			}
+		})
+		$("#engName").keyup(function() {
+			if($(this).val().length > $("#input_text").attr('maxlength')){
+				$("input[name='engName']").nextAll(".error").css("display","none");
+				$("input[name='engName']").nextAll(".error2").css("display","none");
+			}
+		})
+		$("#tel2").keyup(function() {
+			if($(this).val().length > $("#input_text").attr('maxlength')){
+				$("input[name='tel2']").nextAll(".error2").css("display","none");
+			}
+		})
+		$("#tel3").keyup(function() {
+			if($(this).val().length > $("#input_text").attr('maxlength')){
+				$("input[name='tel3']").nextAll(".error3").css("display","none");
+			}
+		})
+		$("#email1").keyup(function() {
+			if($(this).val().length > $("#input_text").attr('maxlength')){
+				$("input[name='email1']").nextAll(".error").css("display","none");
+			}
+		})
+		$("#email2").keyup(function() {
+			if($(this).val().length > $("#input_text").attr('maxlength')){
+				$("input[name='email2']").nextAll(".error2").css("display","none");
+			}
+		})
+		$("#address").keyup(function() {
+			if($(this).val().length > $("#input_text").attr('maxlength')){
+				$("input[name='address']").nextAll(".error").css("display","none");
+			}
+		})
+		$("#address2").keyup(function() {
+			if($(this).val().length > $("#input_text").attr('maxlength')){
+				$("input[name='address2']").nextAll(".error").css("display","none");
+			}
+		})
+		
+		
 	})
 });
 </script>
@@ -141,11 +211,14 @@ label {
 	width: 90px;
 	height: 25px;
 }
-	.error,.error2,.error3{
+.error,.error2,.error3{
 		color:red;
 		display: none;
 		font-size:12px;
-	}
+}
+#input_text{
+	display:none;
+}
 </style>
 </head>
 <body>
@@ -153,22 +226,22 @@ label {
 		<fieldset>
 			<legend>회원가입하기</legend>
 			<p>
-				<label>비밀번호</label> <input type="password" name="password">
+				<label>비밀번호</label> <input type="password" name="password" id="password">
 				<span class="error">비밀번호를 입력하세요</span>
 				<span class="error2">영어,숫자,특수문자(8~15)자로 입력해주세요</span>
 			</p>
 			<p>
-				<label>비밀번호 확인</label> <input type="password" name="repassword">
+				<label>비밀번호 확인</label> <input type="password" name="repassword" id="repassword">
 				<span class="error">비밀번호를 입력하세요</span>
 				<span class="error2">비밀번호가 일치하지않음</span>
 			</p>
 			<p>
 				<label>한글이름</label> 
-				<input type="text" name="korName" maxlength="4">
+				<input type="text" name="korName" maxlength="4" id="korName">
 				<span class="error">이름을 입력해주세요</span>
 			</p>
 			<p>
-				<label>영어이름</label> <input type="text" name="engName" maxlength="50">
+				<label>영어이름</label> <input type="text" name="engName" maxlength="50" id="engName">
 				<span class="error">영어로만 입력해주세요</span>
 				<span class='error2'>영어이름을 입력해주세요</span>
 			</p>
@@ -180,13 +253,13 @@ label {
 					<option>011</option>		
 				</select>
 				<span class="error">앞자리를 입력해주세요</span> 
-				- <input type="tel" name="tel2" class="telbox" maxlength="4">
+				- <input type="text" name="tel2" class="telbox" maxlength="4" id="tel2">			
+				- <input type="text" name="tel3" class="telbox" maxlength="4" id="tel3">
 				<span class="error2">중간자리를 입력해주세요</span> 
-				- <input type="tel" name="tel3" class="telbox" maxlength="4">
 				<span class="error3">마지막 자리를 입력해주세요</span> 
 			</p>
-			<label>이메일</label> <input type="text" class="emailbox" name="email1">
-				<span class="error">이메일 앞자리를 입력하세요</span>
+			<label>이메일</label> 
+			<input type="text" class="emailbox" name="email1" id="email1">
 			@ <input type="text" class="emailbox" name="email2" id="email2">
 			<select name="emailbox" id="emailbox">
 				<option value="" selected>선택하세요</option>
@@ -194,17 +267,18 @@ label {
 				<option value="google.com">google.com</option>
 				<option value="daum.net">daum.net</option>
 				<option value="1">직접입력</option>
-			</select>
+			</select>				
+				<span class="error">이메일 앞자리를 입력하세요</span>
 				<span class="error2">이메일 뒷자리를 입력하세요</span>
 			<p>
 				<label>우편번호</label> 
-				<input type="text" size="20" id="address" name="address">
+				<input type="text" size="20" id="address" name="address" id="address">
 				<input type="button" value="검색" id="button">
 				<span class="error">우편번호를 입력해주세요</span> 
 			</p>
 			<p>
 				<label>주소</label> 
-				<input type="text" id="address2" name="address2">
+				<input type="text" id="address2" name="address2" id="address2">
 				<span class=error>상세주소를 입력해주세요</span>
 			</p>
 			<p>
@@ -217,6 +291,7 @@ label {
 				<input type="submit" value="가입하기">
 				<input type="reset" value="취소">
 			</p>
+			<input type="text" maxlength="0" id="input_text">
 		</fieldset>
 	</form>
 </body>
