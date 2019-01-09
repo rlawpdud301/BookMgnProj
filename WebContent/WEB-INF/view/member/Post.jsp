@@ -62,7 +62,7 @@
 	 $(document).on('click','#submit',function(){
 		$(opener.document).find('#address').val($('#sample6_address').val());
 		$(opener.document).find('#address2').val($('#sample6_detailAddress').val());
-		confirm("아 안간다")
+		confirm("해당주소로 이동합니다.")
 		window.close();
 	})
 </script>

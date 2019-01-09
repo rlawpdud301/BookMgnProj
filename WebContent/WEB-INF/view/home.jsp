@@ -94,7 +94,7 @@ body{
 
 	
 
-	<a href="${pageContext.request.contextPath}/member/insert.do">회원 가입하기</a>
+ 	<a href="${pageContext.request.contextPath}/member/insert.do">회원 가입하기</a>
 
 	<header>
 		<jsp:include page="FooterHeader/header.jsp" flush="false" />
