@@ -39,6 +39,7 @@
 		})
 	});
 	$(function(){
+		$("#password")
 		$("#f1").submit(function(){
 			$(".error").css("display","none");
 			var pass = $("input[name='password']").val();
@@ -153,7 +154,7 @@ label {
 		<fieldset>
 			<legend>회원가입하기</legend>
 			<p>
-				<label>비밀번호</label> <input type="password" name="password">
+				<label>비밀번호</label> <input type="password" name="password" id="password">
 				<span class="error">비밀번호를 입력하세요</span>
 				<span class="error2">영어,숫자,특수문자(8~15)자로 입력해주세요</span>
 			</p>

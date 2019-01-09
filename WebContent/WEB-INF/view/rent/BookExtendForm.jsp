@@ -12,18 +12,14 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="bookRent.do" method="post">
+	<form action="bookExtend.do" method="post">
 		<fieldset>
-			<p>
-				<label>회원 번호</label>
-				<input type="text" name="memberNo">
-			</p>
 			<p>
 				<label>도서 코드</label>
 				<input type="text" name="bookCode">
 			</p>
 			<p>
-				<input type="submit" value="대여">
+				<input type="submit" value="연장">
 				<input type="reset" value="취소">
 			</p>
 		</fieldset>
