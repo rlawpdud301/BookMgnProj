@@ -33,6 +33,5 @@ public interface BookRentalInfoMapper {
 
 	BookRentalInfo selectRentalNoByBookCode_returnDateNull(BookRentalInfo bookRentalInfo);
 
-	int updateReturnSchedule(BookRentalInfo bookRentalInfo);
 
 }

@@ -91,7 +91,12 @@ body{
 </head>
 <body>
 	홈이다옿ㅁ
+
+	<a href="/BookMgnProj/rent/bookRent.do">대여</a>
+	<a href="/BookMgnProj/rent/bookReturn.do">반납</a>
+
 	<a href="${pageContext.request.contextPath}/member/insert.do">회원 가입하기</a>
+
 	<header>
 		<jsp:include page="FooterHeader/header.jsp" flush="false" />
 	</header>

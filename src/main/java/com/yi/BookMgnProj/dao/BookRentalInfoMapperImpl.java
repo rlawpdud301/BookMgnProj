@@ -113,12 +113,4 @@ public class BookRentalInfoMapperImpl implements BookRentalInfoMapper {
 		}
 	}
 
-	@Override
-	public int updateReturnSchedule(BookRentalInfo bookRentalInfo) {
-		try (SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();) {
-			int res = sqlSession.update(namespace + ".updateReturnSchedule", bookRentalInfo);
-			sqlSession.commit();
-			return res;
-		}
-	}
 }

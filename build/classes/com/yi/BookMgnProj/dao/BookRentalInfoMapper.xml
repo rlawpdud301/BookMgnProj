@@ -106,12 +106,12 @@
 
    <select id="selectRentalNoByBookCode" parameterType="BookRentalInfo" resultMap="RentalNoByBookCodeResult">
    		<include refid="selectJoinSql"/>
-   		where book_code=#{bookCode.bookCode}
+   		where b.book_code=#{bookCode.bookCode}
    </select>
    
    <select id="selectRentalNoByBookCode_returnDateNull" parameterType="BookRentalInfo" resultMap="RentalNoByBookCodeResult">
    		<include refid="selectJoinSql"/>
-   		where book_code=#{bookCode.bookCode} and return_date is null
+   		where b.book_code=#{bookCode.bookCode} and return_date is null
    </select>	
 	
    <select id="nextCode" resultType="java.lang.Integer">
