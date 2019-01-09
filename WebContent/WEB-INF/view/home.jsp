@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -90,31 +91,30 @@ body{
 </style>
 </head>
 <body>
-	홈이다옿ㅁ
-
-	<a href="/BookMgnProj/rent/bookRent.do">대여</a>
-	<a href="/BookMgnProj/rent/bookReturn.do">반납</a>
-
-	<a href="${pageContext.request.contextPath}/member/insert.do">회원 가입하기</a>
-
 	<header>
-		<jsp:include page="FooterHeader/header.jsp" flush="false" />
+		<c:choose>
+			<c:when test="${AUTH == null }">
+				<jsp:include page="FooterHeader/header.jsp" flush="false" />
+			</c:when>
+			<c:when test="${AUTH.admin == true }">
+				<jsp:include page="FooterHeader/admin.jsp" flush="false" />
+				관리자
+			</c:when>
+			<c:when test="${AUTH.admin == false }">
+				<jsp:include page="FooterHeader/guest.jsp" flush="false" />
+				손님
+			</c:when>
+		</c:choose>
 	</header>
-
-	<div id="Home">
-		홈이다옿ㅁ
-		<a href="/BookMgnProj/rent/bookRent.do">대여</a>
-		
-		<section>
-			<a href="${pageContext.request.contextPath }/book/insert.do">이거 누르셈</a>
-		</section>
+	<section>
+		<div id="Home">
+			<a href="${pageContext.request.contextPath }/member/login.do">로그인</a>
+			<a href="${pageContext.request.contextPath}/member/insert.do">회원 가입하기</a>
+		</div>
 		<div id="bookSearch">
 			<jsp:include page="/WEB-INF/view/bookSearch.jsp" flush="false" />
 		</div>
-		
-	</div>
-		
-		
+	</section>
 
 	<footer>
 		<jsp:include page="FooterHeader/footer.jsp" flush="false" />

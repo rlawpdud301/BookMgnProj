@@ -6,6 +6,7 @@ public class CategoryB {
 
 	public CategoryB() {
 	}
+
 	public CategoryB(int bCode, String bName) {
 		super();
 		this.bCode = bCode;
@@ -27,8 +28,6 @@ public class CategoryB {
 	public void setbName(String bName) {
 		this.bName = bName;
 	}
- 
-	
 
 	@Override
 	public String toString() {
