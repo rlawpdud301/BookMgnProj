@@ -66,8 +66,9 @@
 	</insert>
 	
 	<update id="updateMemberRentalInfo" parameterType="MemberRentalInfo">
-		update proj_library.member_rental_info set now_total=now_total-1,total=total+1
-		where member_no=#{memberNo}
+		update member_rental_info 
+		set now_total=now_total-1, total=total+1
+		where member_no=#{memberNo} and now_total > 0;
 	</update>
 	
 	<update id="updateMemberRentalInfo2" parameterType="MemberRentalInfo">
