@@ -8,12 +8,15 @@
 <style type="text/css">
 *{
 	margin: 0;
-	padding: 0;
-	
+	padding: 0;	
 }
-body{
-	background: #FFFFF8;
-}
+
+body,html{
+		width: 100%;
+		height: 100%;
+		background: #FFFFF8;
+		color: #353535;
+	}
 #Home{
 	width:75%;
 	margin: 0 auto;
@@ -90,12 +93,12 @@ body{
 </style>
 </head>
 <body>
-	홈이다옿ㅁ
+	<!-- 홈이다옿ㅁ -->
 
-	<a href="/BookMgnProj/rent/bookRent.do">대여</a>
+	<%-- <a href="/BookMgnProj/rent/bookRent.do">대여</a>
 	<a href="/BookMgnProj/rent/bookReturn.do">반납</a>
 
-	<a href="${pageContext.request.contextPath}/member/insert.do">회원 가입하기</a>
+	<a href="${pageContext.request.contextPath}/member/insert.do">회원 가입하기</a> --%>
 
 	<header>
 		<jsp:include page="FooterHeader/header.jsp" flush="false" />

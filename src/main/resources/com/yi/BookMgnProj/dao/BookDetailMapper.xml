@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yi.BookMgnProj.dao.BookDetailMapper">
+
+	<resultMap type="BookDetail" id="BookDetailResult">
+		<result property="bookCode.bookCode" column="book_code" />
+		<result property="title.title" column="title" />
+		<result property="author.author" column="author" />
+		<result property="translator.translator" column="translator" />
+		<result property="price.price" column="price" />
+		<result property="image.image" column="image" />
+		<result property="rentalPossible" column="rental_possible" />
+		<result property="pubName.pubName" column="pub_name" />
+		<result property="pubNo.pubNo" column="pub_no" />
+		<result property="hap" column="hap" />
+		<result property="bCode.bCode" column="cate_b_no" />
+		<result property="mCode.mCode" column="cate_m_no" />
+		<result property="sCode.sCode" column="cate_s_no" />
+		<result property="bName.bName" column="cate_b_name" />
+		<result property="mName.mName" column="cate_m_name" />
+		<result property="sName.sName" column="cate_s_name" />
+
+	</resultMap>
+
+	<sql id="selectSql">
+		SELECT left(book_code,8) as book_code, title, 
+		(if(author is null,'알수없음',author)) as author,
+		(if(translator is null,'',translator)) as translator,
+		(if(price is null,'알수없음',price)) as price,
+		image,
+		(if(sum(rental_possible)=0,'대여불가능','대여가능')) as rental_possible,
+		pub_name, cate_b_no,
+		cate_m_no, cate_s_no,
+		pub_no,
+		cate_b_name,
+		cate_m_name,
+		cate_s_name,
+		count(left(book_code,8)) as hap
+		FROM
+		proj_library.bookdetail
+	</sql>
+	<sql id="whereSql">
+		<where>
+			left(book_code, 1) != 'D'
+			<if test="pubNo != null">
+				and pub_no=#{pubNo}
+			</if>
+			<if test="cateBNo != null">
+				and cate_b_no =#{cateBNo}
+			</if>
+			<if test="cateMNo != null">
+				AND cate_m_no=#{cateMNo}
+			</if>
+			<if test="cateSNo != null">
+				AND cate_s_no=#{cateSNo}
+			</if>
+			<if test="author != null">
+				AND author REGEXP#{author}
+			</if>
+			<if test="translator != null">
+				AND translator REGEXP#{translator}
+			</if>
+			<if test="title != null">
+				AND title REGEXP#{title}
+			</if>
+			<if test="bookCode != null">
+				AND book_code REGEXP #{bookCode}
+			</if>
+		</where>
+	</sql>
+	<select id="selectBookDetailByMap" resultMap="BookDetailResult">
+		<include refid="selectSql" />
+		<include refid="whereSql" />
+		group by left(book_code,8)
+	</select>
+
+</mapper>
