@@ -43,6 +43,7 @@ public class MemberRentalInfoMapperImpl implements MemberRentalInfoMapper {
 	@Override
 	public int updateMemberRentalInfo(MemberRentalInfo memberRentalInfo) {
 		try (SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();) {
+			System.out.println(memberRentalInfo);
 			int res = sqlSession.update(namespace + ".updateMemberRentalInfo", memberRentalInfo);
 			sqlSession.commit();
 			return res;

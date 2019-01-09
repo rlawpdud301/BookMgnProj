@@ -16,9 +16,11 @@ public class BookSearchService {
 	public  BookSearchService()  {
 		bookDetailMapper = BookDetailMapperImpl.getInstance();
 	}
+
 	public List<BookDetail> selectBookDetailByMap(Map<String, Object> map) {
 		return bookDetailMapper.selectBookDetailByMap(map);
 		
+
 	}
 }
    

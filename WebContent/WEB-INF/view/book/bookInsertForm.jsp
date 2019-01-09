@@ -1,10 +1,50 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>도서 추가</title>
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+	$(function(){
+		$("#cateB").change(function() {
+			$("#cateM option").remove();
+			$("#cateS option").remove();
+			$.ajax({
+				url:"categoryM.do",
+				type:"get",
+				data:{"cateB":$("#cateB").val()},
+				dataType:"json",
+				success:function(json){
+					console.log(json);
+					$(json).each(function(index, obj) {
+						$("#cateM").append("<option value='" + obj.mCode + "'>" + obj.mName + "</option>");
+						console.log(obj);
+					})
+				}
+			})
+		})
+		
+		$("#cateM").change(function() {
+			$("#cateS option").remove();
+			$.ajax({
+				url:"categoryS.do",
+				type:"get",
+				data:{"cateM":$("#cateM").val(), "cateB":$("#cateB").val()},
+				dataType:"json",
+				success:function(json){
+					console.log(json);
+					$(json).each(function(index, obj) {
+						$("#cateS").append("<option value='" + obj.sCode + "'>" + obj.sName + "</option>");
+						console.log(obj);
+					})
+				}
+			})
+		})
+	})
+</script>
 </head>
 <body>
 	<form action="${pageContext.request.contextPath }/book/insert.do">
@@ -15,15 +55,23 @@
 		
 		<p>
 			<label>도서 분류</label>
-			<select>
-				<option value="${CategoryB }">${CategoryB }</option>
+			<select id="cateB">
+				<c:forEach var="cateB" items="${CategoryB }">
+					<option value="${cateB.bCode }">${cateB.bName }</option>
+				</c:forEach>
 			</select>
-			<select>
-				<option value="${CategoryM }">${CategoryM }</option>
-			</select>
-			<select>
-				<option value="${CategoryS }">${CategoryS }</option>
-			</select>
+			<select id="cateM"></select>
+			<select id="cateS"></select>
+		</p>
+		
+		<p>
+			<label>이미지</label>
+			<input type="file" name="image">
+		</p>
+		
+		<p>
+			<label>도서명</label>
+			<input type="text" name="title">
 		</p>
 		
 		<p>
@@ -39,11 +87,6 @@
 		<p>
 			<label>출판사</label>
 			<input type="text" name="publisher">
-		</p>
-		
-		<p>
-			<label>도서명</label>
-			<input type="text" name="title">
 		</p>
 		
 		<p>
