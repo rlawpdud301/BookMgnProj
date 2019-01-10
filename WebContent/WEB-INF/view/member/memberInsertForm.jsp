@@ -24,7 +24,9 @@
 	$("#checkbox").click(function(){
 			$("input[name=checkbox]:checked").each(function(){
 			var password = "1234";
-			var inputString = prompt('문자열을 입력하세요', '기본 값 문자열');
+/* 			window.open("/BookMgnProj/admin.do","window",'width=200, height=200'); */
+ 	 		var inputString = prompt('문자열을 입력하세요', '기본 값 문자열'); 
+ 
 			if(inputString == password){
 				$('input[name=checkbox]').prop('checked',true);
 			}else{
@@ -36,9 +38,6 @@
 	$(function(){
 		$("#button").click(function(){
 			window.open("/BookMgnProj/post.do",'window','width=400, height=200');
-		})
-		$("#btn1").click(function(){
-			window.open("/BookMgnProj/UploadForm.jsp",'window','width=400, height=200');
 		})
 	});
 	$(function(){			
@@ -55,6 +54,8 @@
 			var email2 = $("input[name='email2']").val();
 			var address = $("input[name='address']").val();
 			var address2 = $("input[name='address2']").val();
+			var jumin1 = $("input[name='jumin1']").val();
+			var jumin2 = $("input[name='jumin2']").val();
 			var regpass = /^[a-z0-9!@#$%]{8,15}$/i;
 			var regName = /^[a-zA-Z]{3,20}$/;
 			if(pass == ""){
@@ -105,6 +106,16 @@
 			if(tel3 == ""){
 				$("input[name='tel3']").nextAll(".error3").css("display","inline");
 				$("input[name='tel3']").focus();
+				return false;
+			}
+			if(jumin1 == ""){
+				$("input[name='jumin1']").nextAll(".error").css("display","inline");
+				$("input[name='jumin1']").focus();
+				return false;
+			}
+			if(jumin2 == ""){
+				$("input[name='jumin2']").nextAll(".error2").css("display","inline");
+				$("input[name='jumin2']").focus();
 				return false;
 			}
 			if(email1 == ""){
@@ -161,6 +172,16 @@
 				$("input[name='tel3']").nextAll(".error3").css("display","none");
 			}
 		})
+		$('#jumin1').keyup(function(){
+			if($(this).val().length > $("#input_text").attr('maxlength')){
+				$("input[name='jumin1']").nextAll(".error").css("display","none");
+			}
+		})
+		$('#jumin2').keyup(function(){
+			if($(this).val().length > $("#input_text").attr('maxlength')){
+				$("input[name='jumin2']").nextAll(".error2").css("display","none");
+			}
+		})
 		$("#email1").keyup(function() {
 			if($(this).val().length > $("#input_text").attr('maxlength')){
 				$("input[name='email1']").nextAll(".error").css("display","none");
@@ -180,10 +201,26 @@
 			if($(this).val().length > $("#input_text").attr('maxlength')){
 				$("input[name='address2']").nextAll(".error").css("display","none");
 			}
-		})
-		
-		
+		})	
 	})
+	$("#duplejumin").click(function(){
+			var juminduple = $("input[name='jumin1']").val() +"-"+ $("input[name='jumin2']").val();
+			$.ajax({
+				url:"/BookMgnProj/jumin.do",
+				type:"get",
+				data:{"juminduple":juminduple},
+				dataType:"json",
+				success:function(data){
+					if(!data.result){
+						
+						alert("사용중인 주민번호입니다.")
+						
+					}else{
+						alert("사용할수 있는 주민번호입니다.")
+					}
+				}
+			})	
+		})
 });
 </script>
 <style>
@@ -220,13 +257,16 @@ label {
 #input_text{
 	display:none;
 }
+#adminpass{
+	display:none;
+}
 .ju{
 	width:75px;
 }
 </style>
 </head>
 <body>
-	<form action="insert.do" method="post" id="f1">
+	<form action="insert.do" method="post" id="f1" enctype="multipart/form-data">
 		<fieldset>
 			<legend>회원가입하기</legend>
 			<p>
@@ -264,8 +304,12 @@ label {
 			</p>
 			<p>	
 				<label>주민등록번호</label>
-				<input type="text" name="jumin1" class="ju">
-				- <input type="password" name="jumin2" class="ju">
+				<input type="text" name="jumin1" class="ju" id="jumin1" maxlength="6">
+				- <input type="password" name="jumin2" class="ju" id="jumin2" maxlength="7">
+				<input type="button" id="duplejumin" name="duplejumin" value="중복체크">
+				<span class="error">주민등록 앞번호자리를 입력해주세요</span>
+				<span class="error2">주민등록번호 뒷자리를 입력해주세요</span>
+			</p>	
 			<p>
 			
 			<p>
@@ -300,17 +344,14 @@ label {
 				<label>특이사항</label> <input type="text" name="uni">
 			</p>
 			<p>
-			<label>사진</label>
-			<input type="text" name="photo" id="photobox">
-<%-- 	 		<img src="${pageContext.request.contextPath }/upload/${file1}"> --%>
-			<input type="button" id="btn1" value="파일선택">
+			<label>파일명선택</label>
+			<input type="file" name="file1" id="file1">
 			</p>
 			<p align="center">
 				<input type="submit" value="가입하기">
 				<input type="reset" value="취소">
 			</p>
 			<input type="text" maxlength="0" id="input_text">
-			
 		</fieldset>
 	</form>
 </body>

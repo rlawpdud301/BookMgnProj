@@ -144,9 +144,9 @@ public class MemberMapperImpl implements MemberMapper {
 		}
 	}
 	@Override
-	public List<Member> selectMemberByNojumin(Member member) {
+	public Member selectMemberByNojumin(String member) {
 		try(SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();){
-			return sqlSession.selectList(namespace + ".selectMemberByNojumin", member);
+			return sqlSession.selectOne(namespace + ".selectMemberByNojumin", member);
 		}
 	}	
 	public Member loginCheck(Map<String, Object> map) {

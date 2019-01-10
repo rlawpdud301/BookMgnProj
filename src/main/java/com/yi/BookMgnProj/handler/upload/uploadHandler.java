@@ -5,6 +5,7 @@ import java.io.File;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.mysql.jdbc.UpdatableResultSet;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.yi.BookMgnProj.mvc.CommandHandler;
@@ -13,9 +14,11 @@ public class uploadHandler implements CommandHandler {
 	
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {
-		if(req.getMethod().equalsIgnoreCase("post")){
+		if(req.getMethod().equalsIgnoreCase("get")){
+			return "WEB-INF/view/uploadForm.jsp";
+		}else if(req.getMethod().equalsIgnoreCase("post")){
 		String uploadPath = req.getRealPath("upload");
-		
+		System.out.println("uploadHandler --------------------- ");
 		File dir = new File(uploadPath);
 		if(dir.exists() == false){ //upload폴더가 없을때, 만들어지게한다.
 			dir.mkdirs();
@@ -36,7 +39,7 @@ public class uploadHandler implements CommandHandler {
 			
 /*			return "/WEB-INF/view/member/memberInsertForm.jsp";*/
 /*			return "UploadForm.jsp";*/
-			return "uploadSuccess.jsp";
+			return "WEB-INF/view/uploadSuccess.jsp";
 		}catch(Exception e){
 			e.printStackTrace();
 		}
