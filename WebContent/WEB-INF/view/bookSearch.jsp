@@ -186,8 +186,9 @@ span {
 					dataType : "json", 
 					success : function(list) {
 						console.log(list);
-						$(list).each(function(index, obj) {
-							
+						$("#each").append("<select name='cateB' id='cateB'></select>");
+						$(list.list).each(function(index, obj) {
+							$("#cateB").append("<option value='" + obj.bCode + "'>" + obj.bName + "</option>");
 						})
 												
 											}
