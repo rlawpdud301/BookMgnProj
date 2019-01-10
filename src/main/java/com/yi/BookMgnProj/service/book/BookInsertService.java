@@ -63,16 +63,8 @@ public class BookInsertService {
 		return bMapper.selectCategoryBByAll();
 	}
 
-	public List<CategoryM> selectCategoryMByAll() {
-		return mMapper.selectCategoryMByAll();
-	}
-
 	public List<CategoryM> selectCategoryMByBNo(CategoryB cateB) {
 		return mMapper.selectCategoryMByBNo(cateB);
-	}
-
-	public List<CategoryS> selectCategorySByAll() {
-		return sMapper.selectCategorySByAll();
 	}
 
 	public List<CategoryS> selectCategorySByBNoMno(CategoryM cateM) {
@@ -82,7 +74,7 @@ public class BookInsertService {
 	public int updatetBook(Book book) {
 		return bookMapper.updateBook(book);
 	}
-	
+
 	public CategoryS categoryS(HashMap<String, Integer> map) {
 		return sMapper.categoryS(map);
 	}
