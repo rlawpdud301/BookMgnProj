@@ -1,5 +1,6 @@
 package com.yi.BookMgnProj.service.book;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -62,16 +63,8 @@ public class BookInsertService {
 		return bMapper.selectCategoryBByAll();
 	}
 
-	public List<CategoryM> selectCategoryMByAll() {
-		return mMapper.selectCategoryMByAll();
-	}
-
 	public List<CategoryM> selectCategoryMByBNo(CategoryB cateB) {
 		return mMapper.selectCategoryMByBNo(cateB);
-	}
-
-	public List<CategoryS> selectCategorySByAll() {
-		return sMapper.selectCategorySByAll();
 	}
 
 	public List<CategoryS> selectCategorySByBNoMno(CategoryM cateM) {
@@ -80,5 +73,9 @@ public class BookInsertService {
 
 	public int updatetBook(Book book) {
 		return bookMapper.updateBook(book);
+	}
+
+	public CategoryS selectCategoryAllCode(CategoryS cateS) {
+		return sMapper.selectCategoryAllCode(cateS);
 	}
 }

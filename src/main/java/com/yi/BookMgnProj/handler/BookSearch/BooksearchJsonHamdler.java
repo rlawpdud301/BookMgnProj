@@ -19,9 +19,24 @@ public class BooksearchJsonHamdler implements CommandHandler {
 
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {
-		String bookCode = req.getParameter("BookCode");
 		Map<String, Object> map = new HashMap<>();
-		map.put("bookCode", bookCode);
+		
+		
+		
+		if(req.getParameter("BookCode") == null|| req.getParameter("BookCode").trim().equals("") != false){
+			
+		}else{
+			String bookCode = req.getParameter("BookCode");
+			map.put("bookCode", bookCode);
+		}
+		if (req.getParameter("BookCodeDetail") == null|| req.getParameter("BookCodeDetail").trim().equals("") != false) {
+			
+		}else{
+			String BookCodeDetail = req.getParameter("BookCodeDetail");
+			map.put("BookCodeDetail", BookCodeDetail);
+		}
+		
+		
 		BookSearchService service = new BookSearchService();
 		
 		List<BookDetail> list = service.selectBookDetailByMap(map);

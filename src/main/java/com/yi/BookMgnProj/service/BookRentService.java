@@ -6,14 +6,18 @@ import com.yi.BookMgnProj.dao.BookRentalInfoMapper;
 import com.yi.BookMgnProj.dao.BookRentalInfoMapperImpl;
 import com.yi.BookMgnProj.dao.MemberRentalInfoMapper;
 import com.yi.BookMgnProj.dao.MemberRentalInfoMapperImpl;
+import com.yi.BookMgnProj.dao.OverdueMapper;
+import com.yi.BookMgnProj.dao.OverdueMapperImpl;
 import com.yi.BookMgnProj.model.Book;
 import com.yi.BookMgnProj.model.BookRentalInfo;
 import com.yi.BookMgnProj.model.MemberRentalInfo;
+import com.yi.BookMgnProj.model.Overdue;
 
 public class BookRentService {
 	private BookRentalInfoMapper bookRentalInfoMapper = BookRentalInfoMapperImpl.getInstance();
 	private BookMapper bookMapper = BookMapperImpl.getInstance();
 	private MemberRentalInfoMapper memberRentalInfoMapper = MemberRentalInfoMapperImpl.getInstance();
+	private OverdueMapper overdueMapper = OverdueMapperImpl.getInstance();
 	
 	public int nextCode(){
 		return bookRentalInfoMapper.nextCode();
@@ -27,7 +31,20 @@ public class BookRentService {
 		return bookMapper.updateBookPossible(book);
 	}
 	
+	public Book selectBookBybookCodeOne(Book book){
+		return bookMapper.selectBookBybookCodeOne(book);
+	}
+	
 	public int updateMemberRentalInfo(MemberRentalInfo memberRentalInfo) {
 		return memberRentalInfoMapper.updateMemberRentalInfo(memberRentalInfo);
 	}
+	
+	public MemberRentalInfo selectMemberNowTotalByCode(MemberRentalInfo memberRentalInfo){
+		return memberRentalInfoMapper.selectMemberNowTotalByCode(memberRentalInfo);
+	}
+	
+	public int updateAuthority(Overdue overdue){
+		return overdueMapper.updateAuthority(overdue);
+	}
+	
 }

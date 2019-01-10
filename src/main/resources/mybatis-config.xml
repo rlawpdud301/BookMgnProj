@@ -39,6 +39,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		</environment>
 	</environments>
 
+
 	<mappers>
 		<package name="com/yi/BookMgnProj/dao"/>
 		<!-- <mapper resource="com/yi/BookMgnProj/dao/BookRentalInfoMapper.xml"/>
@@ -46,10 +47,16 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<mapper resource="com/yi/BookMgnProj/dao/MemberMapper.xml"/>
 		<mapper resource="com/yi/BookMgnProj/dao/CategoryBMapper.xml"/>
 		<mapper resource="com/yi/BookMgnProj/dao/CategoryMMapper.xml"/>
+=======
+>>>>>>> branch 'master' of https://github.com/rlawpdud301/BookMgnProj.git
 
+<<<<<<< HEAD
 
 		<mapper resource="com/yi/BookMgnProj/dao/MemberRentalInfoMapper.xml"/> -->
+	</mappers>
 
+	<mappers>
+		<package name="com/yi/BookMgnProj/dao"/>
 	</mappers>
 
 </configuration>
