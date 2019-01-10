@@ -94,14 +94,6 @@ body,html{
 </style>
 </head>
 <body>
-
-
-
-	
-
- 	<a href="${pageContext.request.contextPath}/member/insert.do">회원 가입하기</a>
-
-
 	<header>
 		<c:choose>
 			<c:when test="${AUTH == null }">
@@ -117,21 +109,8 @@ body,html{
 			</c:when>
 		</c:choose>
 	</header>
+	
 	<section>
-		<div id="Home">
-			<a href="${pageContext.request.contextPath }/member/login.do">로그인</a>
-			<a href="${pageContext.request.contextPath}/member/insert.do">회원 가입하기</a>
-		</div>
-
-	<div id="Home">
-		홈이다옿ㅁ
-		<a href="/BookMgnProj/rent/bookRent.do">대여</a>
-		<a href="/BookMgnProj/rent/bookReturn.do">반납</a>
-		<a href="/BookMgnProj/rent/bookExtend.do">연장</a>
-		
-		<section>
-			<a href="${pageContext.request.contextPath }/book/insert.do">이거 누르셈</a>
-		</section>
 		<div id="bookSearch">
 			<jsp:include page="/WEB-INF/view/bookSearch.jsp" flush="false" />
 		</div>
@@ -139,8 +118,11 @@ body,html{
 
 	<footer>
 		<jsp:include page="FooterHeader/footer.jsp" flush="false" />
+<<<<<<< HEAD
 	</footer>
-
+=======
+	</footer>
+>>>>>>> branch 'master' of https://github.com/rlawpdud301/BookMgnProj
 
 </body>
 </html>

@@ -22,6 +22,8 @@
 				<input type="submit" value="로그인">
 			</p>
 		</fieldset>
+		<a href="${pageContext.request.contextPath}/member/insert.do">회원 가입하기</a>
+		<a href="#">ID / PW 찾기</a>
 	</form>
 </body>
 </html>

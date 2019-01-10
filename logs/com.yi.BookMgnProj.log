@@ -1,0 +1,15 @@
+[2019-01-10] ==>  Preparing: SELECT cate_s_no, cate_m_no, cate_b_no, cate_s_name FROM proj_library.category_s where cate_b_no = ? and cate_m_no = ? and cate_s_no = ?; 
+[2019-01-10] ==> Parameters: 2(Integer), 3(Integer), 3(Integer)
+[2019-01-10] <==    Columns: cate_s_no, cate_m_no, cate_b_no, cate_s_name
+[2019-01-10] <==        Row: 3, 3, 2, 성서(성경)
+[2019-01-10] <==      Total: 1
+[2019-01-10] ==>  Preparing: SELECT cate_s_no, cate_m_no, cate_b_no, cate_s_name FROM proj_library.category_s where cate_b_no = ? and cate_m_no = ? and cate_s_no = ?; 
+[2019-01-10] ==> Parameters: 2(Integer), 3(Integer), 3(Integer)
+[2019-01-10] <==    Columns: cate_s_no, cate_m_no, cate_b_no, cate_s_name
+[2019-01-10] <==        Row: 3, 3, 2, 성서(성경)
+[2019-01-10] <==      Total: 1
+[2019-01-10] ==>  Preparing: SELECT cate_s_no, cate_m_no, cate_b_no, cate_s_name FROM proj_library.category_s where cate_b_no = ? and cate_m_no = ? and cate_s_no = ?; 
+[2019-01-10] ==> Parameters: 2(Integer), 3(Integer), 3(Integer)
+[2019-01-10] <==    Columns: cate_s_no, cate_m_no, cate_b_no, cate_s_name
+[2019-01-10] <==        Row: 3, 3, 2, 성서(성경)
+[2019-01-10] <==      Total: 1

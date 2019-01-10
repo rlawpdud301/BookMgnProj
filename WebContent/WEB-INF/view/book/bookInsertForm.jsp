@@ -6,23 +6,30 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+	select {
+		width: 100px;
+	}
+</style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
 	$(function(){
+		$("#cateB option:eq(0)").attr("selected", "selected");
 		$("#cateB").change(function() {
 			$("#cateM option").remove();
 			$("#cateS option").remove();
 			$.ajax({
-				url:"categoryM.do",
+				url:"category.do",
 				type:"get",
 				data:{"cateB":$("#cateB").val()},
 				dataType:"json",
 				success:function(json){
 					console.log(json);
-					$(json).each(function(index, obj) {
+					 $(json.listM).each(function(index, obj) {
 						$("#cateM").append("<option value='" + obj.mCode + "'>" + obj.mName + "</option>");
 						console.log(obj);
-					})
+						$("#cateM option:eq(0)").attr("selected", "selected");
+					}) 
 				}
 			})
 		})
@@ -30,38 +37,35 @@
 		$("#cateM").change(function() {
 			$("#cateS option").remove();
 			$.ajax({
-				url:"categoryS.do",
+				url:"category.do",
 				type:"get",
 				data:{"cateM":$("#cateM").val(), "cateB":$("#cateB").val()},
 				dataType:"json",
 				success:function(json){
 					console.log(json);
-					$(json).each(function(index, obj) {
+					$(json.listS).each(function(index, obj) {
 						$("#cateS").append("<option value='" + obj.sCode + "'>" + obj.sName + "</option>");
 						console.log(obj);
+						$("#cateS option:eq(0)").attr("selected", "selected");
 					})
 				}
 			})
+			
 		})
 	})
 </script>
 </head>
 <body>
-	<form action="${pageContext.request.contextPath }/book/insert.do">
-		<p>
-			<label>도서 번호</label>
-			<input type="text" name="bookCode">
-		</p>
-		
+	<form action="${pageContext.request.contextPath }/book/insert.do" method="post">
 		<p>
 			<label>도서 분류</label>
-			<select id="cateB">
-				<c:forEach var="cateB" items="${CategoryB }">
+			<select id="cateB" name="cateB">
+				<c:forEach var="cateB" items="${listB }">
 					<option value="${cateB.bCode }">${cateB.bName }</option>
 				</c:forEach>
 			</select>
-			<select id="cateM"></select>
-			<select id="cateS"></select>
+			<select id="cateM" name="cateM"></select>
+			<select id="cateS" name="cateS"></select>
 		</p>
 		
 		<p>

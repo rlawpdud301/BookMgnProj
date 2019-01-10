@@ -27,24 +27,12 @@ public class CategoryService {
 		return categoryBMapper.selectCategoryBByAll();
 	}
 
-	public List<CategoryM> selectCategoryMByAll() {
-		return categoryMMapper.selectCategoryMByAll();
-	}
-
 	public List<CategoryM> selectCategoryMByBNo(CategoryB cateB) {
 		return categoryMMapper.selectCategoryMByBNo(cateB);
 	}
 
-	public List<CategoryS> selectCategorySByAll() {
-		return categorySMapper.selectCategorySByAll();
-	}
-
 	public List<CategoryS> selectCategorySByBNoMno(CategoryM cateM) {
 		return categorySMapper.selectCategorySByBNoMno(cateM);
-	}
-
-	public CategoryS selectCategoryAllCode(CategoryS cateS) {
-		return categorySMapper.selectCategoryAllCode(cateS);
 	}
 
 }

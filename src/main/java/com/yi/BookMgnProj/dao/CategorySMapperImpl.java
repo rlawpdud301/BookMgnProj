@@ -1,5 +1,6 @@
 package com.yi.BookMgnProj.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -37,6 +38,13 @@ public class CategorySMapperImpl implements CategorySMapper {
 	public CategoryS selectCategoryAllCode(CategoryS cateS) {
 		try(SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();){
 			return sqlSession.selectOne(namespace+".selectCategoryAllCode",cateS);
+		}
+	}
+
+	@Override
+	public CategoryS categoryS(HashMap<String, Integer> map) {
+		try(SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();){
+			return sqlSession.selectOne(namespace+".categoryS",map);
 		}
 	}
 
