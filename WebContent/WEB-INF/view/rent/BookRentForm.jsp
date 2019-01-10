@@ -10,6 +10,20 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+	$(function() {
+		if(${st} == "1"){
+			alert("대여가능한 도서가 아닙니다");
+		}
+		if(${st} == "2"){
+			alert("대여가능한 회원이 아닙니다");
+		}
+		if(${st} == "3"){
+			alert("도서번호와 회원번호를 다시 확인해 주세요.");
+		}
+	}) 
+</script>
 </head>
 <body>
 	<form action="bookRent.do" method="post">
@@ -23,7 +37,7 @@
 				<input type="text" name="bookCode">
 			</p>
 			<p>
-				<input type="submit" value="대여">
+				<input type="submit" value="대여" id="btn">
 				<input type="reset" value="취소">
 			</p>
 		</fieldset>
