@@ -28,43 +28,40 @@ public class BookInsertHandler implements CommandHandler {
 			return "/WEB-INF/view/book/bookInsertForm.jsp";
 		} else if (req.getMethod().equalsIgnoreCase("post")) {
 			BookInsertService service = new BookInsertService();
-			
+
 			String author = req.getParameter("author");
-			
 			String translator = req.getParameter("translator");
-			
 			String title = req.getParameter("title");
-			
 			String price = req.getParameter("price");
 			int won = Integer.parseInt(price);
-			
 			String image = req.getParameter("image");
-			
+
 			if (image.equals("")) {
 				image = "default.jpg";
 			}
-			
+
 			String bCode = req.getParameter("cateB");
 			int b = Integer.parseInt(bCode);
-			
+
 			String mCode = req.getParameter("cateM");
 			int m = Integer.parseInt(mCode);
-			
+
 			String sCode = req.getParameter("cateS");
 			int s = Integer.parseInt(sCode);
-			
+
 			String pubName = req.getParameter("publisher");
-			
-			CategoryB cateB = service.selectCategoryBByAll().get(b);
-			
-			CategoryM cateM = service.selectCategoryMByBNo(cateB).get(m);
-			
-			HashMap<String, Integer> map2 = new HashMap<>();
-			map2.put("b", b);
-			map2.put("m", m);
-			map2.put("s", s);
-			
-			CategoryS cateS = service.categoryS(map2);
+
+			CategoryB cateB = new CategoryB();
+			cateB.setbCode(b);
+
+			CategoryM cateM = new CategoryM();
+			cateM.setbCode(cateB);
+			cateM.setmCode(m);
+
+			CategoryS cateS = new CategoryS();
+			cateS.setbCode(cateB);
+			cateS.setmCode(cateM);
+			cateS.setsCode(s);
 
 			Book book = new Book();
 
@@ -120,11 +117,11 @@ public class BookInsertHandler implements CommandHandler {
 					j = 1;
 				}
 			}
-			
+
 			String bookCode = String.format("%s%05d%02d", bCode + mCode + sCode, i, j);
 			book.setBookCode(bookCode);
 			book.setBookNo(i);
-			
+
 			service.insertBook(book);
 			return "/WEB-INF/view/book/bookInsertSuccess.jsp";
 		}

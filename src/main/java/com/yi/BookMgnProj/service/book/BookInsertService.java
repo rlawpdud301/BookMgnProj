@@ -75,7 +75,7 @@ public class BookInsertService {
 		return bookMapper.updateBook(book);
 	}
 
-	public CategoryS categoryS(HashMap<String, Integer> map) {
-		return sMapper.categoryS(map);
+	public CategoryS selectCategoryAllCode(CategoryS cateS) {
+		return sMapper.selectCategoryAllCode(cateS);
 	}
 }
