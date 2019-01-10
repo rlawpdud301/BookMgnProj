@@ -31,6 +31,7 @@ public class BookRentHandler implements CommandHandler {
 			
 			Member member = new Member();
 			member.setMemberNo(memberNo);
+			System.out.println(member+"post");
 			Book book = new Book();
 			book.setBookCode(bookCode);
 			

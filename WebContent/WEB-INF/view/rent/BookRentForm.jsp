@@ -10,6 +10,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+	/* $(function() {
+		$("#btn").click (function() {
+			$("name=[memberNo]").val()
+		})
+	}) */
+</script>
 </head>
 <body>
 	<form action="bookRent.do" method="post">
@@ -23,7 +31,7 @@
 				<input type="text" name="bookCode">
 			</p>
 			<p>
-				<input type="submit" value="대여">
+				<input type="submit" value="대여" id="btn">
 				<input type="reset" value="취소">
 			</p>
 		</fieldset>
