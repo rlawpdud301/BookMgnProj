@@ -27,8 +27,7 @@ public class BookCategoryHandler implements CommandHandler {
 		String cateM = req.getParameter("cateM");
 		if(cateB == null && cateM == null){
 			List<CategoryB> listB = new ArrayList<>();
-			CategoryB cB = new CategoryB();
-			cB.setbName("선택해주세요");
+			CategoryB cB = new CategoryB(-1,"선택해주세요");
 			listB.add(cB);
 			for (CategoryB categoryB : service.selectCategoryBByAll()) {
 				listB.add(categoryB);
@@ -38,6 +37,7 @@ public class BookCategoryHandler implements CommandHandler {
 			List<CategoryM> listM = new ArrayList<>();
 			CategoryM cM = new CategoryM();
 			cM.setmName("선택해주세요");
+			cM.setmCode(-1);
 			listM.add(cM);
 			CategoryB b = new CategoryB();
 			b.setbCode(Integer.parseInt(cateB));
@@ -49,6 +49,7 @@ public class BookCategoryHandler implements CommandHandler {
 			List<CategoryS> listS = new ArrayList<>();
 			CategoryS cS = new CategoryS();
 			cS.setsName("선택해주세요");
+			cS.setsCode(-1);
 			listS.add(cS);
 			CategoryM m = new CategoryM();
 			m.setmCode(Integer.parseInt(cateM));
