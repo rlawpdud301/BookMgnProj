@@ -118,7 +118,11 @@ body,html{
 
 	<footer>
 		<jsp:include page="FooterHeader/footer.jsp" flush="false" />
+<<<<<<< HEAD
 	</footer>
+=======
+	</footer>
+>>>>>>> branch 'master' of https://github.com/rlawpdud301/BookMgnProj
 
 </body>
 </html>
