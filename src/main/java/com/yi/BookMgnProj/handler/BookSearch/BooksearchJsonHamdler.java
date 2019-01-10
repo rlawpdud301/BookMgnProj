@@ -1,7 +1,9 @@
 package com.yi.BookMgnProj.handler.BookSearch;
 
 import java.io.PrintWriter;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -9,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.codehaus.jackson.map.ObjectMapper;
 
 import com.yi.BookMgnProj.model.Book;
+import com.yi.BookMgnProj.model.BookDetail;
 import com.yi.BookMgnProj.mvc.CommandHandler;
 import com.yi.BookMgnProj.service.BookSearchService;
 
@@ -17,11 +20,11 @@ public class BooksearchJsonHamdler implements CommandHandler {
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		String bookCode = req.getParameter("BookCode");
-		Book book = new Book();
-		book.setBookCode(bookCode);
+		Map<String, Object> map = new HashMap<>();
+		map.put("bookCode", bookCode);
 		BookSearchService service = new BookSearchService();
 		
-		List<Book> list = service.selectbookbybookCode(book);
+		List<BookDetail> list = service.selectBookDetailByMap(map);
 		
 		/*json자동만드는라이브러리*/
 		ObjectMapper om = new ObjectMapper();

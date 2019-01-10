@@ -26,9 +26,6 @@ public class MemberLoginHandler implements CommandHandler {
 			map.put("id", id);
 			map.put("password", password);
 			Member member = service.loginCheck(map);
-			System.out.println(id);
-			System.out.println(password);
-			System.out.println(member);
 
 			try {
 				if (member != null) {

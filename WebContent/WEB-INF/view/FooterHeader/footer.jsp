@@ -13,7 +13,7 @@
 	<div id="footer">
 	<div>
 		<ul>
-			<li><a>도움말</a></li>
+			<li><a href="#">도움말</a></li>
 			<li><a href="#">이용약관</a></li>
 			<li><a href="#">개인정보 처리방침</a></li>
 		</ul>

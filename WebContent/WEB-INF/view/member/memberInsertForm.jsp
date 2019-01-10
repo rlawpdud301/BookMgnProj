@@ -37,6 +37,9 @@
 		$("#button").click(function(){
 			window.open("/BookMgnProj/post.do",'window','width=400, height=200');
 		})
+		$("#btn1").click(function(){
+			window.open("/BookMgnProj/UploadForm.jsp",'window','width=400, height=200');
+		})
 	});
 	$(function(){			
 		$("#f1").submit(function(){
@@ -124,7 +127,6 @@
 				$("input[name='address2']").focus();
 				return false;
 			}
-			alert("회원가입을 축하합니다.")
 		})
 		$("#password").keyup(function() {
 			if($(this).val().length > $("#input_text").attr('maxlength')){
@@ -218,10 +220,13 @@ label {
 #input_text{
 	display:none;
 }
+.ju{
+	width:75px;
+}
 </style>
 </head>
 <body>
-	<form action="" method="post" id="f1">
+	<form action="insert.do" method="post" id="f1">
 		<fieldset>
 			<legend>회원가입하기</legend>
 			<p>
@@ -257,6 +262,13 @@ label {
 				<span class="error2">중간자리를 입력해주세요</span> 
 				<span class="error3">마지막 자리를 입력해주세요</span> 
 			</p>
+			<p>	
+				<label>주민등록번호</label>
+				<input type="text" name="jumin1" class="ju">
+				- <input type="password" name="jumin2" class="ju">
+			<p>
+			
+			<p>
 			<label>이메일</label> 
 			<input type="text" class="emailbox" name="email1" id="email1">
 			@ <input type="text" class="emailbox" name="email2" id="email2">
@@ -269,6 +281,7 @@ label {
 			</select>				
 				<span class="error">이메일 앞자리를 입력하세요</span>
 				<span class="error2">이메일 뒷자리를 입력하세요</span>
+			</p>
 			<p>
 				<label>우편번호</label> 
 				<input type="text" size="20" id="address" name="address" id="address">
@@ -284,13 +297,20 @@ label {
 				<label>관리자</label> <input type="checkbox" id="checkbox" name="checkbox">관리
 			</p>
 			<p>
-				<label>특이사항</label> <input type="text">
+				<label>특이사항</label> <input type="text" name="uni">
+			</p>
+			<p>
+			<label>사진</label>
+			<input type="text" name="photo" id="photobox">
+<%-- 	 		<img src="${pageContext.request.contextPath }/upload/${file1}"> --%>
+			<input type="button" id="btn1" value="파일선택">
 			</p>
 			<p align="center">
 				<input type="submit" value="가입하기">
 				<input type="reset" value="취소">
 			</p>
 			<input type="text" maxlength="0" id="input_text">
+			
 		</fieldset>
 	</form>
 </body>
