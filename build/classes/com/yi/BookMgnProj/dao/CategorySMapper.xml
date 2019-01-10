@@ -49,5 +49,10 @@
 		<include refid="selectSql"/>
 		<include refid="whereCateAllCodeSql"/>		
 	</select>
-
+	
+	<select id="categoryS" resultMap="selectcateSAll">
+		SELECT cate_s_no, cate_m_no, cate_b_no, cate_s_name
+		FROM proj_library.category_s
+		where cate_b_no = #{b} and cate_m_no = #{m} and cate_s_no = #{s};
+	</select>
 </mapper>

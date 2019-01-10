@@ -1,5 +1,6 @@
 package com.yi.BookMgnProj.service.book;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -80,5 +81,9 @@ public class BookInsertService {
 
 	public int updatetBook(Book book) {
 		return bookMapper.updateBook(book);
+	}
+	
+	public CategoryS categoryS(HashMap<String, Integer> map) {
+		return sMapper.categoryS(map);
 	}
 }
