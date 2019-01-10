@@ -14,6 +14,7 @@ import com.yi.BookMgnProj.model.Book;
 import com.yi.BookMgnProj.model.BookRentalInfo;
 import com.yi.BookMgnProj.model.Member;
 import com.yi.BookMgnProj.model.MemberRentalInfo;
+import com.yi.BookMgnProj.model.Overdue;
 import com.yi.BookMgnProj.mvc.CommandHandler;
 import com.yi.BookMgnProj.service.BookRentService;
 
@@ -25,57 +26,90 @@ public class BookRentHandler implements CommandHandler {
 		if(req.getMethod().equalsIgnoreCase("get")){
 			return "/WEB-INF/view/rent/BookRentForm.jsp";
 		}else if(req.getMethod().equalsIgnoreCase("post")){
-			service = new BookRentService();
-			String memberNo = req.getParameter("memberNo");
-			String bookCode = req.getParameter("bookCode");
-			
-			Member member = new Member();
-			member.setMemberNo(memberNo);
-			Book book = new Book();
-			book.setBookCode(bookCode);
-			
-			int no = service.nextCode();
-			Date date = new Date();
-			Date date1 = new Date();
-			
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-			sdf.format(date1);
-			date1.setDate(date1.getDate() + 7);
-			
-			
-			BookRentalInfo bookRentalInfo = new BookRentalInfo();
-			bookRentalInfo.setRentalNo(no);
-			bookRentalInfo.setRentalDate(date);
-			bookRentalInfo.setReturnDate(null);
-			bookRentalInfo.setReturnSchedule(date1);
-			bookRentalInfo.setMemberNo(member);
-			bookRentalInfo.setBookCode(book);
-			
-			
-			MemberRentalInfo memberRentalInfo = new MemberRentalInfo();
-			memberRentalInfo.setMemberNo(member.getMemberNo());
-			
-			
-			
-			/*MemberRentalInfo total = impl3.selectMemberTotalByCode(memberRentalInfo);
-			if(total.getTotal()== 100){
-				impl3.updateMemberRentalInfoGrade(memberRentalInfo);
+			try{
+				service = new BookRentService();
+				String memberNo = req.getParameter("memberNo");
+				String bookCode = req.getParameter("bookCode");
 				
-			}*/
-			
-			
-			service.insertBookRentalInfo(bookRentalInfo);
-			/* 도서 대여가능여부 false*/
-			
-			book.setRentalPossible(false);
-			service.updateBookPossible(book);
-			
-			/*회원 대여가능권수 -1, 총대여권수 +1*/
-			System.out.println(memberRentalInfo);
-			service.updateMemberRentalInfo(memberRentalInfo);
-			
-			
-			return "/WEB-INF/view/rent/BookRentResult.jsp";
+				Member member = new Member();
+				member.setMemberNo(memberNo);
+				
+				MemberRentalInfo memberRentalInfo = new MemberRentalInfo();
+				memberRentalInfo.setMemberNo(member.getMemberNo());
+				
+				System.out.println(member+"post");
+				Book book = new Book();
+				book.setBookCode(bookCode);
+				
+				Book book2 = service.selectBookBybookCodeOne(book);
+				if(book2.isRentalPossible() == false){
+					String st = "1";
+					req.setAttribute("st", st);
+					return "/WEB-INF/view/rent/BookRentForm.jsp";
+				}
+				MemberRentalInfo memberRentalInfo2 = service.selectMemberNowTotalByCode(memberRentalInfo);
+				memberRentalInfo2.getNowTotal();
+				if(memberRentalInfo2.getNowTotal() < 1){
+					String st = "2";
+					req.setAttribute("st", st);
+					return "/WEB-INF/view/rent/BookRentForm.jsp";
+				}
+				
+				int no = service.nextCode();
+				Date date = new Date();
+				Date date1 = new Date();
+				
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+				sdf.format(date1);
+				date1.setDate(date1.getDate() + 7);
+				
+				
+				BookRentalInfo bookRentalInfo = new BookRentalInfo();
+				bookRentalInfo.setRentalNo(no);
+				bookRentalInfo.setRentalDate(date);
+				bookRentalInfo.setReturnDate(null);
+				bookRentalInfo.setReturnSchedule(date1);
+				bookRentalInfo.setMemberNo(member);
+				bookRentalInfo.setBookCode(book);
+				
+				
+				
+				
+				
+				
+				/*MemberRentalInfo total = impl3.selectMemberTotalByCode(memberRentalInfo);
+				if(total.getTotal()== 100){
+					impl3.updateMemberRentalInfoGrade(memberRentalInfo);
+					
+				}*/
+				
+				
+				service.insertBookRentalInfo(bookRentalInfo);
+				/* 도서 대여가능여부 false*/
+				
+				book.setRentalPossible(false);
+				service.updateBookPossible(book);
+				
+				/*회원 대여가능권수 -1, 총대여권수 +1*/
+				System.out.println(memberRentalInfo);
+				service.updateMemberRentalInfo(memberRentalInfo);
+				
+				/* 대여후에 회원의 대여가능권수가 0이 되면 대여가능여부 false로 변경 */
+				MemberRentalInfo memberRentalInfo3 = service.selectMemberNowTotalByCode(memberRentalInfo);
+				if(memberRentalInfo3.getNowTotal() == 0){
+					Overdue overdue = new Overdue();
+					overdue.setMemberNo(member.getMemberNo());
+					overdue.setRentalAuthority(false);
+					service.updateAuthority(overdue);
+				}
+				
+				return "/WEB-INF/view/rent/BookRentResult.jsp";
+				
+			}catch (Exception e) {
+				String st = "3";
+				req.setAttribute("st", st);
+				return "/WEB-INF/view/rent/BookRentForm.jsp";
+			}
 			
 		}
 		return null;
