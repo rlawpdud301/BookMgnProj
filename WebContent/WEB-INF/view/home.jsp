@@ -94,14 +94,6 @@ body,html{
 </style>
 </head>
 <body>
-
-
-
-	
-
- 	<a href="${pageContext.request.contextPath}/member/insert.do">회원 가입하기</a>
-
-
 	<header>
 		<c:choose>
 			<c:when test="${AUTH == null }">

@@ -49,7 +49,8 @@ public interface MemberMapper {
 	
 	int changePW(Map<String, Object> map);
 
-	List<Member> selectMemberByNojumin(Member member);
+	/*List<Member> selectMemberByNojumin(Member member);*/
+	Member selectMemberByNojumin(String member);
 	
 	Member loginCheck(Map<String, Object> map);
 }
