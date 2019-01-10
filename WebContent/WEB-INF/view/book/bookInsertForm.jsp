@@ -14,6 +14,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
 	$(function(){
+		$("#cateB option:eq(0)").attr("selected", "selected");
 		$("#cateB").change(function() {
 			$("#cateM option").remove();
 			$("#cateS option").remove();
@@ -27,6 +28,7 @@
 					 $(json.listM).each(function(index, obj) {
 						$("#cateM").append("<option value='" + obj.mCode + "'>" + obj.mName + "</option>");
 						console.log(obj);
+						$("#cateM option:eq(0)").attr("selected", "selected");
 					}) 
 				}
 			})
@@ -44,6 +46,7 @@
 					$(json.listS).each(function(index, obj) {
 						$("#cateS").append("<option value='" + obj.sCode + "'>" + obj.sName + "</option>");
 						console.log(obj);
+						$("#cateS option:eq(0)").attr("selected", "selected");
 					})
 				}
 			})

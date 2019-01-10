@@ -126,7 +126,7 @@ public class BookInsertHandler implements CommandHandler {
 			book.setBookNo(i);
 			
 			service.insertBook(book);
-			return "/WEB-INF/view/book/bookInsertForm.jsp";
+			return "/WEB-INF/view/book/bookInsertSuccess.jsp";
 		}
 		return null;
 	}

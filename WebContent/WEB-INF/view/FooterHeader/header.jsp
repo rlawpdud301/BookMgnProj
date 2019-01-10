@@ -1,6 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
@@ -8,8 +8,8 @@
 </head>
 	<div id="header">
 		<div id="menu">
-			<a href="#"><img alt="" src="images/logo.png"></a><a href="#">µµ¼­°Ë»ö</a> | <a href="#">À§Ä¡º¸±â</a> | <a href="#">°Ô½ÃÆÇ</a> | <a href="#">BEST!</a>
-			<a href="${pageContext.request.contextPath }/member/login.do" id="login">·Î±×ÀÎ</a>
+			<a href="#"><img alt="" src="images/logo.png"></a><a href="#">ë„ì„œê²€ìƒ‰</a> | <a href="#">ìœ„ì¹˜ë³´ê¸°</a> | <a href="#">ê²Œì‹œíŒ</a> | <a href="#">BEST!</a>
+			<a href="${pageContext.request.contextPath }/member/login.do" id="login">ë¡œê·¸ì¸</a>
 		</div>
 	</div>
 	<div id="null">
