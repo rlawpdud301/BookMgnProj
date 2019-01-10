@@ -12,11 +12,17 @@
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
-	/* $(function() {
-		$("#btn").click (function() {
-			$("name=[memberNo]").val()
-		})
-	}) */
+	$(function() {
+		if(${st} == "1"){
+			alert("대여가능한 도서가 아닙니다");
+		}
+		if(${st} == "2"){
+			alert("대여가능한 회원이 아닙니다");
+		}
+		if(${st} == "3"){
+			alert("도서번호와 회원번호를 다시 확인해 주세요.");
+		}
+	}) 
 </script>
 </head>
 <body>
