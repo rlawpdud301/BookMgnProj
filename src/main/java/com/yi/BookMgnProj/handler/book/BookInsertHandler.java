@@ -30,10 +30,14 @@ public class BookInsertHandler implements CommandHandler {
 			BookInsertService service = new BookInsertService();
 
 			String author = req.getParameter("author");
+
 			String translator = req.getParameter("translator");
+
 			String title = req.getParameter("title");
+
 			String price = req.getParameter("price");
 			int won = Integer.parseInt(price);
+
 			String image = req.getParameter("image");
 
 			if (image.equals("")) {
@@ -64,7 +68,6 @@ public class BookInsertHandler implements CommandHandler {
 			cateS.setsCode(s);
 
 			Book book = new Book();
-
 			book.setAuthor(author);
 			book.setTranslator(translator);
 			book.setTitle(title);
@@ -93,15 +96,17 @@ public class BookInsertHandler implements CommandHandler {
 			} else {
 				JOptionPane.showMessageDialog(null, "출판사를 입력해주세요.");
 			}
-			System.out.println(publisher.getPubNo());
+
 			book.setPubNo(publisher);
 
 			Map<String, Object> map = new HashMap<>();
-
 			map.put("title", book.getTitle());
 			map.put("author", book.getAuthor());
 			map.put("translator", book.getTranslator());
 			map.put("pubNo", book.getPubNo().getPubNo());
+			map.put("cate_b_no", book.getCateBNo().getbCode());
+			map.put("cate_m_no", book.getCateMNo().getmCode());
+			map.put("cate_s_no", book.getCateSNo().getsCode());
 
 			if (service.selectbookbyOther(map) != null) {
 				if (service.selectbookbyOther(map).size() > 0) {
@@ -119,10 +124,12 @@ public class BookInsertHandler implements CommandHandler {
 			}
 
 			String bookCode = String.format("%s%05d%02d", bCode + mCode + sCode, i, j);
+
 			book.setBookCode(bookCode);
 			book.setBookNo(i);
 
 			service.insertBook(book);
+
 			return "/WEB-INF/view/book/bookInsertSuccess.jsp";
 		}
 		return null;

@@ -22,10 +22,10 @@ public class BookCategoryHandler implements CommandHandler {
 	public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		HashMap<String, Object> map = new HashMap<>();
 		CategoryService service = new CategoryService();
-			
+
 		String cateB = req.getParameter("cateB");
 		String cateM = req.getParameter("cateM");
-		if(cateB == null && cateM == null){
+		if (cateB == null && cateM == null) {
 			List<CategoryB> listB = new ArrayList<>();
 			CategoryB cB = new CategoryB();
 			cB.setbName("선택해주세요");
@@ -34,7 +34,7 @@ public class BookCategoryHandler implements CommandHandler {
 				listB.add(categoryB);
 			}
 			map.put("list", listB);
-		}else if(cateM == null){
+		} else if (cateM == null) {
 			List<CategoryM> listM = new ArrayList<>();
 			CategoryM cM = new CategoryM();
 			cM.setmName("선택해주세요");
@@ -45,7 +45,7 @@ public class BookCategoryHandler implements CommandHandler {
 				listM.add(categoryM);
 			}
 			map.put("list", listM);
-		} else{
+		} else {
 			List<CategoryS> listS = new ArrayList<>();
 			CategoryS cS = new CategoryS();
 			cS.setsName("선택해주세요");
@@ -59,7 +59,6 @@ public class BookCategoryHandler implements CommandHandler {
 				listS.add(categoryS);
 			}
 			map.put("list", listS);
-			
 		}
 
 		ObjectMapper om = new ObjectMapper();
