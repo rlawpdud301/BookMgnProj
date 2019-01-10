@@ -150,10 +150,10 @@ span {
 	})
 </script>
 </head>
-<nav id="BookDetail">
+<!-- <nav id="BookDetail">
 	<div id="inner">
 	</div>
-</nav>
+</nav> -->
 <div id="SearchMethod">
 	<div id="selectOption">
 		<dir id="search">
