@@ -178,6 +178,23 @@ span {
 				$("#each").append("<p><input type='checkbox' name='opstion' value='translator'><label>역자</label><input type='text' name='translator'></p>");
 				$("#each").append("<p><input type='checkbox' name='opstion' value='pubName'><label>출판사</label><input type='text' name='pubName'></p>");
 				$("#each").append("<p><input type='checkbox' name='opstion' value='pubName'><label>출판사</label><input type='text' name='pubName'></p>");
+				
+				
+				$.ajax({
+					url :"book/category.do",
+					type : "get",
+					dataType : "json", 
+					success : function(list) {
+						console.log(list);
+						$(list).each(function(index, obj) {
+							
+						})
+												
+											}
+					
+										})
+				
+				
 				/* $("#search").empty();
 				$("#search").append("<select name='Method' id='Method'><option value='도서 번호'>도서 번호로</option><option value='제목'>제목으로</option>	<option value='상세정보'>상세정보</option></select> <input type='button' value='검색' id='bntBookSearch'>"); */				
 			}else{

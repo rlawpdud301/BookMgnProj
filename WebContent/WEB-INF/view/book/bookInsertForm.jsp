@@ -25,7 +25,7 @@
 				dataType:"json",
 				success:function(json){
 					console.log(json);
-					 $(json.listM).each(function(index, obj) {
+					 $(json.list).each(function(index, obj) {
 						$("#cateM").append("<option value='" + obj.mCode + "'>" + obj.mName + "</option>");
 						console.log(obj);
 						$("#cateM option:eq(0)").attr("selected", "selected");
@@ -43,7 +43,7 @@
 				dataType:"json",
 				success:function(json){
 					console.log(json);
-					$(json.listS).each(function(index, obj) {
+					$(json.list).each(function(index, obj) {
 						$("#cateS").append("<option value='" + obj.sCode + "'>" + obj.sName + "</option>");
 						console.log(obj);
 						$("#cateS option:eq(0)").attr("selected", "selected");

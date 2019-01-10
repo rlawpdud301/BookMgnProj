@@ -19,12 +19,6 @@ public class CategoryMMapperImpl implements CategoryMMapper {
 	private CategoryMMapperImpl() {}
 	private static final String namespace = "com.yi.BookMgnProj.dao.CategoryMMapper";
 																		
-	@Override
-	public List<CategoryM> selectCategoryMByAll() {
-		try(SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();){
-			return sqlSession.selectList(namespace+".selectCategoryMByAll");  
-		}
-	}
 
 	@Override
 	public List<CategoryM> selectCategoryMByBNo(CategoryB cateB) {

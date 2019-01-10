@@ -1,6 +1,7 @@
 package com.yi.BookMgnProj.handler.book;
 
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -19,25 +20,46 @@ public class BookCategoryHandler implements CommandHandler {
 
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {
-		CategoryService service = new CategoryService();
 		HashMap<String, Object> map = new HashMap<>();
+		CategoryService service = new CategoryService();
+			
 		String cateB = req.getParameter("cateB");
 		String cateM = req.getParameter("cateM");
-		int bCode = Integer.parseInt(cateB);
-		CategoryB b = new CategoryB();
-		b.setbCode(bCode);
-
-		List<CategoryM> listM = service.selectCategoryMByBNo(b);
-		map.put("listM", listM);
-
-		if (cateM != null) {
-			int mCode = Integer.parseInt(cateM);
+		if(cateB == null && cateM == null){
+			List<CategoryB> listB = new ArrayList<>();
+			CategoryB cB = new CategoryB();
+			cB.setbName("선택해주세요");
+			listB.add(cB);
+			for (CategoryB categoryB : service.selectCategoryBByAll()) {
+				listB.add(categoryB);
+			}
+			map.put("list", listB);
+		}else if(cateM == null){
+			List<CategoryM> listM = new ArrayList<>();
+			CategoryM cM = new CategoryM();
+			cM.setmName("선택해주세요");
+			listM.add(cM);
+			CategoryB b = new CategoryB();
+			b.setbCode(Integer.parseInt(cateB));
+			for (CategoryM categoryM : service.selectCategoryMByBNo(b)) {
+				listM.add(categoryM);
+			}
+			map.put("list", listM);
+		} else{
+			List<CategoryS> listS = new ArrayList<>();
+			CategoryS cS = new CategoryS();
+			cS.setsName("선택해주세요");
+			listS.add(cS);
 			CategoryM m = new CategoryM();
-			m.setmCode(mCode);
+			m.setmCode(Integer.parseInt(cateM));
+			CategoryB b = new CategoryB();
+			b.setbCode(Integer.parseInt(cateB));
 			m.setbCode(b);
+			for (CategoryS categoryS : service.selectCategorySByBNoMno(m)) {
+				listS.add(categoryS);
+			}
+			map.put("list", listS);
 			
-			List<CategoryS> listS = service.selectCategorySByBNoMno(m);
-			map.put("listS", listS);
 		}
 
 		ObjectMapper om = new ObjectMapper();

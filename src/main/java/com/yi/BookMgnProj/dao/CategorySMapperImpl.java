@@ -20,12 +20,7 @@ public class CategorySMapperImpl implements CategorySMapper {
 	private CategorySMapperImpl() {}
 	private static final String namespace = "com.yi.BookMgnProj.dao.CategorySMapper";
 																		
-	@Override
-	public List<CategoryS> selectCategorySByAll() {
-		try(SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();){
-			return sqlSession.selectList(namespace+".selectCategorySByAll");
-		}
-	}
+	
 	
 	@Override
 	public List<CategoryS> selectCategorySByBNoMno(CategoryM cateM) {
@@ -41,11 +36,6 @@ public class CategorySMapperImpl implements CategorySMapper {
 		}
 	}
 
-	@Override
-	public CategoryS categoryS(HashMap<String, Integer> map) {
-		try(SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();){
-			return sqlSession.selectOne(namespace+".categoryS",map);
-		}
-	}
+	
 
 }
