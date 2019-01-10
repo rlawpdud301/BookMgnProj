@@ -1,5 +1,6 @@
 package com.yi.BookMgnProj.handler.book;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,7 +24,12 @@ public class BookInsertHandler implements CommandHandler {
 	public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		if (req.getMethod().equalsIgnoreCase("get")) {
 			CategoryService service = new CategoryService();
-			List<CategoryB> listB = service.selectCategoryBByAll();
+			List<CategoryB> listB = new ArrayList<>();
+			CategoryB cB = new CategoryB(-1,"선택해주세요");
+			listB.add(cB);
+			for (CategoryB categoryB : service.selectCategoryBByAll()) {
+				listB.add(categoryB);
+			}
 			req.setAttribute("listB", listB);
 			return "/WEB-INF/view/book/bookInsertForm.jsp";
 		} else if (req.getMethod().equalsIgnoreCase("post")) {
