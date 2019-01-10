@@ -141,6 +141,5 @@ body,html{
 		<jsp:include page="FooterHeader/footer.jsp" flush="false" />
 	</footer>
 
-
 </body>
 </html>

@@ -40,16 +40,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	</environments>
 
 	<mappers>
-		<!-- <package name="com/yi/BookMgnProj/dao"/> -->
-		<mapper resource="com/yi/BookMgnProj/dao/BookRentalInfoMapper.xml"/>
-		<mapper resource="com/yi/BookMgnProj/dao/BookMapper.xml"/>
-		<mapper resource="com/yi/BookMgnProj/dao/MemberMapper.xml"/>
-		<mapper resource="com/yi/BookMgnProj/dao/CategoryBMapper.xml"/>
-		<mapper resource="com/yi/BookMgnProj/dao/CategoryMMapper.xml"/>
-
-
-		<mapper resource="com/yi/BookMgnProj/dao/MemberRentalInfoMapper.xml"/>
-
+		<package name="com/yi/BookMgnProj/dao"/>
 	</mappers>
 
 </configuration>
