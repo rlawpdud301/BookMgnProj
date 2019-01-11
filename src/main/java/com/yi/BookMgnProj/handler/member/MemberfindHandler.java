@@ -12,7 +12,10 @@ public class MemberfindHandler implements CommandHandler {
 		if(req.getMethod().equalsIgnoreCase("get")){
 			return "/WEB-INF/view/member/memberfind.jsp";
 		}
-		
+		if(req.getMethod().equalsIgnoreCase("post")){
+			String name = req.getParameter("name");
+			
+		}
 		return null;
 	}
 

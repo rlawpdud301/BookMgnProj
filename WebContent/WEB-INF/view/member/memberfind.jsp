@@ -69,16 +69,44 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
 	$(function() {
-		$(document).on("click","#bntid",function(event) {
+
+		$(document).on("submit","#f1",function(event) {
 			if ($("#name").val().trim()=="") {
 				alert("이름을 입력해주세요."); 
-				return;
+				return false;
 			}
-			var pattern = /^[가-힣]{2,4}|[a-zA-Z]{2,10}\s[a-zA-Z]{2,10}$/;
-			if(pattern.test($("#name").val().trim())==false){
+			var patternname = /^[가-힣]{2,4}|[a-zA-Z]{2,10}\s[a-zA-Z]{2,10}$/;
+			if(patternname.test($("#name").val().trim())==false){
 				alert("이름을 정확하게 입력해주세요.");
-				return;
+				return false;
 			}
+			var patternphone = /^\d{3}-\d{3,4}-\d{4}$/;
+			var phone = $("#idtel1").val()+"-"+$("#idtel2").val()+"-"+$("#idtel3").val()
+			if(patternphone.test(phone)==false){
+				alert("휴대폰 번호를 정확하게 입력해주세요.");
+				return false;
+			}
+			
+			
+		})
+		
+		$(document).on("submit","#f2",function(event) {
+			if ($("#id").val().trim()=="") {
+				alert("아이디를 입력해주세요."); 
+				return false;
+			}
+			var patternid = /^[A-Z]{1}[0-9]{4}$/;
+			if(patternid.test($("#id").val().trim())==false){
+				alert("아이디를 정확하게 입력해주세요.");
+				return false;
+			}
+			var patternphone2 = /^\d{3}-\d{3,4}-\d{4}$/;
+			var phone2 = $("#pwtel1").val()+"-"+$("#pwtel2").val()+"-"+$("#pwtel3").val()
+			if(patternphone2.test(phone2)==false){
+				alert("휴대폰 번호를 정확하게 입력해주세요.");
+				return false;
+			}
+			
 		})
 		
 	})
@@ -104,46 +132,48 @@
 	<section>
 		<div id="find">
 			<h1>아이디 / 비밀번호 찾기</h1>
-
-			<fieldset id="feldid">
-				<legend>아이디 찾기 </legend>
-				<p>
-					<label>이름 </label> <input type="text" id="name">
-				</p>
-				<p>
-					<label>전화 번호 </label> <select id="idtel1">
-						<option value="010">010</option>
-						<option value="017">017</option>
-						<option value="011">011</option>
-						<option value="016">016</option>
-					</select> - <input type="number" id="idtel2"> - <input type="number"
-						id="idtel3">
-				</p>
-				<p>
-					<input type="button" value="찾기" id="bntid">
-				</p>
-			</fieldset>
-
-
-			<fieldset id="feldpw">
-				<legend>비밀번호 찾기</legend>
-				<p>
-					<label>아이디 </label> <input type="text" name="nameid">
-				</p>
-				<p>
-					<label>전화 번호 </label> <select id="pwtel1">
-						<option value="010">010</option>
-						<option value="017">017</option>
-						<option value="011">011</option>
-						<option value="016">016</option>
-					</select> - <input type="number" id="pwtel2"> - <input type="number"
-						id="pwtel3">
-				</p>
-				<p>
-					<input type="button" value="찾기" id="bntpw">
-				</p>
-			</fieldset>
-
+			<form action="find.do" method="post" id="f1">
+				<fieldset id="feldid">
+					<legend>아이디 찾기 </legend>
+					<p>
+						<label>이름 </label> <input type="text" id="name" placeholder="이름 입력" name="name">
+					</p>
+					<p>
+						<label>전화 번호 </label> 
+						<select id="idtel1" name="tel1">
+							<option value="010">010</option>
+							<option value="017">017</option>
+							<option value="011">011</option>
+							<option value="016">016</option>
+						</select> - <input type="tel" id="idtel2" maxlength="4" title="전화번호를 입력하세요." name="tel2"> - <input type="tel" maxlength="4" title="전화번호를 입력하세요."
+							id="idtel3"  name="tel3">
+					</p>
+					<p>
+						<input type="submit" value="찾기" id="bntid">
+					</p>
+				</fieldset>
+			</form>
+			<form action="find.do" method="post" id="f2">
+				<fieldset id="feldpw">
+					<legend>비밀번호 찾기</legend>
+					<p>
+						<label>아이디 </label> <input type="text" id="id" placeholder="아이디 입력" >
+					</p>
+					<p>
+						<label>전화 번호 </label> 
+						<select id="pwtel1" name="tel1">
+							<option value="010">010</option>
+							<option value="017">017</option>
+							<option value="011">011</option> 
+							<option value="016">016</option>
+						</select> - <input type="tel" id="pwtel2" maxlength="4" title="전화번호를 입력하세요." name="tel2"> - <input type="tel" maxlength="4" title="전화번호를 입력하세요."
+							id="pwtel3"  name="tel3">
+					</p>   
+					<p>
+						<input type="submit" value="찾기" id="bntpw">
+					</p>
+				</fieldset>
+			</form>
 		</div>
 	</section>
 	<footer>
