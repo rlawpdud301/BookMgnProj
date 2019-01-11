@@ -25,7 +25,7 @@ public class BookInsertHandler implements CommandHandler {
 		if (req.getMethod().equalsIgnoreCase("get")) {
 			CategoryService service = new CategoryService();
 			List<CategoryB> listB = new ArrayList<>();
-			CategoryB cB = new CategoryB(-1,"선택해주세요");
+			CategoryB cB = new CategoryB(-1, "선택해주세요");
 			listB.add(cB);
 			for (CategoryB categoryB : service.selectCategoryBByAll()) {
 				listB.add(categoryB);

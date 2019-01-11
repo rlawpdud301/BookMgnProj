@@ -96,7 +96,7 @@ body,html{
 <body>
 	<header>
 		<c:choose>
-			<c:when test="${AUTH == null }">
+			<c:when test="${AUTH == null }">				
 				<jsp:include page="FooterHeader/header.jsp" flush="false" />
 			</c:when>
 			<c:when test="${AUTH.admin == true }">

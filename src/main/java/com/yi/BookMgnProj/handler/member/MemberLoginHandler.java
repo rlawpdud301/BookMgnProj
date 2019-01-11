@@ -40,6 +40,7 @@ public class MemberLoginHandler implements CommandHandler {
 					return "/WEB-INF/view/home.jsp";
 				} else {
 					System.out.println("로그인 실패");
+					return "/WEB-INF/view/home.jsp";
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
