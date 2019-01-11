@@ -39,8 +39,8 @@ public class BookRentService {
 		return memberRentalInfoMapper.updateMemberRentalInfo(memberRentalInfo);
 	}
 	
-	public MemberRentalInfo selectMemberNowTotalByCode(MemberRentalInfo memberRentalInfo){
-		return memberRentalInfoMapper.selectMemberNowTotalByCode(memberRentalInfo);
+	public MemberRentalInfo selectMemberRentalInfoByCode(MemberRentalInfo memberRentalInfo){
+		return memberRentalInfoMapper.selectMemberRentalInfoByCode(memberRentalInfo);
 	}
 	
 	public int updateAuthority(Overdue overdue){
