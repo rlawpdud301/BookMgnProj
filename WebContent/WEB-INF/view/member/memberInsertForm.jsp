@@ -8,6 +8,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
 	$(function(){
+		
 	$('#emailbox').change(function(){
 		$("#emailbox option:selected").each(function(){
 			if($(this).val() == "1"){
@@ -20,7 +21,8 @@
 		});
 	});
 });	
-	$(function(){	
+	$(function(){
+		var idck = 0;
 	$("#checkbox").click(function(){
 			$("input[name=checkbox]:checked").each(function(){
 			var password = "1234";
@@ -40,6 +42,24 @@
 			window.open("/BookMgnProj/post.do",'window','width=400, height=200');
 		})
 	});
+	$("#duplejumin").click(function(){
+		var juminduple = $("input[name='jumin1']").val() +"-"+ $("input[name='jumin2']").val();
+		$.ajax({
+			url:"/BookMgnProj/jumin.do",
+			type:"get",
+			data:{"juminduple":juminduple},
+			dataType:"json",
+			success:function(data){
+				if(!data.result){						
+					alert("사용중인 주민번호입니다.")
+					idck = 0;
+				}else{
+					alert("사용할수 있는 주민번호입니다.")
+					idck = 1;
+				}
+			}
+		})	
+	})
 	$(function(){			
 		$("#f1").submit(function(){
 			$(".error").css("display","none");
@@ -138,6 +158,10 @@
 				$("input[name='address2']").focus();
 				return false;
 			}
+			if(idck == 0){
+				alert("아이디 중복체크를 해주세요")
+				return false;
+			}
 		})
 		$("#password").keyup(function() {
 			if($(this).val().length > $("#input_text").attr('maxlength')){
@@ -203,24 +227,8 @@
 			}
 		})	
 	})
-	$("#duplejumin").click(function(){
-			var juminduple = $("input[name='jumin1']").val() +"-"+ $("input[name='jumin2']").val();
-			$.ajax({
-				url:"/BookMgnProj/jumin.do",
-				type:"get",
-				data:{"juminduple":juminduple},
-				dataType:"json",
-				success:function(data){
-					if(!data.result){
-						
-						alert("사용중인 주민번호입니다.")
-						
-					}else{
-						alert("사용할수 있는 주민번호입니다.")
-					}
-				}
-			})	
-		})
+	
+	
 });
 </script>
 <style>
@@ -294,7 +302,8 @@ label {
 				<select name="tel1">
 					<option>010</option>
 					<option>017</option>
-					<option>011</option>		
+					<option>011</option>
+					<option>016</option>		
 				</select>
 				<span class="error">앞자리를 입력해주세요</span> 
 				- <input type="text" name="tel2" class="telbox" maxlength="4" id="tel2">			
@@ -339,9 +348,6 @@ label {
 			</p>
 			<p>
 				<label>관리자</label> <input type="checkbox" id="checkbox" name="checkbox">관리
-			</p>
-			<p>
-				<label>특이사항</label> <input type="text" name="uni">
 			</p>
 			<p>
 			<label>파일명선택</label>

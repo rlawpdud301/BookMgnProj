@@ -24,6 +24,12 @@
 		} 
 	});  
 </script>
+<style>
+	button {
+	width: 80px;
+	height: 20.5px;
+}
+</style>
 </head>
 <body>
 	<form action="bookRent.do" method="post">
@@ -31,10 +37,12 @@
 			<p>
 				<label>회원 번호</label>
 				<input type="text" name="memberNo">
+				<input type="button" value="회원 검색">
 			</p>
 			<p>
 				<label>도서 코드</label>
 				<input type="text" name="bookCode">
+				<input type="button" value="도서 검색">
 			</p>
 			<p>
 				<input type="submit" value="대여" id="btn">

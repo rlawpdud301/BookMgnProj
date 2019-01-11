@@ -42,17 +42,19 @@ public class BookReturnHandler implements CommandHandler {
 				int rno = Integer.parseInt(rNo);
 				bookRentalInfo.setRentalNo(rno);
 				bookRentalInfo.setReturnDate(new Date());
-				service.updateReturnDate(bookRentalInfo);
 				
 				
 				String mNo = String.valueOf(bookRentalInfo1.getMemberNo());
 				MemberRentalInfo memberRentalInfo = new MemberRentalInfo();
 				memberRentalInfo.setMemberNo(mNo);
-				service.updateMemberRentalInfo2(memberRentalInfo);
-				
 				
 				book.setRentalPossible(true);
-				service.updateBookPossible(book);
+				
+				service.tra_book_return(bookRentalInfo, memberRentalInfo, book);
+				
+				/*service.updateReturnDate(bookRentalInfo);
+				service.updateMemberRentalInfo2(memberRentalInfo);
+				service.updateBookPossible(book);*/
 				
 				Date turnDate = bookRentalInfo1.getReturnSchedule();
 				

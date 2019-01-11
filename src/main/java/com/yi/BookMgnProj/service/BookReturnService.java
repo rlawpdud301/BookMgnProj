@@ -1,5 +1,7 @@
 package com.yi.BookMgnProj.service;
 
+import org.apache.ibatis.session.SqlSession;
+
 import com.yi.BookMgnProj.dao.BookMapper;
 import com.yi.BookMgnProj.dao.BookMapperImpl;
 import com.yi.BookMgnProj.dao.BookRentalInfoMapper;
@@ -12,6 +14,7 @@ import com.yi.BookMgnProj.model.Book;
 import com.yi.BookMgnProj.model.BookRentalInfo;
 import com.yi.BookMgnProj.model.MemberRentalInfo;
 import com.yi.BookMgnProj.model.Overdue;
+import com.yi.BookMgnProj.mvc.MyBatisSqlSessionFactory;
 
 public class BookReturnService {
 	private BookRentalInfoMapper bookRentalInfoMapper = BookRentalInfoMapperImpl.getInstance();
@@ -57,5 +60,26 @@ public class BookReturnService {
 	
 	public int updateAuthority(Overdue overdue){
 		return overdueMapper.updateAuthority(overdue);
+	}
+	
+	public int tra_book_return(BookRentalInfo bookRentalInfo, MemberRentalInfo memberRentalInfo, Book book){
+		SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();
+		int res = 0;
+		try {
+			res += sqlSession.update("com.yi.BookMgnProj.dao.BookRentalInfoMapper.updateReturnDate", bookRentalInfo);
+			res += sqlSession.update("com.yi.BookMgnProj.dao.BookMapper.updateBookPossible", book);
+			res += sqlSession.update("com.yi.BookMgnProj.dao.MemberRentalInfoMapper.updateMemberRentalInfo2", memberRentalInfo);
+			if(res == 3){
+				sqlSession.commit();
+			}else{
+				throw new Exception();
+			}
+		} catch (Exception e) {
+			sqlSession.rollback();
+			throw new RuntimeException(e.getCause());
+		}finally {
+			sqlSession.close();
+		}
+		return res;
 	}
 }
