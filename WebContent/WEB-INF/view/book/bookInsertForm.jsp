@@ -71,11 +71,27 @@
 			})
 			
 		})
+		
+		$("#imgInp").on('change', function() {
+			readURL(this);
+		})
 	})
+	
+	function readURL(input) {
+		if (input.files && input.files[0]) {
+			var reader = new FileReader();
+
+			reader.onload = function(e) {
+				$('#blah').attr('src', e.target.result);
+			}
+
+			reader.readAsDataURL(input.files[0]);
+		}
+	}
 </script>
 </head>
 <body>
-	<form action="${pageContext.request.contextPath }/book/insert.do" method="post">
+	<form action="${pageContext.request.contextPath }/book/insert.do" method="post" enctype="multipart/form-data" runat="server">
 		<fieldset>
 			<legend>도서 추가</legend>
 			<p>
@@ -116,8 +132,8 @@
 			
 			<p>
 				<label>이미지</label>
-				<input type="file" name="image">
-				<img src="">
+				<input type="file" name="image" id="imgInp"><br>
+				<img alt="" src="" id="blah">
 			</p>
 			
 			<p>

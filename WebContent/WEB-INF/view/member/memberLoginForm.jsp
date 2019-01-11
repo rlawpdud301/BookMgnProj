@@ -6,10 +6,25 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+	fieldset {
+		width: 600px;
+	}
+	
+	label {
+		width: 100px;
+		display: block;
+	}
+	
+	input {
+		width: 200px;
+	}
+</style>
 </head>
 <body>
 	<form action="login.do" method="post">
 		<fieldset>
+			<legend>로그인</legend>
 			<p>
 				<label>아이디</label>
 				<input type="text" name="id">
@@ -19,11 +34,11 @@
 				<input type="password" name="password">
 			</p>
 			<p>
+				<a href="${pageContext.request.contextPath}/member/insert.do">회원 가입하기</a>
+				<a href="#">ID / PW 찾기</a>
 				<input type="submit" value="로그인">
 			</p>
 		</fieldset>
-		<a href="${pageContext.request.contextPath}/member/insert.do">회원 가입하기</a>
-		<a href="#">ID / PW 찾기</a>
 	</form>
 </body>
 </html>

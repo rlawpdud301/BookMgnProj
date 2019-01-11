@@ -6,18 +6,24 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+<script>
+	
+</script>
 <body>
-	<form action="info.do" method="get">
+	<form action="/modify.do" method="post">
 		<fieldset>
 			<legend>나의 정보 보기</legend>
-			<p>${Member }</p>
+			<p>
+				<label>회원 번호</label>
+				<input type="text" value="${Member.memberNo }" readonly="readonly">
+			</p>
 			<p>
 				<label>한글 이름</label>
-				<input type="text" value="${Member.korName }">
+				<input type="text" value="${Member.korName }" readonly="readonly">
 			</p>
 			<p>
 				<label>영어 이름</label>
-				<input type="text" value="${Member.engName }">
+				<input type="text" value="${Member.engName }" readonly="readonly">
 			</p>
 			<p>
 				<label>전화번호</label>
@@ -25,7 +31,7 @@
 			</p>
 			<p>
 				<label>주민</label>
-				<input type="text" value="${Member.jumin }">
+				<input type="text" value="${Member.jumin.substring(0,8) }******">
 			</p>
 			<p>
 				<label>주소</label>
@@ -39,7 +45,7 @@
 				<label>사진</label>
 				<img alt="" src="${pageContext.request.contextPath}${Member.photo }">
 			</p>
-			${pageContext.request.contextPath}
+				${pageContext.request.contextPath}
 			<p>
 				<input type="submit" value="정보 수정하기">
 			</p>

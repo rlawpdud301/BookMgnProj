@@ -10,16 +10,24 @@ import com.yi.BookMgnProj.model.AUTH;
 import com.yi.BookMgnProj.model.Member;
 import com.yi.BookMgnProj.mvc.CommandHandler;
 
-public class MemberInfoHandler implements CommandHandler {
+public class MemberDeleteHandler implements CommandHandler {
 
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {
-		HttpSession session = req.getSession(false);
-		AUTH auth = (AUTH) session.getAttribute("AUTH");
-		String id = auth.getId();
-		MemberMapper service = MemberMapperImpl.getInstance();
-		Member member = service.selectMemberByNo(id);
-		req.setAttribute("Member", member);
-		return "/WEB-INF/view/member/memberInfoForm.jsp";
+		if (req.getMethod().equalsIgnoreCase("get")) {
+			HttpSession session = req.getSession(false);
+			AUTH auth = (AUTH) session.getAttribute("AUTH");
+			String id = auth.getId();
+			MemberMapper service = MemberMapperImpl.getInstance();
+			Member member = service.selectMemberByNo(id);
+			req.setAttribute("Member", member);
+		}
+
+		else if (req.getMethod().equalsIgnoreCase("post")) {
+
+		}
+
+		return null;
 	}
+
 }
