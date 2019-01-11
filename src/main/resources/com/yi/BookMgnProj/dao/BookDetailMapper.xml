@@ -23,41 +23,41 @@
 
 	<sql id="selectSql">
 		SELECT
-		<if test="bookCode != null">
-			left(book_code,8) as book_code,
-		</if>
-		<if test="BookCodeDetail != null">
-			book_code,
-		</if>
-		title, 
+		<choose>
+			<when test="BookCodeDetail != null">
+				book_code,
+				(if((rental_possible)=0,'대여불가능','대여가능')) as
+				rental_possible,
+				1 as hap,
+			</when>
+			<otherwise>
+				left(book_code,8) as book_code,
+				(if(sum(rental_possible)=0,'대여불가능','대여가능')) as
+				rental_possible,
+				count(left(book_code,8)) as hap,
+			</otherwise>
+		</choose>
+		title,
 		(if(author is null,'알수없음',author)) as author,
-		(if(translator is null,'',translator)) as translator,
-		(if(price is null,'알수없음',price)) as price,
+		(if(translator is
+		null,'',translator)) as translator,
+		(if(price is null,'알수없음',price)) as
+		price,
 		image,
-		<if test="BookCodeDetail != null">
-			(if((rental_possible)=0,'대여불가능','대여가능')) as rental_possible,	
-		</if>
-		<if test="bookCode != null">
-			(if(sum(rental_possible)=0,'대여불가능','대여가능')) as rental_possible,				
-		</if>		
 		pub_name, cate_b_no,
 		cate_m_no, cate_s_no,
 		pub_no,
 		cate_b_name,
 		cate_m_name,
-		cate_s_name,
-		<if test="BookCodeDetail == null">
-			count(left(book_code,8)) as hap	
-		</if>
-		<if test="BookCodeDetail != null">
-			1 as hap	
-		</if>
+		cate_s_name
+		FROM
+		proj_library.bookdetail
 	</sql>
 	<sql id="whereSql">
 		<where>
-			left(book_code, 1) != 'D'
-			<if test="pubNo != null">
-				and pub_no=#{pubNo}
+			book_code not like 'D%'
+			<if test="pubName != null">
+				and pub_name=#{pubName}
 			</if>
 			<if test="cateBNo != null">
 				and cate_b_no =#{cateBNo}
@@ -82,19 +82,18 @@
 			</if>
 			<if test="bookCode != null">
 				AND book_code REGEXP #{bookCode}
-				
 			</if>
+
 		</where>
 	</sql>
 	<select id="selectBookDetailByMap" resultMap="BookDetailResult">
 		<include refid="selectSql" />
-		FROM
-		proj_library.bookdetail
+		
 		<include refid="whereSql" />
 		<if test="BookCodeDetail == null">
 			group by left(book_code,8)
 		</if>
-		
+
 	</select>
 
 </mapper>

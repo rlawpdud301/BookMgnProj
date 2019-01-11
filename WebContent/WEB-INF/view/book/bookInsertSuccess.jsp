@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+	생성된 도서코드 : ${Book.bookCode }
 	<a href="${pageContext.request.contextPath }/book/insert.do">도서 추가하기</a>
 	<a href="${pageContext.request.contextPath }/home.do">메인화면으로 돌아가기</a>
 </body>

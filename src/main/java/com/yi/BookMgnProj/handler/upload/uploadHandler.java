@@ -37,9 +37,7 @@ public class uploadHandler implements CommandHandler {
 			req.setAttribute("file1", file1);
 			req.setAttribute("desc", desc);
 			
-/*			return "/WEB-INF/view/member/memberInsertForm.jsp";*/
-/*			return "UploadForm.jsp";*/
-			return "WEB-INF/view/uploadSuccess.jsp";
+			return "/WEB-INF/view/uploadSuccess.jsp";
 		}catch(Exception e){
 			e.printStackTrace();
 		}
