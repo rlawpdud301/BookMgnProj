@@ -35,7 +35,7 @@ public class BooksearchJsonHamdler implements CommandHandler {
 			String BookCodeDetail = req.getParameter("BookCodeDetail");
 			map.put("BookCodeDetail", BookCodeDetail);
 		}
-		
+	
 		
 		BookSearchService service = new BookSearchService();
 		

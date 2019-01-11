@@ -10,8 +10,9 @@ import com.yi.BookMgnProj.dao.MemberMapperImpl;
 import com.yi.BookMgnProj.model.Member;
 import com.yi.BookMgnProj.mvc.MyBatisSqlSessionFactory;
 
+
 public class MemberService {
-	private MemberMapper dao = MemberMapperImpl.getInstance();
+	private static  MemberMapper dao = MemberMapperImpl.getInstance();
 	
 	public int insertMember(Member member){
 		return dao.insertMember(member);
@@ -19,9 +20,9 @@ public class MemberService {
 	public List<Member> selectMemberByNoList(Member member) {
 		return dao.selectMemberByNoList(member);
 	}
-/*	public List<Member> selectMemberByNojumin(Member member){
-		return dao.selectMemberByNojumin(member);
-	}*/
+	public Member selectMemberByNo(String member){
+		return dao.selectMemberByNo(member);
+	}
 	public boolean duplicatedJumin(String jumin){
 			
 		try(SqlSession session = MyBatisSqlSessionFactory.openSession()){
@@ -36,5 +37,7 @@ public class MemberService {
 		}
 		return false;
 	}
-
+	public List<Member> selectMemberByAll(){
+		return dao.selectMemberByAll();
+	}
 }	

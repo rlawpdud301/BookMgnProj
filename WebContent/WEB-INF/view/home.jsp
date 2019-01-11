@@ -65,6 +65,10 @@ body,html{
 	font-size: 16px;
 	color:#cd853f;
 }
+#header #insert{
+	font-size : 15px;
+	float:right;
+}
 #cont{
 	clear: both;
 }
@@ -113,7 +117,7 @@ body,html{
 			<jsp:include page="/WEB-INF/view/bookSearch.jsp" flush="false" />
 		</div>
 	</section>
-
+	
 	<footer>
 		<jsp:include page="FooterHeader/footer.jsp" flush="false" />
 	</footer>
