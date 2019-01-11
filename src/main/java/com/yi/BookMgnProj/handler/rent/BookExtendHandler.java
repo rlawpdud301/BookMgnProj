@@ -31,7 +31,7 @@ public class BookExtendHandler implements CommandHandler {
 				bookRentalInfo.setBookCode(book);
 				
 				Book book2 = service.selectBookBybookCodeOne(book);
-				if(book2.isRentalPossible()){
+				if(book2.isRentalPossible() == true){
 					throw new Exception("isRental");
 				}
 				
@@ -39,9 +39,10 @@ public class BookExtendHandler implements CommandHandler {
 				String rNo = String.valueOf(bookRentalInfo1.getRentalNo());
 				int rno = Integer.parseInt(rNo);
 				bookRentalInfo.setRentalNo(rno);
+				bookRentalInfo.setReturnSchedule(bookRentalInfo1.getReturnSchedule());
 				
 				Date rs = bookRentalInfo.getReturnSchedule();
-				
+				System.out.println(rs);
 				Calendar cal = Calendar.getInstance ( );
 				cal.setTime(rs);
 				System.out.println( cal.get ( Calendar.YEAR ) + "년 " + ( cal.get ( Calendar.MONTH ) + 1 ) + "월 " + cal.get ( Calendar.DATE ) + "일" );
@@ -52,17 +53,37 @@ public class BookExtendHandler implements CommandHandler {
 				Date d = new Date(cal.getTimeInMillis());
 				
 				bookRentalInfo.setReturnSchedule(d);
-				service.updateReturnDate(bookRentalInfo);
 				
 				
-				Date ed = new Date(cal.getTimeInMillis());
-				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-				sdf.format(ed);
-				req.setAttribute("ed", ed);
+				Date rentalDate = bookRentalInfo1.getRentalDate();
+				
+				Calendar cal2 = Calendar.getInstance ( );
+				
+				cal2.setTime ( rs );
+				
+				Calendar cal3 = Calendar.getInstance ( );
+				
+				cal3.setTime ( rentalDate );  
+				
+				int count = 0;
+				while ( !cal3.after ( cal2 ) ) {
+				count++;
+				//다음날로 바뀜
+				cal3.add ( Calendar.DATE, 1 );   
+				System.out.println ( cal3.get ( Calendar.YEAR ) + "년 " + ( cal3.get ( Calendar.MONTH ) + 1 ) + "월 " + cal3.get ( Calendar.DATE ) + "일" );
+				}
+				
+				if(count > 21){
+					String st = "3";
+					req.setAttribute("st", st);
+					return "/WEB-INF/view/rent/BookExtendForm.jsp";
+				}else{
+					service.updateReturnDate(bookRentalInfo);
+				}
 				
 				return "/WEB-INF/view/rent/BookExtendResult.jsp";
 			} catch (Exception e) {
-				if(e.getMessage().equals("isRental")){
+				if(e.getMessage()!= null && e.getMessage().equals("isRental")){
 					String st = "1";
 					req.setAttribute("st", st);
 					e.printStackTrace();
@@ -74,6 +95,7 @@ public class BookExtendHandler implements CommandHandler {
 					e.printStackTrace();
 					return "/WEB-INF/view/rent/BookExtendForm.jsp";
 				}
+				e.printStackTrace();
 			}
 			
 		}

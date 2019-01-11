@@ -45,7 +45,6 @@
 				<label>사진</label>
 				<img alt="" src="${pageContext.request.contextPath}${Member.photo }">
 			</p>
-				${pageContext.request.contextPath}
 			<p>
 				<input type="submit" value="정보 수정하기">
 			</p>
