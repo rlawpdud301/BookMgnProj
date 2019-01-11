@@ -73,17 +73,17 @@ public class BookRentHandler implements CommandHandler {
 				bookRentalInfo.setBookCode(book);
 				
 				
-				
-				
-				service.insertBookRentalInfo(bookRentalInfo);
-				/* 도서 대여가능여부 false*/
-				
 				book.setRentalPossible(false);
+				/*대여+도서 대여가능여부 false+회원 대여가능권수 -1, 총대여권수 +1*/
+				service.tra_book_rent(bookRentalInfo, book, memberRentalInfo);
+				
+				/*service.insertBookRentalInfo(bookRentalInfo);
+				 도서 대여가능여부 false
 				service.updateBookPossible(book);
 				
-				/*회원 대여가능권수 -1, 총대여권수 +1*/
+				회원 대여가능권수 -1, 총대여권수 +1
 				System.out.println(memberRentalInfo);
-				service.updateMemberRentalInfo(memberRentalInfo);
+				service.updateMemberRentalInfo(memberRentalInfo);*/
 				
 				/* 대여후에 회원의 대여가능권수가 0이 되면 대여가능여부 false로 변경 */
 				MemberRentalInfo memberRentalInfo3 = service.selectMemberRentalInfoByCode(memberRentalInfo);
