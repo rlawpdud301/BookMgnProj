@@ -38,7 +38,7 @@ public class BooksearchJsonHamdler implements CommandHandler {
 		}
 		
 		if (null != req.getParameter("title")&& (req.getParameter("title")).trim().equalsIgnoreCase("") == false) {
-			JOptionPane.showConfirmDialog(null, "aa");
+/*			JOptionPane.showConfirmDialog(null, "aa");*/
 			String title = req.getParameter("title");
 			map.put("title", title);
 		}

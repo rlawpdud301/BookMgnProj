@@ -365,6 +365,7 @@ span {
 		<img src="images/xbutton_83749.png" id="bntx">
 	</div>
 </nav>
+<h1>도서검색</h1>
 <div id="SearchMethod">
 	<div id="selectOption">		
 		<dir id="search">

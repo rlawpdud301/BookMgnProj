@@ -26,9 +26,15 @@
 		<choose>
 			<when test="BookCodeDetail != null">
 				book_code,
+				(if((rental_possible)=0,'대여불가능','대여가능')) as
+				rental_possible,
+				1 as hap,
 			</when>
 			<otherwise>
 				left(book_code,8) as book_code,
+				(if(sum(rental_possible)=0,'대여불가능','대여가능')) as
+				rental_possible,
+				count(left(book_code,8)) as hap,
 			</otherwise>
 		</choose>
 		title,
@@ -38,34 +44,18 @@
 		(if(price is null,'알수없음',price)) as
 		price,
 		image,
-		<choose>
-			<when test="BookCodeDetail != null">
-				(if((rental_possible)=0,'대여불가능','대여가능')) as
-				rental_possible,
-			</when>
-			<otherwise>
-				(if(sum(rental_possible)=0,'대여불가능','대여가능')) as
-				rental_possible,
-			</otherwise>
-		</choose>
 		pub_name, cate_b_no,
 		cate_m_no, cate_s_no,
 		pub_no,
 		cate_b_name,
 		cate_m_name,
-		cate_s_name,
-		<choose>
-			<when test="BookCodeDetail != null">
-				1 as hap
-			</when>
-			<otherwise>
-				count(left(book_code,8)) as hap
-			</otherwise>
-		</choose>
+		cate_s_name
+		FROM
+		proj_library.bookdetail
 	</sql>
 	<sql id="whereSql">
 		<where>
-			left(book_code, 1) != 'D'
+			book_code not like 'D%'
 			<if test="pubName != null">
 				and pub_name=#{pubName}
 			</if>
@@ -98,8 +88,7 @@
 	</sql>
 	<select id="selectBookDetailByMap" resultMap="BookDetailResult">
 		<include refid="selectSql" />
-		FROM
-		proj_library.bookdetail
+		
 		<include refid="whereSql" />
 		<if test="BookCodeDetail == null">
 			group by left(book_code,8)
