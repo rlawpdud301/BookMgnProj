@@ -5,9 +5,11 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.yi.BookMgnProj.dao.MemberMapper;
 import com.yi.BookMgnProj.dao.MemberMapperImpl;
+import com.yi.BookMgnProj.model.AUTH;
 import com.yi.BookMgnProj.model.Member;
 import com.yi.BookMgnProj.mvc.CommandHandler;
 
@@ -29,7 +31,12 @@ public class MemberLoginHandler implements CommandHandler {
 
 			try {
 				if (member != null) {
-					req.setAttribute("AUTH", member);
+					HttpSession session = req.getSession();
+					AUTH auth = new AUTH();  
+					auth.setId(member.getMemberNo());
+					auth.setAdmin(member.isAdmin());
+					auth.setKorName(member.getKorName());
+					session.setAttribute("AUTH", auth);
 					return "/WEB-INF/view/home.jsp";
 				} else {
 					System.out.println("로그인 실패");

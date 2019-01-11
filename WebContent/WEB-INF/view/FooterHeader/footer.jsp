@@ -1,6 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
@@ -13,9 +13,9 @@
 	<div id="footer">
 	<div>
 		<ul>
-			<li><a href="#">µµ¿ò¸»</a></li>
-			<li><a href="#">ÀÌ¿ë¾à°ü</a></li>
-			<li><a href="#">°³ÀÎÁ¤º¸ Ã³¸®¹æÄ§</a></li>
+			<li><a href="#">ë„ì›€ë§</a></li>
+			<li><a href="#">ì´ìš©ì•½ê´€</a></li>
+			<li><a href="#">ê°œì¸ì •ë³´ ì²˜ë¦¬ë°©ì¹¨</a></li>
 		</ul>
 	</div>
 	<p>

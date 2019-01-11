@@ -15,6 +15,7 @@
 			<a href="/BookMgnProj/rent/bookReturn.do">반납</a>
 			<a href="/BookMgnProj/rent/bookExtend.do">연장</a>
 			<a href="${pageContext.request.contextPath }/member/info.do">내 정보 보기</a>
+			<a href="${pageContext.request.contextPath }/member/logout.do">내 정보 보기</a>
 			[관리자] ${AUTH.korName }님 환영합니다.
 		</div>
 	</div>

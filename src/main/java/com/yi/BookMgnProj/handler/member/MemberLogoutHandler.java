@@ -15,7 +15,6 @@ public class MemberLogoutHandler implements CommandHandler {
 			session.invalidate(); // 세션 삭제
 		}
 		res.sendRedirect("home.do");
-
 		return null;
 	}
 }
