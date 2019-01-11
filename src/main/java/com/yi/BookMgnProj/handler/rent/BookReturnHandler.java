@@ -32,7 +32,7 @@ public class BookReturnHandler implements CommandHandler {
 				bookRentalInfo.setBookCode(book);
 				
 				Book book2 = service.selectBookBybookCodeOne(book);
-				if(book2.isRentalPossible()){
+				if(book2.isRentalPossible() == true){
 					throw new Exception("isRental");
 				}
 				

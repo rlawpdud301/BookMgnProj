@@ -47,7 +47,7 @@ public class BookRentHandler implements CommandHandler {
 					req.setAttribute("st", st);
 					return "/WEB-INF/view/rent/BookRentForm.jsp";
 				}
-				MemberRentalInfo memberRentalInfo2 = service.selectMemberNowTotalByCode(memberRentalInfo);
+				MemberRentalInfo memberRentalInfo2 = service.selectMemberRentalInfoByCode(memberRentalInfo);
 				memberRentalInfo2.getNowTotal();
 				if(memberRentalInfo2.getNowTotal() < 1){
 					String st = "2";
@@ -75,15 +75,6 @@ public class BookRentHandler implements CommandHandler {
 				
 				
 				
-				
-				
-				/*MemberRentalInfo total = impl3.selectMemberTotalByCode(memberRentalInfo);
-				if(total.getTotal()== 100){
-					impl3.updateMemberRentalInfoGrade(memberRentalInfo);
-					
-				}*/
-				
-				
 				service.insertBookRentalInfo(bookRentalInfo);
 				/* 도서 대여가능여부 false*/
 				
@@ -95,7 +86,7 @@ public class BookRentHandler implements CommandHandler {
 				service.updateMemberRentalInfo(memberRentalInfo);
 				
 				/* 대여후에 회원의 대여가능권수가 0이 되면 대여가능여부 false로 변경 */
-				MemberRentalInfo memberRentalInfo3 = service.selectMemberNowTotalByCode(memberRentalInfo);
+				MemberRentalInfo memberRentalInfo3 = service.selectMemberRentalInfoByCode(memberRentalInfo);
 				if(memberRentalInfo3.getNowTotal() == 0){
 					Overdue overdue = new Overdue();
 					overdue.setMemberNo(member.getMemberNo());

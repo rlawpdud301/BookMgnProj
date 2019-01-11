@@ -13,16 +13,15 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
 	$(function() {
-		if(${st} == "1"){
+		if("${st}" == "1"){
 			alert("대여중인 도서가 아닙니다");
 		}
-		if(${st} == "2"){
+		if("${st}" == "2"){
 			alert("도서번호를 다시 확인해주세요");
-		} 
-		${"#reSchedule"}.click(function() {
-			$("#returnSchedule").val(${ed});
-		}) 
-		 
+		}  
+		if("${st}" == "3"){
+			alert("더 이상 연장이 불가능합니다");
+		}    
 	});  
 </script>
 </head>
@@ -33,9 +32,6 @@
 				<label>도서 코드</label>
 				<input type="text" name="bookCode">
 			</p>
-				<label>반납 예정일</label>
-				<input type="text" name="returnSchedule" disabled="disabled" id="returnSchedule">
-				<button id="reSchedule">검색</button>
 			<p>
 				<input type="submit" value="연장">
 				<input type="reset" value="취소">
