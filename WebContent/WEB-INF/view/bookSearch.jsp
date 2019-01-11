@@ -82,8 +82,34 @@ table tr td{
 	line-height: 70px; 
 	/* border: 3px solid #AB4A12; */  
 }
+#cateB{
+	margin-left: 10px; 
+}
+#each{
+	width: 80%;
+	margin: 0 auto;
+	color: white;
+}
+#each .box{
+	margin-left: 10px;
+}
+.box span{
+	font-size: 12px;
+}
+#each label {
+	float:left;
+	display:inline-block;
+	width: 100px;	
+	text-align: right;
+	margin-right: 10px;
+}
+
 #search{
 	margin-left: 40px; 
+}
+#search span{
+	color: white;
+	font-size: 10px;
 }
 #search select{
 	width: 120px;
@@ -163,22 +189,18 @@ span {
 		$("#BookDetail").css("margin-left","-100%").css("opacity",0);
 		
 		$(document).on("change","#Method",function(event) {
-			
+			$("#list").css("height","0px");
 			if($("#Method").val()=="상세정보" || $("#Method").val()=="제목"){
+				$("#selectOption").css("height","580px");
 				$("#list").empty();
-				$("#list").css("height","0px");
-				var a =$("#Method").val();
-				alert(a);
 				$("#BookCode").remove();
 				$("#each").remove();
 				$("#Method").after("<fieldset id='each'></fieldset>");
 				$("#each").append("<legend>상세 정보로 검색</legend>");
-				$("#each").append("<p><input type='checkbox' name='opstion' value='title'><label>제목</label><input type='text' name='title'></p>");
-				$("#each").append("<p><input type='checkbox' name='opstion' value='author'><label>저자</label><input type='text' name='author'></p>");
-				$("#each").append("<p><input type='checkbox' name='opstion' value='translator'><label>역자</label><input type='text' name='translator'></p>");
-				$("#each").append("<p><input type='checkbox' name='opstion' value='pubName'><label>출판사</label><input type='text' name='pubName'></p>");
-				$("#each").append("<p><input type='checkbox' name='opstion' value='pubName'><label>출판사</label><input type='text' name='pubName'></p>");
-				
+				$("#each").append("<label>제목 </label> <input type='text' id='title'><br>");
+				$("#each").append("<label>저자 </label> <input type='text' id='author'><br>");
+				$("#each").append("<label>역자 </label> <input type='text' id='translator'><br>");
+				$("#each").append("<label>출판사 </label> <input type='text' id='pubName'><br>");
 				
 				$.ajax({
 					url :"book/category.do",
@@ -186,19 +208,20 @@ span {
 					dataType : "json", 
 					success : function(list) {
 						console.log(list);
-						$("#each").append("<select name='cateB' id='cateB'></select>");
+						$("#each").append("<label>카테고리</label> <span>(대분류) </span> <select name='cateB' id='cateB'></select>");
 						$(list.list).each(function(index, obj) {
 							$("#cateB").append("<option value='" + obj.bCode + "'>" + obj.bName + "</option>");
 						})
 												
-											}
+					}
 					
-										})
+				})
 				
 				
 				/* $("#search").empty();
 				$("#search").append("<select name='Method' id='Method'><option value='도서 번호'>도서 번호로</option><option value='제목'>제목으로</option>	<option value='상세정보'>상세정보</option></select> <input type='button' value='검색' id='bntBookSearch'>"); */				
 			}else{
+				$("#selectOption").css("height","53px");
 				$("#search").empty();
 				$("#search").append("<select name='Method' id='Method'><option value='도서 번호'>도서 번호로</option><option value='제목'>제목으로</option>	<option value='상세정보'>상세정보</option></select> <input type='text' id='BookCode'><input type='button' value='검색' id='bntBookSearch'>");
 				
@@ -206,12 +229,67 @@ span {
 			}
 		})
 		
+		$(document).on("change","#cateB",function(event){
+			if($("#cateB").val()==-1){
+				$("#cateMName").remove();
+				$(".cateSName").remove();
+				$("#cateM").remove();
+				$("#cateS").remove();
+			}else{
+				$("#cateMName").remove();
+				$(".cateSName").remove();
+				$("#cateM").remove();
+				$("#cateS").remove();
+				$.ajax({
+					url:"book/category.do",
+					type:"get",
+					data:{"cateB":$("#cateB").val()},
+					dataType:"json",
+					success:function(json){
+						console.log(json);
+						$("#each").append("<span id='cateMName'>(중분류)</span> <select name='cateM' id='cateM'></select>");
+						 $(json.list).each(function(index, obj) {
+							$("#cateM").append("<option value='" + obj.mCode + "'>" + obj.mName + "</option>");
+						}) 
+					}
+				})
+			}
+			
+			
+		})
+		
+		$(document).on("change","#cateM",function(event){
+			if($("#cateM").val()==-1){
+				$(".cateSName").remove();
+				$("#cateS").remove();
+			}else{
+				$(".cateSName").remove();
+				$("#cateS").remove();
+				$.ajax({
+					url:"book/category.do",
+					type:"get",
+					data:{"cateM":$("#cateM").val(),"cateB":$("#cateB").val()},
+					dataType:"json",
+					success:function(json){
+						console.log(json);
+						$("#each").append("<span class='cateSName'>(소분류)</span> <select name='cateS' id='cateS'></select>");
+						 $(json.list).each(function(index, obj) {
+							$("#cateS").append("<option value='" + obj.sCode + "'>" + obj.sName + "</option>");
+						}) 
+					}
+				})
+			}
+			
+			
+		})
+		
+		
 		$(document).on("click","#bntBookSearch",function(event) {
 			$("#list").empty();
 			$.ajax({
 				url : "bookSearch.do",
 				type : "get",
-				data : {"BookCode" : $("#BookCode").val()},
+				data : {"BookCode" : $("#BookCode").val(),"title" : $("#title").val(),"author" : $("#author").val(),"translator" : $("#translator").val(),"pubName" : $("#pubName").val(),"cateM":$("#cateM").val(),"cateB":$("#cateB").val(),"cateS":$("#cateS").val()},
 				dataType : "json", 
 				success : function(list) {
 					console.log(list);
@@ -264,6 +342,7 @@ span {
 						+ "<br>출판사 : "
 						+ "<a href='https://search.naver.com/search.naver?sm=top_hty&fbm=1&ie=utf8&query="+ list[0].pubName.pubName +"' target='_blank' >"
 						+list[0].pubName.pubName+"</a>");
+					$("#inner").append("<p>카테고리 : <br>"+list[0].bName.bName+"->"+list[0].mName.mName+"->"+list[0].sName.sName+"</p>");
 					$("#inner").append("<table>");
 						$("table").append("<tr><th>도서코드</th><th>대여기능여부</th><.tr>");
 					$(list).each(function(index, obj) {
@@ -287,14 +366,13 @@ span {
 	</div>
 </nav>
 <div id="SearchMethod">
-	<div id="selectOption">
-		
+	<div id="selectOption">		
 		<dir id="search">
 			<select name="Method" id="Method"> 
 				<option value="도서 번호">도서 번호로</option>
 				<option value="제목">제목으로</option>
 				<option value="상세정보">상세정보</option>
-			</select> <input type="text" id="BookCode"><input type="button" value="검색" id="bntBookSearch">
+			</select> <input type="text" id="BookCode"><input type="button" value="검색" id="bntBookSearch"> <span>아무것도입력하지않으면 모든책정보를확인하실수 있습니다.</span>
 			
 		</dir> 
 	</div>

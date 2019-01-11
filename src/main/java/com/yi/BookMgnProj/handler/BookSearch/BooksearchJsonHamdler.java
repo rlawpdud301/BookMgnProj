@@ -7,6 +7,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.JOptionPane;
 
 import org.codehaus.jackson.map.ObjectMapper;
 
@@ -34,6 +35,36 @@ public class BooksearchJsonHamdler implements CommandHandler {
 		}else{
 			String BookCodeDetail = req.getParameter("BookCodeDetail");
 			map.put("BookCodeDetail", BookCodeDetail);
+		}
+		
+		if (null != req.getParameter("title")&& (req.getParameter("title")).trim().equalsIgnoreCase("") == false) {
+			JOptionPane.showConfirmDialog(null, "aa");
+			String title = req.getParameter("title");
+			map.put("title", title);
+		}
+		if (null != req.getParameter("author")&& (req.getParameter("author")).trim().equalsIgnoreCase("") == false) {
+			String author = req.getParameter("author");
+			map.put("author", author);
+		}
+		if (null != req.getParameter("translator")&& (req.getParameter("translator")).trim().equalsIgnoreCase("") == false) {
+			String translator = req.getParameter("translator");
+			map.put("translator", translator);
+		}
+		if (null != req.getParameter("pubName")&& (req.getParameter("pubName")).trim().equalsIgnoreCase("") == false) {
+			String pubName = req.getParameter("pubName");
+			map.put("pubName", pubName);
+		}
+		if (null != req.getParameter("cateM")&& (req.getParameter("cateM")).trim().equalsIgnoreCase("-1") == false) {
+			String cateM = req.getParameter("cateM");
+			map.put("cateMNo", cateM);
+		}
+		if (null != req.getParameter("cateB")&& (req.getParameter("cateB")).trim().equalsIgnoreCase("-1") == false) {
+			String cateB = req.getParameter("cateB");
+			map.put("cateBNo", cateB);
+		}
+		if (null != req.getParameter("cateS")&& (req.getParameter("cateS")).trim().equalsIgnoreCase("-1") == false) {
+			String cateS = req.getParameter("cateS");
+			map.put("cateSNo", cateS);
 		}
 		
 		

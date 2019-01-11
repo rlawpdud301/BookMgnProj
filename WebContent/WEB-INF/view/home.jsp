@@ -91,6 +91,10 @@ body,html{
 	font-size: 14px;
 	color: #6F6F6F;
 }
+#bookSearch{
+	width: 80%;
+	margin: 0 auto;
+}
 </style>
 </head>
 <body>
@@ -118,11 +122,9 @@ body,html{
 
 	<footer>
 		<jsp:include page="FooterHeader/footer.jsp" flush="false" />
-<<<<<<< HEAD
+
 	</footer>
-=======
-	</footer>
->>>>>>> branch 'master' of https://github.com/rlawpdud301/BookMgnProj
+
 
 </body>
 </html>
