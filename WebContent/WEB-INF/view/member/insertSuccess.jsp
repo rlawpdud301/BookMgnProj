@@ -8,6 +8,6 @@
 </head>
 <body>
 	회원가입을 축하드립니다.
-	<a href="home.do">홈으로 돌아가기</a>
+	<a href="/BookMgnProj/home.do">홈으로 돌아가기</a>
 </body>
 </html>

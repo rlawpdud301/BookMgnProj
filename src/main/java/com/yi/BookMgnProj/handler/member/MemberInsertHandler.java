@@ -1,8 +1,13 @@
 package com.yi.BookMgnProj.handler.member;
 
+import java.io.File;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.JOptionPane;
 
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.yi.BookMgnProj.model.Member;
 import com.yi.BookMgnProj.mvc.CommandHandler;
 import com.yi.BookMgnProj.service.MemberService;
@@ -17,53 +22,72 @@ public class MemberInsertHandler implements CommandHandler {
 			return "/WEB-INF/view/member/memberInsertForm.jsp";
 		}
 		else if(req.getMethod().equalsIgnoreCase("post")){
-			service = new MemberService();
-			String password = req.getParameter("password");
-			String korName = req.getParameter("korName");
-			String engName = req.getParameter("engName");
-			String tel1 = req.getParameter("tel1");
-			String tel2 = req.getParameter("tel2");
-			String tel3 = req.getParameter("tel3");
-			String jumin1 = req.getParameter("jumin1");
-			String jumin2 = req.getParameter("jumin2");
-			String email1 = req.getParameter("email1"); 
-			String email2 = req.getParameter("emailbox");
-			String address = req.getParameter("address");
-			String address2 = req.getParameter("address2");
-			boolean checkbox = req.getParameter("checkbox") != null;
-			String uni = req.getParameter("uni");
-			String photo = req.getParameter("photo");
-			
-			Member member = new Member();
-			member.setPassword(password);
-			member.setKorName(korName);
-			member.setEngName(engName);			
-			member.setPhone(tel1+"-"+tel2+"-"+tel3);
-			member.setJumin(jumin1 + jumin2);
-			member.setEmail(email1+"@"+email2);
-			member.setAddress(address + address2);
-			member.setAdmin(checkbox);
-			member.setUniqueness(uni);
-			member.setPhoto(photo);
-			
-			String make = req.getParameter("engName").substring(0, 1);
-			System.out.println("make는:"+make);
-			int i = 0;
-			
-			if(service.selectMemberByNoList(member).equals(null)){
-				make = make + "0001";
-			}else{
-				i = service.selectMemberByNoList(member).size()+1;
-				member.setMemberNo(make);
+			String uploadPath = req.getRealPath("upload");
+			System.out.println("uploadHandler --------------------- ");
+			File dir = new File(uploadPath);
+			if(dir.exists() == false){ //upload폴더가 없을때, 만들어지게한다.
+				dir.mkdirs();
 			}
-			mn = String.format("%s%04d", make, i);
-			mn = mn.toUpperCase();
-			member.setMemberNo(mn);
-			service.insertMember(member);
-			
-			return "success.do";
+			try{
+				MultipartRequest multi = new MultipartRequest(req, 
+															uploadPath,//서버측 upload경로
+															1024*1024*10, //10M
+															"utf-8",
+															new DefaultFileRenamePolicy()//이름을 '자동'으로해줌
+															);				
+				String file1 = multi.getFilesystemName("file1");//file1의 키의 파일의 이름을 받아옴
+								
+				
+				service = new MemberService();
+				String password = multi.getParameter("password");
+				String korName = multi.getParameter("korName");
+				String engName = multi.getParameter("engName");
+				String tel1 = multi.getParameter("tel1");
+				String tel2 = multi.getParameter("tel2");
+				String tel3 = multi.getParameter("tel3");
+				String jumin1 = multi.getParameter("jumin1");
+				String jumin2 = multi.getParameter("jumin2");
+				String email1 = multi.getParameter("email1"); 
+				String email2 = multi.getParameter("emailbox");
+				String address = multi.getParameter("address");
+				String address2 = multi.getParameter("address2");
+				boolean checkbox = multi.getParameter("checkbox") != null;
+				String uni = multi.getParameter("uni");
+				String photo = file1;
+				
+				Member member = new Member();
+				member.setPassword(password);
+				member.setKorName(korName);
+				member.setEngName(engName);			
+				member.setPhone(tel1+"-"+tel2+"-"+tel3);
+				member.setJumin(jumin1 +"-"+ jumin2);
+				member.setEmail(email1+"@"+email2);
+				member.setAddress(address + address2);
+				member.setAdmin(checkbox);
+				member.setUniqueness(uni);
+				member.setPhoto(photo);
+				
+				String make = multi.getParameter("engName").substring(0, 1);
+				System.out.println("make는:"+make);
+				int i = 0;
+				
+				if(service.selectMemberByNoList(member).equals(null)){
+					make = make + "0001";
+				}else{
+					i = service.selectMemberByNoList(member).size()+1;
+					member.setMemberNo(make);
+				}
+				mn = String.format("%s%04d", make, i);
+				mn = mn.toUpperCase();
+				member.setMemberNo(mn);
+				service.insertMember(member);
+				
+				return "/WEB-INF/view/member/insertSuccess.jsp";				
+			}catch(Exception e){
+				e.printStackTrace();
+			}		
 		}
 		return null;
 	}
-
+		
 }

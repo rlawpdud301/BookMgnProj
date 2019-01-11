@@ -100,16 +100,14 @@ body,html{
 <body>
 	<header>
 		<c:choose>
-			<c:when test="${AUTH == null }">
+			<c:when test="${AUTH == null }">				
 				<jsp:include page="FooterHeader/header.jsp" flush="false" />
 			</c:when>
 			<c:when test="${AUTH.admin == true }">
 				<jsp:include page="FooterHeader/admin.jsp" flush="false" />
-				관리자
 			</c:when>
 			<c:when test="${AUTH.admin == false }">
 				<jsp:include page="FooterHeader/guest.jsp" flush="false" />
-				손님
 			</c:when>
 		</c:choose>
 	</header>
@@ -121,6 +119,7 @@ body,html{
 	</section>
 
 	<footer>
+
 		<jsp:include page="FooterHeader/footer.jsp" flush="false" />
 
 	</footer>

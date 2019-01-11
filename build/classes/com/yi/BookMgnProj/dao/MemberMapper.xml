@@ -37,8 +37,7 @@
 	</sql>
 
 	<!-- 검색 sql -->
-	<select id="selectMemberbyNo" parameterType="Member"
-		resultType="Member">
+	<select id="selectMemberByNo" parameterType="Member" resultType="Member">
 		<include refid="selectSql"></include>
 		<include refid="whereSql"></include>
 	</select>
@@ -150,10 +149,10 @@
 		<include refid="whereRegEXP"></include>
 	</select>
 	
-	<select id="selectMemberByNojumin" parameterType="Member"
-		resultType="Member">
+	<select id="selectMemberByNojumin" resultType="Member">
 		<include refid="selectSql" />
-		<include refid="whereSqljumin"></include>
+		<!-- <include refid="whereSqljumin"></include> -->
+		where jumin = concat(left(#{param1},8),password(right(#{param1},6)))
 	</select>
 	
 	<sql id="whereNameAndPhone">

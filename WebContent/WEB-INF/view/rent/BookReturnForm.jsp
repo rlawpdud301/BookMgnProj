@@ -10,6 +10,20 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+	$(function() {
+		if(${st} == "1"){
+			alert("대여중인 도서가 아닙니다");
+		}
+		if(${st} == "2"){
+			alert("도서번호를 다시 확인해주세요");
+		} 
+		if(${rs} == "1"){
+			alert(""+${cn}+"일 연체되었습니다.");
+		}
+	});  
+</script>
 </head>
 <body>
 	<form action="bookReturn.do" method="post">
