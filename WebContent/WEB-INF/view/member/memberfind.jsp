@@ -157,7 +157,7 @@
 				<fieldset id="feldpw">
 					<legend>비밀번호 찾기</legend>
 					<p>
-						<label>아이디 </label> <input type="text" id="id" placeholder="아이디 입력" >
+						<label>아이디 </label> <input type="text" id="id" placeholder="아이디 입력" name="id">
 					</p>
 					<p>
 						<label>전화 번호 </label> 

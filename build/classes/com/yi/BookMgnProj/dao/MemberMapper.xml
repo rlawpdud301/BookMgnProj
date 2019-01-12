@@ -182,7 +182,7 @@
 	<update id="deleteMemberNo" parameterType="Member">
 	 		UPDATE member
 	 		set Member_no = #{newMemberNo}, password = #{password}
-	 		where member_no = #{memberNo}
+	 		<include refid="whereNameAndPhone" />
 	</update>
 
 

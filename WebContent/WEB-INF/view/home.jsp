@@ -98,12 +98,12 @@
 			<c:when test="${AUTH == null }">				
 				<jsp:include page="FooterHeader/header.jsp" flush="false" />
 			</c:when>
-			<c:when test="${AUTH.admin == true }">
+			<%-- <c:when test="${AUTH.admin == true }">
 				<jsp:include page="FooterHeader/admin.jsp" flush="false" />
 			</c:when>
 			<c:when test="${AUTH.admin == false }">
 				<jsp:include page="FooterHeader/guest.jsp" flush="false" />
-			</c:when>
+			</c:when> --%>
 		</c:choose>
 	</header>
 	
