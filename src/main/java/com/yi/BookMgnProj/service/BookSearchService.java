@@ -19,8 +19,6 @@ public class BookSearchService {
 
 	public List<BookDetail> selectBookDetailByMap(Map<String, Object> map) {
 		return bookDetailMapper.selectBookDetailByMap(map);
-		
-
 	}
 }
    

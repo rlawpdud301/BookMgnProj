@@ -2,6 +2,7 @@ package com.yi.BookMgnProj.service;
 
 import java.sql.Connection;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -41,4 +42,12 @@ public class MemberService {
 	public List<Member> selectMemberByAll() {
 		return dao.selectMemberByAll();
 	}
+	
+	public Member searchIdAndPw(Map<String, Object> map){
+		return dao.searchIdAndPw(map);
+	}
+	public int changePW(Map<String, Object> map){
+		return dao.changePW(map);
+	}
+	
 }

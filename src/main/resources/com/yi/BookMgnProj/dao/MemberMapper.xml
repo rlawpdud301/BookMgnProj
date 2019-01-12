@@ -176,13 +176,13 @@
 	<update id="changePW">
 		UPDATE proj_library.`member`
 		SET password=password(#{password})
-		WHERE member_no= #{memberNo}
+		<include refid="whereNameAndPhone" />
 	</update>
 
 	<update id="deleteMemberNo" parameterType="Member">
 	 		UPDATE member
 	 		set Member_no = #{newMemberNo}, password = #{password}
-	 		<include refid="whereNameAndPhone" />
+	 		where member_no = #{memberNo}
 	</update>
 
 
