@@ -10,7 +10,7 @@
 	
 </script>
 <body>
-	<form action="/modify.do" method="post">
+	<form action="modify.do" method="post">
 		<fieldset>
 			<legend>나의 정보 보기</legend>
 			<p>
@@ -46,7 +46,7 @@
 				<img alt="" src="${pageContext.request.contextPath}${Member.photo }">
 			</p>
 			<p>
-				<input type="submit" value="정보 수정하기">
+				<a href="modify.do">정보수정하기</a>
 			</p>
 		</fieldset>
 	</form>
