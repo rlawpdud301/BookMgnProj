@@ -46,6 +46,9 @@
 			<if test="memberNo != null">
 				AND member_no REGEXP#{memberNo}
 			</if>
+			<if test="rentalNo != null">
+				AND rental_no =#{rentalNo}
+			</if>
 			<if test="over != null">
 				AND (now() > return_schedule)
 			</if>
