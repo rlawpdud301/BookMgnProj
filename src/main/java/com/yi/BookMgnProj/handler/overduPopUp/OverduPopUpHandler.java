@@ -21,7 +21,7 @@ public class OverduPopUpHandler implements CommandHandler {
 		if(req.getMethod().equalsIgnoreCase("get")){
 			OverduedetailService service = new OverduedetailService();
 			Map<String, Object> map = new HashMap<String, Object>();
-			/*map.put("over", 1); */
+			map.put("over", 1);
 			List<OverduePopup> list = service.selectAllbyMap(map);
 			req.setAttribute("list", list);
 			return "/WEB-INF/view/overdupopup.jsp"; 

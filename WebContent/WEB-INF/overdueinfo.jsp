@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,10 +18,45 @@
 	border: 1px solid white;
 }
 </style>
-
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$(document).on("click","#overdate",function(event) {
+			if($(this).val() == "전체 보기"){
+				$(this).val("연채회원만 보기");
+				$("#overduetable table").empty();
+				
+			}else {
+				$(this).val("전체 보기");
+				$("#overduetable table").empty();
+			}
+			$.ajax({
+				url : "bookSearch.do",
+				type : "post",
+				data : {"over" : $(this).val()},
+				dataType : "json", 
+				success : function(list) {
+					
+				}
+				
+			})
+		})
+	})
+</script>
 </head>
 <body>
 	<div id="overduetable">
+	<input type="button" value="연채회원만 보기" id="overdate">
+	
+	<select>
+		<option>회원 번호</option>
+		<option>이름</option>
+		<option>도서 번호</option>
+		<option>도서 제목</option>
+	</select>
+	<input type="text" name="name">
+	<input type="button" value="검색">
 		<table>
 			<tr>
 				<th>대여번호</th>
