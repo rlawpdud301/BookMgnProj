@@ -223,6 +223,7 @@ span {
 			}else{
 				$("#selectOption").css("height","53px");
 				$("#search").empty();
+				$("#each").remove();
 				$("#search").append("<select name='Method' id='Method'><option value='도서 번호'>도서 번호로</option><option value='제목'>제목으로</option>	<option value='상세정보'>상세정보</option></select> <input type='text' id='BookCode'><input type='button' value='검색' id='bntBookSearch'>");
 				
 	

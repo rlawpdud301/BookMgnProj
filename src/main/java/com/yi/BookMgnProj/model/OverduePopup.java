@@ -12,7 +12,26 @@ public class OverduePopup {
 	public int overday;
 	public Book bookCode;
 	public Member memberNo;
+	public String rentalNo;
 	
+	public String getRentalNo() {
+		return rentalNo;
+	}
+	public void setRentalNo(String rentalNo) {
+		this.rentalNo = rentalNo;
+	}
+	public Book getBookCode() {
+		return bookCode;
+	}
+	public void setBookCode(Book bookCode) {
+		this.bookCode = bookCode;
+	}
+	public Member getMemberNo() {
+		return memberNo;
+	}
+	public void setMemberNo(Member memberNo) {
+		this.memberNo = memberNo;
+	}
 	public Member getKorName() {
 		return korName;
 	}
