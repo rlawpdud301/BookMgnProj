@@ -15,11 +15,10 @@ public class OverduePopupMapperImpl implements OverduePopupMapper {
 		return instance;
 	}
 
-	private OverduePopupMapperImpl() {
-	}
-	
+	private OverduePopupMapperImpl() {}
+
 	private static final String namespace = "com.yi.BookMgnProj.dao.OverduePopupMapper";
-	
+
 	@Override
 	public List<OverduePopup> selectAll() {
 		try (SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();) {
@@ -33,7 +32,7 @@ public class OverduePopupMapperImpl implements OverduePopupMapper {
 			int res = sqlSession.update(namespace + ".updatedat");
 			sqlSession.commit();
 		}
-		
+
 	}
 
 	@Override

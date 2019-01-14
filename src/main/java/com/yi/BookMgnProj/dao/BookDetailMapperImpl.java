@@ -1,11 +1,11 @@
 package com.yi.BookMgnProj.dao;
+
 import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
 import com.yi.BookMgnProj.dao.BookDetailMapper;
-import com.yi.BookMgnProj.dao.MemberBest10MapperImpl;
 import com.yi.BookMgnProj.model.BookDetail;
 import com.yi.BookMgnProj.mvc.MyBatisSqlSessionFactory;
 
@@ -16,11 +16,10 @@ public class BookDetailMapperImpl implements BookDetailMapper {
 		return instance;
 	}
 
-	private BookDetailMapperImpl() {
-	}
-	
+	private BookDetailMapperImpl() {}
+
 	private static final String namespace = "com.yi.BookMgnProj.dao.BookDetailMapper";
-	
+
 	@Override
 	public List<BookDetail> selectBookDetailByMap(Map<String, Object> map) {
 		try (SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();) {

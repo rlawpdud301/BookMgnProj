@@ -42,12 +42,25 @@ public class MemberService {
 	public List<Member> selectMemberByAll() {
 		return dao.selectMemberByAll();
 	}
-	
-	public Member searchIdAndPw(Map<String, Object> map){
+
+	public Member searchIdAndPw(Map<String, Object> map) {
 		return dao.searchIdAndPw(map);
 	}
-	public int changePW(Map<String, Object> map){
+
+	public int changePW(Map<String, Object> map) {
 		return dao.changePW(map);
 	}
-	
+
+	public int updateMember(Member member) {
+		return dao.updateMember(member);
+	}
+
+	public int updateMember2(Member member) {
+		return dao.updateMember2(member);
+	}
+
+	public int deleteMemberNo(Map<String, Object> map) {
+		return dao.deleteMemberNo(map);
+	}
+
 }

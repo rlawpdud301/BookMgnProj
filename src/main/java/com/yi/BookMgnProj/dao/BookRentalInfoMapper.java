@@ -7,7 +7,6 @@ import com.yi.BookMgnProj.model.Book;
 import com.yi.BookMgnProj.model.BookRentalInfo;
 import com.yi.BookMgnProj.model.Member;
 
-
 public interface BookRentalInfoMapper {
 	List<BookRentalInfo> selectBookRentalInfoByAll();
 
@@ -22,7 +21,7 @@ public interface BookRentalInfoMapper {
 	int nextCode();
 
 	List<BookRentalInfo> selectBookRentalMemberInfo(Member member);
-	
+
 	List<BookRentalInfo> selectBookByMemberNoReturnDateNull(Member member);
 
 	int updateReturnDate(BookRentalInfo bookRentalInfo);
@@ -32,6 +31,5 @@ public interface BookRentalInfoMapper {
 	List<BookRentalInfo> selectRentalBookInfoByCategoryB(Member member);
 
 	BookRentalInfo selectRentalNoByBookCode_returnDateNull(BookRentalInfo bookRentalInfo);
-
 
 }

@@ -344,9 +344,9 @@ span {
 						+list[0].pubName.pubName+"</a>");
 					$("#inner").append("<p>카테고리 : <br>"+list[0].bName.bName+"->"+list[0].mName.mName+"->"+list[0].sName.sName+"</p>");
 					$("#inner").append("<table>");
-						$("table").append("<tr><th>도서코드</th><th>대여기능여부</th><.tr>");
+						$("table").append("<tr><th>도서코드</th><th>대여기능여부</th></tr>");
 					$(list).each(function(index, obj) {
-							$("table").append("<tr><td>"+ obj.bookCode.bookCode +"</td><td>"+ obj.rentalPossible +"</td></tr>");
+							$("table").append("<tr><td><a href='${pageContext.request.contextPath}/book/modify.do?no=" + obj.bookCode.bookCode + "'>"+ obj.bookCode.bookCode +"</a></td><td>"+ obj.rentalPossible +"</td></tr>");
 					})
 					$("#inner").append("</p>");
 										}

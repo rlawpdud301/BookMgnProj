@@ -125,8 +125,7 @@
 		WHERE book_code=#{bookCode};
 	</update>
 
-	<select id="selectBookBybookCodeOne" parameterType="Book"
-		resultMap="BookTypeResult">
+	<select id="selectBookBybookCodeOne" parameterType="Book"	resultMap="BookTypeResult">
 		<include refid="selectSql" />
 		WHERE book_code=#{bookCode};
 	</select>

@@ -5,8 +5,6 @@ import java.util.Map;
 
 import com.yi.BookMgnProj.model.BookDetail;
 
-
-
 public interface BookDetailMapper {
 	List<BookDetail> selectBookDetailByMap(Map<String, Object> map);
 }
