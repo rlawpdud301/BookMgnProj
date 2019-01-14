@@ -21,7 +21,7 @@ public class MemberModifyHandler implements CommandHandler {
 			MemberMapper service = MemberMapperImpl.getInstance();
 			Member member = service.selectMemberByNo(id);
 			req.setAttribute("Member", member);
-			return "/WEB-INF/view/member/memberModifyForm.jsp";
+			return "/WEB-INF/view/member/memberInfoForm.jsp";
 		}
 		
 		else if (req.getMethod().equalsIgnoreCase("post")) {
