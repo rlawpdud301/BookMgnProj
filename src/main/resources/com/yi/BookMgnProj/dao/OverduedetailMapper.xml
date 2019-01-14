@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yi.BookMgnProj.dao.OverduedetailMapper">
+	
+	
+	<resultMap type="OverduePopup" id="OverduePopupResult">
+		<result property="korName.korName" column="kor_name" />
+		<result property="title.title" column="title" />
+		<result property="rentalDate.rentalDate" column="rental_date" />
+		<result property="returnSchedule.returnSchedule" column="return_schedule" />
+		<result property="phone.phone" column="phone" />
+		<result property="returnDate" column="return_date" />
+		<result property="overday" column="overday" />		
+		<result property="bookCode.bookCode" column="book_code" />
+		<result property="memberNo.memberNo" column="member_no" />		
+	</resultMap>
+
+	<select id="selectAll" resultMap="OverduePopupResult">
+		SELECT kor_name, title,
+		rental_date, return_schedule,phone, return_date,
+  		(to_days(now()) - to_days(return_schedule)) as overday
+		FROM
+		proj_library.overduepopup
+		where (now() > return_schedule)
+	</select>
+	<update id="updatedat">
+		UPDATE proj_library.`day`
+		SET daty=(NOW());
+	</update>
+	<select id="selectDate" resultType="int">
+		select datediff(daty, now())
+		from day
+	</select>
+	<select id="selectAllRentInfo" resultMap="OverduePopupResult">
+		SELECT kor_name, title,
+		rental_date, return_schedule,phone, return_date,book_code,member_no,(to_days(now()) - to_days(return_schedule)) as overday
+		FROM
+		proj_library.overduepopup
+	</select>
+	<sql id="selectSql">
+		SELECT kor_name, title, rental_date, return_schedule, phone,
+		return_date, book_code, member_no, (to_days(now()) - to_days(return_schedule)) as overday
+		FROM overduepopup	
+	</sql>
+	
+	
+	<sql id="whereSql">
+		<where>
+			<if test="korName != null">
+				kor_name=#{korName}
+			</if>
+			<if test="title != null">
+				AND title=#{title}
+			</if>
+			<if test="returnSchedule != null">
+				AND return_schedule=#{returnSchedule}
+			</if>
+			<if test="bookCode != null">
+				AND book_code=#{bookCode}
+			</if>
+			<if test="memberNo != null">
+				AND member_no=#{memberNo}
+			</if>
+		</where>
+	</sql>
+	<select id="selectAllbyMap" resultMap="OverduePopupResult">
+		<include refid="selectSql"/>
+		<include refid="whereSql"/>
+		<!-- where (now() > return_schedule) -->
+	</select>
+</mapper>
