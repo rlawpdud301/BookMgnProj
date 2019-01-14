@@ -20,10 +20,8 @@ public class OverduPopUpHandler implements CommandHandler {
 	public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		if(req.getMethod().equalsIgnoreCase("get")){
 			OverduedetailService service = new OverduedetailService();
-			Map<String, Object> map = new HashMap<>();
-			String a = "등대지기";
-			map.put("title", a); 
-			System.out.println(map);
+			Map<String, Object> map = new HashMap<String, Object>();
+			/*map.put("over", 1); */
 			List<OverduePopup> list = service.selectAllbyMap(map);
 			req.setAttribute("list", list);
 			return "/WEB-INF/view/overdupopup.jsp"; 

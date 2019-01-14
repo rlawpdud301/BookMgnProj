@@ -54,7 +54,7 @@ public class OverduedetailMapperImpl implements OverduedetailMapper {
 	@Override
 	public List<OverduePopup> selectAllbyMap(Map<String, Object> map) {
 		try (SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();) {
-			return sqlSession.selectList(namespace + ".selectAllbyMap");
+			return sqlSession.selectList(namespace + ".selectAllbyMap",map);
 		}
 	}
 
