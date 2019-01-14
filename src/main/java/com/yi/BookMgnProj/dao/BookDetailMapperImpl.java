@@ -27,4 +27,11 @@ public class BookDetailMapperImpl implements BookDetailMapper {
 		}
 	}
 
+	@Override
+	public BookDetail selectBookDetailByBookCode(String bookCode) {
+		try (SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();) {
+			return sqlSession.selectOne(namespace + ".selectBookDetailByBookCode", bookCode);
+		}
+	}
+
 }

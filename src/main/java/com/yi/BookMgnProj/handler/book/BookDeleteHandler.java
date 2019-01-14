@@ -9,13 +9,8 @@ public class BookDeleteHandler implements CommandHandler {
 
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {
-		if (req.getMethod().equalsIgnoreCase("get")) {
-
-		}
-
-		if (req.getMethod().equalsIgnoreCase("post")) {
-
-		}
+		String bookCode = req.getParameter("bookCode");
+		
 		return null;
 	}
 
