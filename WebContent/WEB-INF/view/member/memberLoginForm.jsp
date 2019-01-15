@@ -34,7 +34,6 @@
 				<input type="password" name="password">
 			</p>
 			<p>
-				
 				<a href="${pageContext.request.contextPath}/member/insert.do">회원 가입하기</a>
 				<a href="${pageContext.request.contextPath}/member/find.do">ID / PW 찾기</a>
 				<input type="submit" value="로그인">

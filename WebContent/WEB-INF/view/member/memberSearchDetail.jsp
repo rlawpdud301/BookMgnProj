@@ -57,7 +57,7 @@
 		</tr>
 	
 	</table>
-	<a href="">[수정]</a>
+	<a href="modify.do">[수정]</a>
 	<a href="memberrent.do?no=${mno.memberNo }" onclick="window.open(this.href,'도서대여확인','width=600,height=400');return false;">[도서대여목록 보기]</a>
 </body>
 </html>

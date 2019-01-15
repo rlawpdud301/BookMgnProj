@@ -95,5 +95,11 @@
 		</if>
 
 	</select>
+	
+	<select id="selectBookDetailByBookCode" resultMap="BookDetailResult">
+		SELECT book_code, title, author, translator, price, image, pub_name, cate_b_no, cate_m_no, cate_s_no, pub_no, cate_b_name, cate_m_name, cate_s_name
+		FROM proj_library.bookdetail
+		where book_code = #{bookCode}
+	</select>
 
 </mapper>

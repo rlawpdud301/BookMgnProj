@@ -15,6 +15,7 @@
 	position: absolute;
 	top: 0;
 	left: 0;
+	margin-left:-100%;
 	height: 150%;
 	background-color: rgb(0,0,0,0.5);	
 }
@@ -223,6 +224,7 @@ span {
 			}else{
 				$("#selectOption").css("height","53px");
 				$("#search").empty();
+				$("#each").remove();
 				$("#search").append("<select name='Method' id='Method'><option value='도서 번호'>도서 번호로</option><option value='제목'>제목으로</option>	<option value='상세정보'>상세정보</option></select> <input type='text' id='BookCode'><input type='button' value='검색' id='bntBookSearch'>");
 				
 	
@@ -344,9 +346,9 @@ span {
 						+list[0].pubName.pubName+"</a>");
 					$("#inner").append("<p>카테고리 : <br>"+list[0].bName.bName+"->"+list[0].mName.mName+"->"+list[0].sName.sName+"</p>");
 					$("#inner").append("<table>");
-						$("table").append("<tr><th>도서코드</th><th>대여기능여부</th><.tr>");
+						$("table").append("<tr><th>도서코드</th><th>대여기능여부</th></tr>");
 					$(list).each(function(index, obj) {
-							$("table").append("<tr><td>"+ obj.bookCode.bookCode +"</td><td>"+ obj.rentalPossible +"</td></tr>");
+							$("table").append("<tr><td><a href='${pageContext.request.contextPath}/book/modify.do?no=" + obj.bookCode.bookCode + "'>"+ obj.bookCode.bookCode +"</a></td><td>"+ obj.rentalPossible +"</td></tr>");
 					})
 					$("#inner").append("</p>");
 										}

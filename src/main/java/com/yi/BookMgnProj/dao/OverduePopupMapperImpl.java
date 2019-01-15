@@ -1,26 +1,25 @@
 package com.yi.BookMgnProj.dao;
 
 import java.util.List;
-import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
 import com.yi.BookMgnProj.model.OverduePopup;
 import com.yi.BookMgnProj.mvc.MyBatisSqlSessionFactory;
 
-public class OverduedetailMapperImpl implements OverduedetailMapper {
+public class OverduePopupMapperImpl implements OverduePopupMapper {
 
-	private static final OverduedetailMapperImpl instance = new OverduedetailMapperImpl();
+	private static final OverduePopupMapperImpl instance = new OverduePopupMapperImpl();
 
-	public static OverduedetailMapperImpl getInstance() {
+	public static OverduePopupMapperImpl getInstance() {
 		return instance;
 	}
 
-	private OverduedetailMapperImpl() {
+	private OverduePopupMapperImpl() {
 	}
-	
-	private static final String namespace = "com.yi.BookMgnProj.dao.OverduedetailMapper";
-	
+
+	private static final String namespace = "com.yi.BookMgnProj.dao.OverduePopupMapper";
+
 	@Override
 	public List<OverduePopup> selectAll() {
 		try (SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();) {
@@ -34,7 +33,7 @@ public class OverduedetailMapperImpl implements OverduedetailMapper {
 			int res = sqlSession.update(namespace + ".updatedat");
 			sqlSession.commit();
 		}
-		
+
 	}
 
 	@Override
@@ -48,13 +47,6 @@ public class OverduedetailMapperImpl implements OverduedetailMapper {
 	public List<OverduePopup> selectAllRentInfo() {
 		try (SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();) {
 			return sqlSession.selectList(namespace + ".selectAllRentInfo");
-		}
-	}
-
-	@Override
-	public List<OverduePopup> selectAllbyMap(Map<String, Object> map) {
-		try (SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();) {
-			return sqlSession.selectList(namespace + ".selectAllbyMap",map);
 		}
 	}
 

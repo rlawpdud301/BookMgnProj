@@ -7,8 +7,6 @@ import org.apache.ibatis.session.SqlSession;
 import com.yi.BookMgnProj.model.CategoryB;
 import com.yi.BookMgnProj.mvc.MyBatisSqlSessionFactory;
 
-
-
 public class CategoryBMapperImpl implements CategoryBMapper {
 	private static final CategoryBMapperImpl instance = new CategoryBMapperImpl();
 

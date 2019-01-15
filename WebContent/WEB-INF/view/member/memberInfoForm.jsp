@@ -43,7 +43,7 @@
 			</p>
 			<p>
 				<label>사진</label>
-				<img alt="" src="${pageContext.request.contextPath}${Member.photo }">
+				<img src="/BookMgnProj/upload/${Member.photo }">
 			</p>
 			<p>
 				<a href="modify.do">정보수정하기</a>

@@ -8,8 +8,6 @@ import org.apache.ibatis.session.SqlSession;
 import com.yi.BookMgnProj.model.Book;
 import com.yi.BookMgnProj.mvc.MyBatisSqlSessionFactory;
 
-
-
 public class BookMapperImpl implements BookMapper {
 	private static final BookMapperImpl instance = new BookMapperImpl();
 
@@ -89,7 +87,7 @@ public class BookMapperImpl implements BookMapper {
 	@Override
 	public Book selectBookBybookCodeOne(Book book) {
 		try (SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();) {
-			return sqlSession.selectOne(namespace + ".selectBookBybookCodeOne",book);
+			return sqlSession.selectOne(namespace + ".selectBookBybookCodeOne", book);
 		}
 	}
 
@@ -101,7 +99,5 @@ public class BookMapperImpl implements BookMapper {
 			return res;
 		}
 	}
-
-	
 
 }

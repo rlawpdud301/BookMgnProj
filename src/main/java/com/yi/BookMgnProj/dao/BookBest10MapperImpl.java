@@ -8,8 +8,6 @@ import org.apache.ibatis.session.SqlSession;
 import com.yi.BookMgnProj.model.BookBest10;
 import com.yi.BookMgnProj.mvc.MyBatisSqlSessionFactory;
 
-
-
 public class BookBest10MapperImpl implements BookBest10Mapper {
 	private static final BookBest10MapperImpl instance = new BookBest10MapperImpl();
 
@@ -17,11 +15,10 @@ public class BookBest10MapperImpl implements BookBest10Mapper {
 		return instance;
 	}
 
-	private BookBest10MapperImpl() {
-	}
-	
+	private BookBest10MapperImpl() {}
+
 	private static final String namespace = "com.yi.BookMgnProj.dao.BookBest10Mapper";
-	
+
 	@Override
 	public List<BookBest10> selectBookBest10ByMap(Map<String, Object> map) {
 		try (SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();) {
@@ -42,9 +39,5 @@ public class BookBest10MapperImpl implements BookBest10Mapper {
 			return sqlSession.selectList(namespace + ".selectBookByMapForeSum", map);
 		}
 	}
-
-	
-
-	
 
 }
