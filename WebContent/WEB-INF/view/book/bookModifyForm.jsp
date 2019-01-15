@@ -1,15 +1,39 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+	function readURL(input) {
+		if (input.files && input.files[0]) {
+			var reader = new FileReader();
+			reader.onload = function(e) {
+				$('#blah').attr('src', e.target.result);
+			}
+			reader.readAsDataURL(input.files[0]);
+		}
+	}
+	$(function(){
+		$("#imgInp").change(function() {
+			readURL(this);
+		});
+	})
+</script>
 </head>
 <body>
 	<form action="${pageContext.request.contextPath }/book/modify.do" method="post" enctype="multipart/form-data" runat="server">
 		<fieldset>
-			<legend>도서 수정</legend>
+			<c:if test="${AUTH.admin == true }">	
+				<legend>도서 수정</legend>
+			</c:if>
+			
+			<c:if test="${AUTH.admin != true }">	
+				<legend>도서 상세정보</legend>
+			</c:if>
 			
 			<p>
 				<label>도서 번호</label>
@@ -56,15 +80,16 @@
 			
 			<p>
 				<label>이미지</label>
-				<input type="file" name="image" id="imgInp" value="${Book.image.image }"><br>
+				<input type="file" name="image" id="imgInp"><br>
 				<img alt="" src="/BookMgnProj/upload/${Book.image.image }" id="blah">
 			</p>
-			
-			<p>
-				<input type="submit" id="submit" value="수정">
-				<a href="">삭제</a>
-				<input type="reset" id="reset" value="취소">
-			</p>
+			<c:if test="${AUTH.admin == true }">
+				<p>
+					<input type="submit" id="submit" value="수정">
+					<a href="delete.do?no=${Book.bookCode.bookCode }">삭제</a>
+					<input type="reset" id="reset" value="취소">
+				</p>
+			</c:if>
 		</fieldset>
 	</form>
 </body>

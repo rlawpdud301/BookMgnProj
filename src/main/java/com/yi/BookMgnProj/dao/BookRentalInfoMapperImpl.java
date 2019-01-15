@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.yi.BookMgnProj.model.Book;
 import com.yi.BookMgnProj.model.BookRentalInfo;
+import com.yi.BookMgnProj.model.BookStat;
 import com.yi.BookMgnProj.model.Member;
 import com.yi.BookMgnProj.mvc.MyBatisSqlSessionFactory;
 
@@ -16,7 +17,8 @@ public class BookRentalInfoMapperImpl implements BookRentalInfoMapper {
 		return instance;
 	}
 
-	private BookRentalInfoMapperImpl() {}
+	private BookRentalInfoMapperImpl() {
+	}
 
 	private static final String namespace = "com.yi.BookMgnProj.dao.BookRentalInfoMapper";
 
@@ -95,7 +97,7 @@ public class BookRentalInfoMapperImpl implements BookRentalInfoMapper {
 	}
 
 	@Override
-	public List<BookRentalInfo> selectRentalBookInfoByCategoryB(Member member) {
+	public List<BookStat> selectRentalBookInfoByCategoryB(Member member) {
 		try (SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();) {
 			return sqlSession.selectList(namespace + ".selectRentalBookInfoByCategoryB", member);
 

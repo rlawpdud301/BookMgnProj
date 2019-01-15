@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.yi.BookMgnProj.model.Book;
 import com.yi.BookMgnProj.model.BookRentalInfo;
+import com.yi.BookMgnProj.model.BookStat;
 import com.yi.BookMgnProj.model.Member;
 
 public interface BookRentalInfoMapper {
@@ -28,7 +29,7 @@ public interface BookRentalInfoMapper {
 
 	BookRentalInfo selectRentalNoByBookCode(BookRentalInfo bookRentalInfo);
 
-	List<BookRentalInfo> selectRentalBookInfoByCategoryB(Member member);
+	List<BookStat> selectRentalBookInfoByCategoryB(Member member);
 
 	BookRentalInfo selectRentalNoByBookCode_returnDateNull(BookRentalInfo bookRentalInfo);
 
