@@ -50,6 +50,19 @@ public class MemberService {
 	public int changePW(Map<String, Object> map) {
 		return dao.changePW(map);
 	}
+	public List<Member> searchMembernoRent(Map<String, String> map){
+		return dao.searchMembernoRent(map);
+	}
+	/*회원번호, 회원이름, 전화번호로 검색*/
+	public List<Member> searchMemberNo(Map<String, String> map){
+		return dao.searchMemberNo(map);
+	}
+	public List<Member> searchMemberName(Map<String, String> map){
+		return dao.searchMemberName(map);
+	}
+	public List<Member> searchMemberPhone(Map<String, String>map){
+		return dao.searchMemberPhone(map);
+	}
 
 	public int updateMember(Member member) {
 		return dao.updateMember(member);
@@ -62,5 +75,4 @@ public class MemberService {
 	public int deleteMemberNo(Map<String, Object> map) {
 		return dao.deleteMemberNo(map);
 	}
-
 }

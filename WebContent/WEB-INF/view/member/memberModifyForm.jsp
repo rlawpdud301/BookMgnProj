@@ -326,7 +326,7 @@
 				<input type="file" name="photo" id="file1">
 				<img src="/BookMgnProj/upload/${Member.photo }">
 			</p>
-			
+
 			<p align="center">
 				<input type="submit" value="수정하기">
 				<input type="reset" value="취소">

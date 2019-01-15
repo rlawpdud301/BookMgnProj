@@ -47,4 +47,8 @@ public class BookModifyService {
 	public int insertPublisher(Publisher publisher) {
 		return publisherMapper.insertPublisher(publisher);
 	}
+	
+	public int deleteBook(Map<String, Object> map) {
+		return bookMapper.deleteBook(map);
+	}
 }

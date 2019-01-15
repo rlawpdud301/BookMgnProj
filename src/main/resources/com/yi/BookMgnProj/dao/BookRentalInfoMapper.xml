@@ -8,30 +8,14 @@
 		<result property="returnDate" column="return_date"/>
 		<result property="returnSchedule" column="return_schedule"/>
 		<result property="memberNo.memberNo" column="member_no"/>
-		<result property="bookCode.bookCode" column="book_code"/>
-	</resultMap>
-							
-		
-	<resultMap type="BookRentalInfo" id="BookRentalMemberInfoResult" extends="BookRentalInfoResult">
 		<result property="bookCode.bookCode" column="book_code" />
 		<result property="bookCode.title" column="title" />
 		<result property="bookCode.author" column="author" />
 		<result property="publisher.pubName" column="pub_name" />
 		<result property="publisher.pubNo" column="pub_no" />
-	</resultMap>
-	
-
-   <resultMap type="BookRentalInfo" id="BookRentalInfoResultMap" extends="BookRentalInfoResult">
 		<result property="bookCode.cateBNo.bName" column="cate_b_name"/>
-   </resultMap>	
-
-   
-   <resultMap type="BookRentalInfo" id="RentalNoByBookCodeResult">
-   		<result property="rentalNo" column="rental_no"/>
-   		<result property="bookCode.bookCode" column="book_code"/>
-   		<result property="memberNo.memberNo" column="member_no"/>
-   </resultMap>			
-
+		<result property="rentalNo" column="rental_no"/>
+	</resultMap>
 
 <!-- basicSQL -->
 	<sql id="selectJoinSql">
@@ -86,30 +70,33 @@
 	</select>
 
 
-	<select id="selectBookRentalMemberInfo" parameterType="Member" resultMap="BookRentalMemberInfoResult">
+	<select id="selectBookRentalMemberInfo" parameterType="Member" resultMap="BookRentalInfoResult">
 		<include refid="selectJoinSql"/>
 		<include refid="whereMemberNoSql"/>
 		<!-- where member_no = #{memberNo}; -->
 	</select>
 	
-	<select id="selectBookByMemberNoReturnDateNull" parameterType="Member" resultMap="BookRentalMemberInfoResult">
+	<select id="selectBookByMemberNoReturnDateNull" parameterType="Member" resultMap="BookRentalInfoResult">
 		<include refid="selectJoinSql"/>
 		<include refid="whereMemberNoSql"/>
 		 and return_date is null
 	</select>		
 
-	<select id="selectRentalBookInfoByCategoryB" parameterType="Member" resultMap="BookRentalInfoResultMap">
-		select c.cate_b_name
-		from book_rental_info as r	join book as b on b.book_code = r.book_code join category_b as c on b.cate_b_no = c.cate_b_no
-		<include refid="whereMemberNoSql"/>
+	<select id="selectRentalBookInfoByCategoryB" parameterType="Member" resultType="BookStat">
+		select c.cate_b_name as name, count(c.cate_b_name) as count
+		from book_rental_info as r
+		join book as b on b.book_code = r.book_code
+		join category_b as c on b.cate_b_no = c.cate_b_no
+		where member_no = #{memberNo}
+		group by c.cate_b_name;
 	</select>
 
-   <select id="selectRentalNoByBookCode" parameterType="BookRentalInfo" resultMap="RentalNoByBookCodeResult">
+   <select id="selectRentalNoByBookCode" parameterType="BookRentalInfo" resultMap="BookRentalInfoResult">
    		<include refid="selectJoinSql"/>
    		where b.book_code=#{bookCode.bookCode}
    </select>
    
-   <select id="selectRentalNoByBookCode_returnDateNull" parameterType="BookRentalInfo" resultMap="RentalNoByBookCodeResult">
+   <select id="selectRentalNoByBookCode_returnDateNull" parameterType="BookRentalInfo" resultMap="BookRentalInfoResult">
    		<include refid="selectJoinSql"/>
    		where b.book_code=#{bookCode.bookCode} and return_date is null
    </select>	
@@ -124,9 +111,6 @@
 		INSERT INTO proj_library.book_rental_info (rental_no, rental_date, return_date, return_schedule, member_no, book_code)
 		VALUES (#{rentalNo},#{rentalDate},#{returnDate}, #{returnSchedule}, #{memberNo.memberNo}, #{bookCode.bookCode})
 	</insert>
-	
-
-
 
  <!--  ####################################### update ################################################################# -->
    <update id="updateReturnDate" parameterType="BookRentalInfo">
@@ -137,16 +121,5 @@
    		</set>
    		<include refid="whereSql" />		
    </update>
-	
-<!-- id를 updateReturnDate로 변경
-	
-	<update id="updateReturnSchedule" parameterType="BookRentalInfo"> 
-		update proj_library.book_rental_info
-		SET return_schedule=#{returnSchedule}
-		WHERE rental_no=#{rentalNo}
-	</update> 
--->
-	
-
 	
 </mapper>

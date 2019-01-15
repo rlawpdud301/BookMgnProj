@@ -44,7 +44,12 @@ public class BookModifyHandler implements CommandHandler {
 			try {
 				MultipartRequest multi = new MultipartRequest(req, uploadPath, 1024 * 1024 * 10, "utf-8",
 						new DefaultFileRenamePolicy());
+				
 				String bookCode = multi.getParameter("bookCode");
+				
+				Book book = new Book();
+				book.setBookCode(bookCode);
+				book = service.selectBookBybookCodeOne(book);
 
 				String title = multi.getParameter("title");
 
@@ -56,9 +61,9 @@ public class BookModifyHandler implements CommandHandler {
 				
 				String price = multi.getParameter("price");
 				
-				String image = multi.getParameter("image");
-				System.out.println(image);
+				String image = multi.getFilesystemName("image");
 				
+				boolean rentalPossible = true;
 				
 				int won = Integer.parseInt(price);
 				
@@ -86,7 +91,14 @@ public class BookModifyHandler implements CommandHandler {
 				map.put("translator", translator);
 				map.put("pubNo", publisher);
 				map.put("price", won);
-				map.put("image", image);
+				
+				if (image != null) {
+					map.put("image", image);
+				} else {
+					map.put("image", book.getImage());
+				}
+				
+				map.put("rentalPossible", rentalPossible);
 				
 				service.updateBookMap(map);
 				
