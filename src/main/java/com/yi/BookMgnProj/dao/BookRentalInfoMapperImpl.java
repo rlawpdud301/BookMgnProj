@@ -1,7 +1,6 @@
 package com.yi.BookMgnProj.dao;
 
 import java.util.List;
-import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -10,8 +9,6 @@ import com.yi.BookMgnProj.model.BookRentalInfo;
 import com.yi.BookMgnProj.model.Member;
 import com.yi.BookMgnProj.mvc.MyBatisSqlSessionFactory;
 
-
-
 public class BookRentalInfoMapperImpl implements BookRentalInfoMapper {
 	private static final BookRentalInfoMapperImpl instance = new BookRentalInfoMapperImpl();
 
@@ -19,8 +16,7 @@ public class BookRentalInfoMapperImpl implements BookRentalInfoMapper {
 		return instance;
 	}
 
-	private BookRentalInfoMapperImpl() {
-	}
+	private BookRentalInfoMapperImpl() {}
 
 	private static final String namespace = "com.yi.BookMgnProj.dao.BookRentalInfoMapper";
 

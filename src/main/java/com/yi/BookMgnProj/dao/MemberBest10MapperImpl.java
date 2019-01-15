@@ -15,11 +15,10 @@ public class MemberBest10MapperImpl implements MemberBest10Mapper {
 		return instance;
 	}
 
-	private MemberBest10MapperImpl() {
-	}
-	
+	private MemberBest10MapperImpl() {}
+
 	private static final String namespace = "com.yi.BookMgnProj.dao.MemberBest10Mapper";
-	
+
 	@Override
 	public List<MemberBest10> selectMemberBest10ByMap(Map<String, Object> map) {
 		try (SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();) {

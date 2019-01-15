@@ -6,7 +6,7 @@ import com.yi.BookMgnProj.model.Post;
 
 public interface PostMapper {
 	List<Post> selectPostByAll();
-	
+
 	List<Post> selectPostByDoro(Post post);
 
 }

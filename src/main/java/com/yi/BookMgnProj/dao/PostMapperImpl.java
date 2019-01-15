@@ -9,7 +9,7 @@ import com.yi.BookMgnProj.mvc.MyBatisSqlSessionFactory;
 
 public class PostMapperImpl implements PostMapper {
 	private static final String namespace = "com.yi.BookMgnProj.dao.PostMapper";
-	
+
 	@Override
 	public List<Post> selectPostByAll() {
 		try (SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();) {
@@ -20,7 +20,7 @@ public class PostMapperImpl implements PostMapper {
 	@Override
 	public List<Post> selectPostByDoro(Post post) {
 		try (SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();) {
-			return sqlSession.selectList(namespace + ".selectPostByDoro",post);
+			return sqlSession.selectList(namespace + ".selectPostByDoro", post);
 		}
 	}
 
