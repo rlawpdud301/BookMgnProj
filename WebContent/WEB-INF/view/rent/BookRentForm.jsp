@@ -137,12 +137,12 @@ body, html {
 			<p>
 				<label>회원 번호</label>
 				<input type="text" name="memberNo" id="memberNo">
-				<input type="button" value="회원 검색" class="butt">
+				<input type="button" value="회원 검색" class="butt" id="search">
 			</p>
 			<p>
 				<label>도서 코드</label>
 				<input type="text" name="bookCode" id="bookCode">
-				<input type="button" value="도서 검색" class="butt">
+				<input type="button" value="도서 검색" class="butt" id="search">
 			</p>
 			<p>
 				<input type="submit" value="대여" id="btn" class="butt">

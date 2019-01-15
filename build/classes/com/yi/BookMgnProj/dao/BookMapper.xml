@@ -68,7 +68,7 @@
 		<result property="title" column="title" />
 		<result property="image" column="image" />
 		<result property="price" column="price" />
-		<!-- <result property="rentalPossible" column="rental_possible"/> -->
+		<result property="rentalPossible" column="rental_possible"/>
 		<result property="cateBNo.bCode" column="cate_b_no" />
 		<result property="cateMNo.mCode" column="cate_m_no" />
 		<result property="cateSNo.sCode" column="cate_s_no" />
