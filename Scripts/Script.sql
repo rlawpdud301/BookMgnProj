@@ -214,3 +214,16 @@ left join `category_s` `cs` on
     and (`b`.`cate_m_no` = `cs`.`cate_m_no`)
     and (`b`.`cate_s_no` = `cs`.`cate_b_no`))));
     
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+SELECT bc, title, author, pub_name, rental_date, cate_b_no, cate_m_no, cate_s_no,count(bc) as ranking FROM bestsaler WHERE rental_date BETWEEN '2019-01-07' and '2019-01-14' group by bc order by ranking desc limit 0,10;

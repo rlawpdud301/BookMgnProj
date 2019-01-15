@@ -4,6 +4,7 @@ public class BookBest10 {
 	private Book bookCode;
 	private Book title;
 	private Book author;
+	private Book image;
 	private Publisher pubName;
 	private int ranking;
 	private String rentalDate;
@@ -20,6 +21,13 @@ public class BookBest10 {
 		return "BookBest10 [bc=" + bookCode + ", title=" + title + ", author=" + author + ", pubName=" + pubName
 				+ ", ranking=" + ranking + ", rentalDate=" + rentalDate + ", cateBNo=" + cateBNo + ", cateMNo="
 				+ cateMNo + ", cateSNo=" + cateSNo + "]";
+	}
+	
+	public Book getImage() {
+		return image;
+	}
+	public void setImage(Book image) {
+		this.image = image;
 	}
 	public CategoryB getCateBNo() {
 		return cateBNo;

@@ -8,8 +8,8 @@
 	</sql>
 	<sql id="where">
 		<where>
-			<if test="rentalDate != null">
-				rental_date REGEXP#{rentalDate}
+			<if test="fristrentalDate != null">
+				rental_date BETWEEN  #{lastrentalDate} and #{fristrentalDate}
 			</if>
 			<if test="cateBNo != null">
 				AND cate_b_no =#{cateBNo}
@@ -47,6 +47,7 @@
 		<result property="cateMNo.mCode" column="cate_m_no" />
 		<result property="cateSNo.sCode" column="cate_s_no" />
 		<result property="cateBNo.bName" column="cate_b_name" />
+		<result property="image.image" column="image" />
 	</resultMap>
 	<select id="selectBookBest10ByMap" resultMap="BookBest10"
 		parameterType="BookBest10">
