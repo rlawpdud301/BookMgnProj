@@ -1,38 +1,50 @@
 package com.yi.BookMgnProj.handler.rent;
 
+import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.codehaus.jackson.map.ObjectMapper;
+
 import com.yi.BookMgnProj.dao.BookRentalInfoMapperImpl;
 import com.yi.BookMgnProj.model.Book;
 import com.yi.BookMgnProj.model.BookRentalInfo;
+import com.yi.BookMgnProj.model.OverduePopup;
 import com.yi.BookMgnProj.mvc.CommandHandler;
 import com.yi.BookMgnProj.service.BookExtendService;
+import com.yi.BookMgnProj.service.OverduedetailService;
 
 public class BookExtendHandler implements CommandHandler {
 	private BookExtendService service;
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		if(req.getMethod().equalsIgnoreCase("get")){
+			OverduedetailService service = new OverduedetailService();
+			Map<String, Object> map = new HashMap<String, Object>();
+			List<OverduePopup> list = service.selectAllbyMap(map);
+			req.setAttribute("list", list);
 			return "/WEB-INF/view/rent/BookExtendForm.jsp";
 		}else if(req.getMethod().equalsIgnoreCase("post")){
-			try {
 				service = new BookExtendService();
 				String bookCode = req.getParameter("bookCode");
 				System.out.println(bookCode);
 				Book book = new Book();
 				book.setBookCode(bookCode);
 				
+				String st = "";
 				BookRentalInfo bookRentalInfo = new BookRentalInfo();
 				bookRentalInfo.setBookCode(book);
 				
 				Book book2 = service.selectBookBybookCodeOne(book);
 				if(book2.isRentalPossible() == true){
-					throw new Exception("isRental");
+					st = "대여중인 도서가 아닙니다.";
 				}
 				
 				BookRentalInfo bookRentalInfo1 = service.selectRentalNoByBookCode_returnDateNull(bookRentalInfo);
@@ -75,29 +87,23 @@ public class BookExtendHandler implements CommandHandler {
 				
 				
 				if(count > 21){
-					String st = "3";
-					req.setAttribute("st", st);
-					return "/WEB-INF/view/rent/BookExtendForm.jsp";
+					st = "더 이상 연장이 불가능합니다";
 				}else{
 					service.updateReturnDate(bookRentalInfo);
+					st = "연장 되었습니다";
 				}
+				ObjectMapper om = new ObjectMapper();
+				String json = om.writeValueAsString(st);
+				System.out.println(json);
+
 				
-				return "/WEB-INF/view/rent/BookExtendResult.jsp";
-			} catch (Exception e) {
-				if(e.getMessage()!= null && e.getMessage().equals("isRental")){
-					String st = "1";
-					req.setAttribute("st", st);
-					e.printStackTrace();
-					return "/WEB-INF/view/rent/BookExtendForm.jsp";
-				}
-				if(req.getParameter("bookCode") == null){
-					String st = "2";
-					req.setAttribute("st", st);
-					e.printStackTrace();
-					return "/WEB-INF/view/rent/BookExtendForm.jsp";
-				}
-				e.printStackTrace();
-			}
+				res.setContentType("application/json;charset=utf-8");
+				PrintWriter pw = res.getWriter();
+				pw.println(json);
+				pw.flush();// 고객에게 데이터를보냄
+				return null;
+				
+			
 			
 		}
 		return null;

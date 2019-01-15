@@ -1,39 +1,52 @@
 package com.yi.BookMgnProj.handler.rent;
 
+import java.io.PrintWriter;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.codehaus.jackson.map.ObjectMapper;
 
 import com.yi.BookMgnProj.dao.BookRentalInfoMapperImpl;
 import com.yi.BookMgnProj.model.Book;
 import com.yi.BookMgnProj.model.BookRentalInfo;
 import com.yi.BookMgnProj.model.MemberRentalInfo;
 import com.yi.BookMgnProj.model.Overdue;
+import com.yi.BookMgnProj.model.OverduePopup;
 import com.yi.BookMgnProj.mvc.CommandHandler;
 import com.yi.BookMgnProj.service.BookReturnService;
+import com.yi.BookMgnProj.service.OverduedetailService;
 
 public class BookReturnHandler implements CommandHandler {
 	private BookReturnService service;
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		if(req.getMethod().equalsIgnoreCase("get")){
+			OverduedetailService service = new OverduedetailService();
+			Map<String, Object> map = new HashMap<String, Object>();
+			List<OverduePopup> list = service.selectAllbyMap(map);
+			req.setAttribute("list", list);
+			
 			return "/WEB-INF/view/rent/BookReturnForm.jsp";
 		}else if(req.getMethod().equalsIgnoreCase("post")){
-			try {
 				service = new BookReturnService();
 				String bookCode = req.getParameter("bookCode");
 				
 				Book book = new Book();
 				book.setBookCode(bookCode);
 				
+				String st = "";	
 				BookRentalInfo bookRentalInfo = new BookRentalInfo();
 				bookRentalInfo.setBookCode(book);
-				
 				Book book2 = service.selectBookBybookCodeOne(book);
-				if(book2.isRentalPossible() == true){
-					throw new Exception("isRental");
+				System.out.println(book2.isRentalPossible());
+				if(book2.isRentalPossible()){
+					st = "대여중인 도서가 아닙니다.";
 				}
 				
 				
@@ -114,25 +127,20 @@ public class BookReturnHandler implements CommandHandler {
 				service.updateAuthority(overdue);
 				
 				if(count > 0){
-					String rs = "1";
-					String cn = ""+count+"";
-					req.setAttribute("rs", rs);
-					req.setAttribute("cn", cn);
+					st = "반납완료! "+count+"일 연체되었습니다.";
 				}
 				
-				return "/WEB-INF/view/rent/BookReturnResult.jsp";
-			} catch (Exception e) {
-				if(e.getMessage().equals("isRental")){
-					String st = "1";
-					req.setAttribute("st", st);
-					return "/WEB-INF/view/rent/BookReturnForm.jsp";
-				}
-				if(req.getParameter("bookCode") == null){
-					String st = "2";
-					req.setAttribute("st", st);
-					return "/WEB-INF/view/rent/BookReturnForm.jsp";
-				}
-			}
+
+				ObjectMapper om = new ObjectMapper();
+				String json = om.writeValueAsString(st);
+				System.out.println(json);
+
+				
+				res.setContentType("application/json;charset=utf-8");
+				PrintWriter pw = res.getWriter();
+				pw.println(json);
+				pw.flush();// 고객에게 데이터를보냄
+				return null;
 			
 		}
 		return null;

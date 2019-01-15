@@ -54,7 +54,7 @@
 			$("#overduetable table").empty();
 			$("#overduetable table").append("<tr><th>대여번호</th><th>회원 이름</th><th>회원 번호</th><th>도서 제목</th><th>도서 코드</th><th>전화 번호</th><th>연채 일수</th></tr>");
 			$.ajax({
-				url : "overduedtail.do",
+				url : "returnOverduedtail.do",
 				type : "post",
 				data : {"over" : over},
 				dataType : "json", 
@@ -90,7 +90,7 @@
 			$("#overduetable table").append("<tr><th>대여번호</th><th>회원 이름</th><th>회원 번호</th><th>도서 제목</th><th>도서 코드</th><th>전화 번호</th><th>연채 일수</th></tr>");
 			
 			$.ajax({
-				url : "overduedtail.do",
+				url : "returnOverduedtail.do",
 				type : "post",
 				data : {"selected" : $("#overduetable select").val(),"item" : $("#item").val(),"over" : over},
 				dataType : "json", 
@@ -122,7 +122,7 @@
 	        }
 	        if($("#item").val().trim()!=""){
 	        	$.ajax({
-					url : "overduedtail.do",
+					url : "returnOverduedtail.do",
 					type : "post",
 					data : {"selected" : $("#overduetable select").val(),"item" : $("#item").val(),"over" : over},
 					dataType : "json", 
@@ -142,7 +142,7 @@
 				})
 	        }else{
 	        	$.ajax({
-					url : "overduedtail.do",
+					url : "returnOverduedtail.do",
 					type : "post",
 					dataType : "json", 
 					success : function(list) {
@@ -164,11 +164,16 @@
 			
 			
 	    });
+		$(document).on("click",".tr",function(event) {
+			var code = $(this).children("td").eq(4).text();
+			$("#bookCode").val(code);
+		})
 		$(document).on("dblclick",".tr",function(event) {
 			$("#popup").dialog( "open" );
 			var retNo = $(this).children("td").eq(0).text();
+			
 			$.ajax({
-				url : "overduedtail.do",
+				url : "returnOverduedtail.do",
 				type : "post",
 				data : {"rentalNo" : retNo},
 				dataType : "json", 
@@ -192,12 +197,13 @@
 				
 			})
 		})
+		
 	})
 </script>
 </head>
 <body>
 	<div id="overduetable">
-	<input type="button" value="전채 보기" id="bntAll">
+	<input type="button" value="전체 보기" id="bntAll">
 	<select>
 		<option value="memberNo">회원 번호</option>
 		<option value="korName">이름</option>
@@ -207,7 +213,7 @@
 	<input type="text" name="name" id="item">
 	<input type="button" value="검색" id="search">
 	
-	<input type="checkbox" id="overdate">연채회원만 보기
+	<input type="checkbox" id="overdate">연체회원만 보기
 		<table>
 			<tr>
 				<th>대여번호</th>
@@ -216,7 +222,7 @@
 				<th>도서 제목</th>
 				<th>도서 코드</th>
 				<th>전화 번호</th>
-				<th>연채 일수</th>			
+				<th>연체 일수</th>			
 			</tr>
 			<c:forEach var="one" items="${list}" >
 				<a href="#">
@@ -225,7 +231,7 @@
 						<td>${one.korName.korName}</td>
 						<td>${one.memberNo}</td>
 						<td>${one.title.title}</td>
-						<td>${one.bookCode.bookCode}</td>
+						<td class="code">${one.bookCode.bookCode}</td>
 						<td>${one.phone.phone}</td>
 						<td>${one.overday}</td>
 					</tr>
@@ -235,7 +241,7 @@
 		<div id="popup" title="대여 상세 정보">
 
 		</div>
-
+		
 	</div>
 </body>
 </html>
