@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	도서삭제 완료
 </body>
 </html>
