@@ -16,24 +16,39 @@
 #best3cont .lankimg {
 	width: 200px;
 }
+#best1,#best2,#best3,.other{
+	width: 100%;
+	background: white;
+}
+#best3cont div:HOVER .lankimg {
+	width: 210px;
+}
 
-#best3cont div:HOVER img {
-	width: 300px;
+#best3cont *{
+	float: left;
 }
 
 #best1 {
 	border: 5px solid #FFD700;
 }
+#best1 h1{
+	color: #FFD700;
+}
 
 #best2 {
-	border: 5px solid #B8B8B2;
+	border: 5px solid #B8B8B2; 
 }
-
-#best3 {
+#best2 h1{
+	color: #B8B8B2;
+}
+#best3 { 
 	border: 5px solid #964b00;
 }
+#best3 h1{
+	color: #964b00;  
+}
 .other{
-	border: 1px solid black;
+	border: 5px solid black;
 }
 </style>
 <script>
@@ -69,7 +84,7 @@
 	var setSdate, setEdate;
     $( "#fristrentalDate" ).datepicker({
     	showOn: "button",
-        buttonImage: "images/calendar.gif",
+        buttonImage: "${pageContext.request.contextPath }/images/calendar.gif",
         buttonImageOnly: true, 
         buttonText: "Select date",
         dateFormat: 'yy-mm-dd',
@@ -82,7 +97,7 @@
     });
     $( "#lastrentalDate" ).datepicker({
     	showOn: "button",
-        buttonImage: "images/calendar.gif",
+        buttonImage: "${pageContext.request.contextPath }/images/calendar.gif",
         buttonImageOnly: true, 
         buttonText: "Select date",
         dateFormat: 'yy-mm-dd',
@@ -105,17 +120,23 @@
             //to 설정
         }
       });
+    
+    $("#searchbnt").click(function() {
+    	
+    })
+    
   } );
   </script>
 </head>
 <body>
-	<div id="best3cont">
-		<h1>Best!</h1>
+	<h1>Best!</h1>
 		<p>검색하실 날짜를선택해주세요 : 
 			<input type="text" id="lastrentalDate" value="${lastrentalDate }"> ~ 
 			<input type="text" id="fristrentalDate" value="${fristrentalDate }"> 		 
-			<input type="button" value="검색">
+			<input type="button" value="검색" id="searchbnt">
 		</p>
+	<div id="best3cont">
+		
 		<c:forEach var="one" items="${list}" varStatus="Index">
 			<c:choose>
 				<c:when test="${Index.index == 0 }">
@@ -154,9 +175,6 @@
 					</div>
 				</c:otherwise>
 			</c:choose>
-		</c:forEach>
-		<div id="chart_div"></div>
-	</div>
-	
+		</c:forEach>	
 </body>
 </html>

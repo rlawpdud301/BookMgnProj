@@ -204,7 +204,7 @@ span {
 				$("#each").append("<label>출판사 </label> <input type='text' id='pubName'><br>");
 				
 				$.ajax({
-					url :"book/category.do",
+					url :"${pageContext.request.contextPath }/book/category.do",
 					type : "get",
 					dataType : "json", 
 					success : function(list) {
@@ -243,7 +243,7 @@ span {
 				$("#cateM").remove();
 				$("#cateS").remove();
 				$.ajax({
-					url:"book/category.do",
+					url:"${pageContext.request.contextPath }/book/category.do",
 					type:"get",
 					data:{"cateB":$("#cateB").val()},
 					dataType:"json",
@@ -268,7 +268,7 @@ span {
 				$(".cateSName").remove();
 				$("#cateS").remove();
 				$.ajax({
-					url:"book/category.do",
+					url:"${pageContext.request.contextPath }/book/category.do",
 					type:"get",
 					data:{"cateM":$("#cateM").val(),"cateB":$("#cateB").val()},
 					dataType:"json",
@@ -289,7 +289,7 @@ span {
 		$(document).on("click","#bntBookSearch",function(event) {
 			$("#list").empty();
 			$.ajax({
-				url : "bookSearch.do",
+				url : "${pageContext.request.contextPath }/bookSearch.do",
 				type : "get",
 				data : {"BookCode" : $("#BookCode").val(),"title" : $("#title").val(),"author" : $("#author").val(),"translator" : $("#translator").val(),"pubName" : $("#pubName").val(),"cateM":$("#cateM").val(),"cateB":$("#cateB").val(),"cateS":$("#cateS").val()},
 				dataType : "json", 
@@ -298,7 +298,7 @@ span {
 				
 					$("#list").append("<ul>");
 					$(list).each(function(index, obj) {
-						$("#list").append("<li><a href='#' class='bookinfo' data-bcode='"+ obj.bookCode.bookCode +"' onclick='return false;'><img src='images/KakaoTalk_20190108_141119999.jpg'></a><p class='text'><span id='title'>제목 : <a href='#' class='bookinfo' data-bcode='"+ obj.bookCode.bookCode +"' onclick='return false;'>"
+						$("#list").append("<li><a href='#' class='bookinfo' data-bcode='"+ obj.bookCode.bookCode +"' onclick='return false;'><img src='${pageContext.request.contextPath }/images/KakaoTalk_20190108_141119999.jpg'></a><p class='text'><span id='title'>제목 : <a href='#' class='bookinfo' data-bcode='"+ obj.bookCode.bookCode +"' onclick='return false;'>"
 											+ obj.title.title
 											+ "</a></span><br>저자 : <a href='https://search.naver.com/search.naver?sm=top_hty&fbm=1&ie=utf8&query="+ obj.author.author+"' target='_blank' >"
 											+ obj.author.author
@@ -324,16 +324,16 @@ span {
 
 		$(document).on("click",".bookinfo",function(event) {
 			$("#inner").empty()
-			$("#inner").append("<img src='images/xbutton_83749.png' id='bntx'>");
+			$("#inner").append("<img src='${pageContext.request.contextPath }/images/xbutton_83749.png' id='bntx'>");
 			$("#BookDetail").animate({"margin-left":"0", "opacity":1});
 			$.ajax({
-				url : "bookSearch.do",
+				url : "${pageContext.request.contextPath }/bookSearch.do",
 				type : "get",
 				data : {"BookCodeDetail" : $(this).attr("data-bcode")},
 				dataType : "json", 
 				success : function(list) {
 					console.log(list);
-					$("#inner").append("<img src='images/KakaoTalk_20190108_141119999.jpg' id='bimg'>");
+					$("#inner").append("<img src='${pageContext.request.contextPath }/images/KakaoTalk_20190108_141119999.jpg' id='bimg'>");
 					$("#inner").append("<p>");
 					$("#inner").append("<h1>"+list[0].title.title+"</h1>");
 					$("#inner").append("저자 : <a href='https://search.naver.com/search.naver?sm=top_hty&fbm=1&ie=utf8&query="+ list[0].author.author+"' target='_blank' >"
@@ -364,7 +364,7 @@ span {
 </head>
 <nav id="BookDetail">
 	<div id="inner">
-		<img src="images/xbutton_83749.png" id="bntx">
+		<img src="${pageContext.request.contextPath }/images/xbutton_83749.png" id="bntx">
 	</div>
 </nav>
 <h1>도서검색</h1>

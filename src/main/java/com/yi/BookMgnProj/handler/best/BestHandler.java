@@ -36,25 +36,11 @@ public class BestHandler implements CommandHandler {
 			
 			req.setAttribute("fristrentalDate", date.format(fristrentalDate));
 			req.setAttribute("lastrentalDate", date.format(lastrentalDate));
-
-			
-			
-			fristrentalDate.setDate(fristrentalDate.getDate()-7);
-			lastrentalDate.setDate(lastrentalDate.getDate()-7);
-			
-			dates = dates + date.format(fristrentalDate) +"~"+date.format(lastrentalDate)+"','"+"'평균']";
-			
-			map.put("fristrentalDate", fristrentalDate);
-			map.put("lastrentalDate", lastrentalDate);
-			List<String> bookCodes = new ArrayList<>();
-			for(BookBest10 best10 : list){
-				bookCodes.add(best10.getBookCode().getBookCode());
-			}
-			map.put("bookCodes", bookCodes);
-			List<BookBest10> list2 = service.selectBookBest10ByMap(map);
-			req.setAttribute("list2", list2);
-			
+		
 			return "/WEB-INF/view/BEST.jsp";
+		}
+		if(req.getMethod().equalsIgnoreCase("post")){
+			
 		}
 		return null;
 	}
