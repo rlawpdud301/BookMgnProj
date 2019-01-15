@@ -11,19 +11,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script>
-	$(function() {
-		if("${st}" == "1"){
-			alert("대여가능한 도서가 아닙니다");
-		}
-		if("${st}" == "2"){
-			alert("대여가능한 회원이 아닙니다");
-		}
-		if("${st}" == "3"){
-			alert("도서번호와 회원번호를 다시 확인해 주세요.");
-		} 
-	});  
-</script>
+
 <style>
 	.butt {
 	width: 80px;
@@ -124,6 +112,19 @@ body, html {
 	color: #6F6F6F;
 }
 </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+	$(function() {
+/* 		$(".code").click(function() {
+			alert("dd");
+			 var code = $(this).val();
+			$("#bookCode").find("#bookCode").val("code");
+		}) */
+		$("div#inner img#bimg").click(function() {
+			alert("ddddd");
+		})
+	})
+</script>
 </head>
 <body>
 	<header>
@@ -135,12 +136,12 @@ body, html {
 		<fieldset>
 			<p>
 				<label>회원 번호</label>
-				<input type="text" name="memberNo">
+				<input type="text" name="memberNo" id="memberNo">
 				<input type="button" value="회원 검색" class="butt">
 			</p>
 			<p>
 				<label>도서 코드</label>
-				<input type="text" name="bookCode">
+				<input type="text" name="bookCode" id="bookCode">
 				<input type="button" value="도서 검색" class="butt">
 			</p>
 			<p>
@@ -150,15 +151,31 @@ body, html {
 		</fieldset>
 	</form>
 		<div id="bookSearch">
-			<jsp:include page="/WEB-INF/view/bookSearch.jsp" flush="false" />
+			<jsp:include page="/WEB-INF/view/rent/bookRentSearch.jsp" flush="false" />
 		</div>
+		<div id="searchList">
+		<jsp:include page="/WEB-INF/view/rent/memberRentSearch.jsp"></jsp:include>
+	</div>
 	</section>
-
 	<footer>
 
 		<jsp:include page="../FooterHeader/footer.jsp" flush="false" />
 
 	</footer>
+	
+	<script>
+	$(function() {
+		if("${st}" == "1"){
+			alert("대여가능한 도서가 아닙니다");
+		}
+		if("${st}" == "2"){
+			alert("대여가능한 회원이 아닙니다");
+		}
+		if("${st}" == "3"){
+			alert("도서번호와 회원번호를 다시 확인해 주세요.");
+		} 
+	});  
+</script>
 	
 </body>
 </html>
