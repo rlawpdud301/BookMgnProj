@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="" method="post" id="f1" enctype="multipart/form-data">
+	<form action="modify.do" method="post" id="f1" enctype="multipart/form-data">
 		<fieldset>
 			<legend>회원가입하기</legend>
 			<p>
@@ -86,12 +86,8 @@
 			<label>파일명선택</label>
 			<input type="file" name="file1" id="file1">
 			</p>
-			<p>
-			<label>특이사항</label>
-			<input type="text" name="uni" id="uni">
-			</p>
 			<p align="center">
-				<input type="submit" value="가입하기">
+				<input type="submit" value="수정하기">
 				<input type="reset" value="취소">
 			</p>
 			<input type="text" maxlength="0" id="input_text">

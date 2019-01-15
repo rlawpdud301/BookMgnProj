@@ -36,6 +36,7 @@ join `category_s` `cs` on
 select*from booksearch 
 where book_code ='2220000101';
 
+
 create
 or replace
 view `bookdetail` as select
