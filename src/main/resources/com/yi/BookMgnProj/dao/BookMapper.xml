@@ -130,18 +130,3 @@
 		WHERE book_code=#{bookCode};
 	</select>
 </mapper>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
