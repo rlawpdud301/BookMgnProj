@@ -115,14 +115,7 @@ body, html {
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
 	$(function() {
-/* 		$(".code").click(function() {
-			alert("dd");
-			 var code = $(this).val();
-			$("#bookCode").find("#bookCode").val("code");
-		}) */
-		$("div#inner img#bimg").click(function() {
-			alert("ddddd");
-		})
+		
 	})
 </script>
 </head>
@@ -153,8 +146,8 @@ body, html {
 		<div id="bookSearch">
 			<jsp:include page="/WEB-INF/view/rent/bookRentSearch.jsp" flush="false" />
 		</div>
-		<div id="searchList">
-		<jsp:include page="/WEB-INF/view/rent/memberRentSearch.jsp"></jsp:include>
+		<div id="MemberSearch">
+		<jsp:include page="/WEB-INF/view/rent/memberRentSearch.jsp"  flush="false"></jsp:include>
 	</div>
 	</section>
 	<footer>
