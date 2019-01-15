@@ -15,6 +15,7 @@
 	position: absolute;
 	top: 0;
 	left: 0;
+	margin-left:-100%;
 	height: 150%;
 	background-color: rgb(0,0,0,0.5);	
 }
@@ -209,7 +210,7 @@ span {
 		$(document).on("click","#bntBookSearch",function(event) {
 			$("#list").empty();
 			$.ajax({
-				url : "bookSearch.do",
+				url : "../bookSearch.do",
 				type : "get",
 				data : {"BookCode" : $("#BookCode").val()},
 				dataType : "json", 
@@ -218,7 +219,7 @@ span {
 				
 					$("#list").append("<ul>");
 					$(list).each(function(index, obj) {
-						$("#list").append("<li><a href='#' class='bookinfo' data-bcode='"+ obj.bookCode.bookCode +"' onclick='return false;'><img src='images/KakaoTalk_20190108_141119999.jpg'></a><p class='text'><span id='title'>제목 : <a href='#' class='bookinfo' data-bcode='"+ obj.bookCode.bookCode +"' onclick='return false;'>"
+						$("#list").append("<li><a href='#' class='bookinfo' data-bcode='"+ obj.bookCode.bookCode +"' onclick='return false;'><img src='../images/KakaoTalk_20190108_141119999.jpg'></a><p class='text'><span id='title'>제목 : <a href='#' class='bookinfo' data-bcode='"+ obj.bookCode.bookCode +"' onclick='return false;'>"
 											+ obj.title.title
 											+ "</a></span><br>저자 : <a href='https://search.naver.com/search.naver?sm=top_hty&fbm=1&ie=utf8&query="+ obj.author.author+"' target='_blank' >"
 											+ obj.author.author
@@ -244,16 +245,16 @@ span {
 
 		$(document).on("click",".bookinfo",function(event) {
 			$("#inner").empty()
-			$("#inner").append("<img src='images/xbutton_83749.png' id='bntx'>");
+			$("#inner").append("<img src='../images/xbutton_83749.png' id='bntx'>");
 			$("#BookDetail").animate({"margin-left":"0", "opacity":1});
 			$.ajax({
-				url : "bookSearch.do",
+				url : "../bookSearch.do",
 				type : "get",
 				data : {"BookCodeDetail" : $(this).attr("data-bcode")},
 				dataType : "json", 
 				success : function(list) {
 					console.log(list);
-					$("#inner").append("<img src='images/KakaoTalk_20190108_141119999.jpg' id='bimg'>");
+					$("#inner").append("<img src='../images/KakaoTalk_20190108_141119999.jpg' id='bimg'>");
 					$("#inner").append("<p>");
 					$("#inner").append("<h1>"+list[0].title.title+"</h1>");
 					$("#inner").append("저자 : <a href='https://search.naver.com/search.naver?sm=top_hty&fbm=1&ie=utf8&query="+ list[0].author.author+"' target='_blank' >"
@@ -267,7 +268,7 @@ span {
 					$("#inner").append("<table>");
 						$("table").append("<tr><th>도서코드</th><th>대여기능여부</th><.tr>");
 					$(list).each(function(index, obj) {
-							$("table").append("<tr><td>"+ obj.bookCode.bookCode +"</td><td>"+ obj.rentalPossible +"</td></tr>");
+							$("table").append("<tr><td><a href='#'><span class='code'>"+ obj.bookCode.bookCode +"</span></a></td><td>"+ obj.rentalPossible +"</td></tr>");
 					})
 					$("#inner").append("</p>");
 										}
@@ -276,16 +277,22 @@ span {
 			
 		})
 		$(document).on("click","#bntx",function(event) {
-			$("#BookDetail").css("margin-left","-100%").css("opacity",0);
+			$("#BookDetail").css("margin-left","-100%").css("opacity",0);v
+		})
+		$(document).on("click",".code",function(event) {
+			alert($(this).text());
+			var code = $(this).text();
+			$("#bookCode").val(code);
 		})
 	})
 </script>
 </head>
 <nav id="BookDetail">
 	<div id="inner">
-		<img src="images/xbutton_83749.png" id="bntx">
+		<img src="../images/xbutton_83749.png" id="bntx">
 	</div>
 </nav>
+<h1>도서검색</h1>
 <div id="SearchMethod">
 	<div id="selectOption">
 		
@@ -293,7 +300,7 @@ span {
 			<select name="Method" id="Method"> 
 				<option value="도서 번호">도서 번호로</option>
 				<option value="제목">제목으로</option>
-				<option value="상세정보">상세정보</option>q
+				<option value="상세정보">상세정보</option>
 			</select> <input type="text" id="BookCode"><input type="button" value="검색" id="bntBookSearch">
 			
 		</dir> 

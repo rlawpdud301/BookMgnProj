@@ -15,6 +15,7 @@
 	position: absolute;
 	top: 0;
 	left: 0;
+	margin-left:-100%;
 	height: 150%;
 	background-color: rgb(0,0,0,0.5);	
 }

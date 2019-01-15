@@ -73,6 +73,7 @@ public class BookExtendHandler implements CommandHandler {
 				System.out.println ( cal3.get ( Calendar.YEAR ) + "년 " + ( cal3.get ( Calendar.MONTH ) + 1 ) + "월 " + cal3.get ( Calendar.DATE ) + "일" );
 				}
 				
+				
 				if(count > 21){
 					String st = "3";
 					req.setAttribute("st", st);
