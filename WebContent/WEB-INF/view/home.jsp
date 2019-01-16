@@ -7,10 +7,19 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
- section {
- 	width: 60%;
+section {
+ 	width: 80%;
+ 	margin: 0 auto;
  }
 
+#img{
+	width: 60%;
+  
+}
+#contaa{
+	width: 20%;
+
+}
 </style>
  
 </head>
@@ -29,7 +38,8 @@
 		</c:choose>
 	</header>
 	<section>
-		<div id=""></div>
+		<div id="img"><img alt="" src="${pageContext.request.contextPath }/images/3분만에_읽는_책.jpg"></div>
+		<div id="contaa">aaaaaaaaaa</div>
 	</section>
 	<%-- <section>
 		<div id="bookSearch">
