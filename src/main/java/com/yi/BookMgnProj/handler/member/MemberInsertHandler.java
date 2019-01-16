@@ -62,7 +62,7 @@ public class MemberInsertHandler implements CommandHandler {
 				member.setPhone(tel1+"-"+tel2+"-"+tel3);
 				member.setJumin(jumin1 +"-"+ jumin2);
 				member.setEmail(email1+"@"+email2);
-				member.setAddress(address + address2);
+				member.setAddress(address + "," + address2);
 				member.setAdmin(checkbox);
 				member.setUniqueness(uni);
 				member.setPhoto(photo);

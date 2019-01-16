@@ -75,4 +75,7 @@ public class MemberService {
 	public int deleteMemberNo(Map<String, Object> map) {
 		return dao.deleteMemberNo(map);
 	}
+	public int updateDetail(Member member){
+		return dao.updateDetail(member);
+	}
 }
