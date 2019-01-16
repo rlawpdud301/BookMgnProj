@@ -1,12 +1,18 @@
 @CHARSET "UTF-8";
-
+*{
+	margin: 0;
+	padding: 0;
+}
 body, html {
 	width: 100%;
 	height: 100%;
 	background: #FFFFF8;
 	color: #353535;
 }
-
+#header #menu #logo{
+	width: 40px;
+	height: 40px;
+}
 #Home {
 	width: 75%;
 	margin: 0 auto;
@@ -26,7 +32,7 @@ body, html {
 
 #header img {
 	margin: 5px;
-	width: 100px;
+	width: 50px;
 }
 
 #menu {
@@ -93,10 +99,6 @@ body, html {
 	text-decoration: none;
 	font-size: 14px;
 	color: #6F6F6F;
-}
-#bookSearch{
-	width: 80%;
-	margin: 0 auto;
 }
 *{
 	margin: 0;
@@ -171,7 +173,7 @@ body,html{
 	font-size: 15px;
 	color: #6F6F6F;
 	clear: both;
-	background: white;
+	background: #1E0000;
 }
 
 #footer ul {
@@ -190,8 +192,9 @@ body,html{
 	margin: 0 auto;
 }
 section{
-	min-height: 800px;
+	min-height: 600px;
 }
+
 #best{
 	width: 80%;
 	margin: 0 auto;	

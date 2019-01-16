@@ -23,32 +23,40 @@
 #best3cont div:HOVER .lankimg {
 	width: 210px;
 }
-
 #best3cont *{
 	float: left;
 }
+#best3cont div{
+	
+	margin-bottom: 20px ;	
+}
+best3cont img{
+	width: 150px;
+}
 
 #best1 {
-	border: 5px solid #FFD700;
-}
+	/* border: 5px solid #FFD700; */	
+} 
 #best1 h1{
-	color: #FFD700;
+	/* color: #FFD700; */
 }
 
 #best2 {
-	border: 5px solid #B8B8B2; 
+	/* border: 5px solid #B8B8B2;  */
 }
 #best2 h1{
-	color: #B8B8B2;
+	/* color: #B8B8B2; */
 }
 #best3 { 
-	border: 5px solid #964b00;
+	/* border: 5px solid #964b00; */
 }
 #best3 h1{
-	color: #964b00;  
+	/* color: #964b00; */
 }
 .other{
-	border: 5px solid black;
+
+	/* border: 5px solid black; */
+
 }
 </style>
 <script>
@@ -96,19 +104,44 @@
         }
       });
     
-    $("#searchbnt").click(function() {
+    /* $("#searchbnt").click(function() {
     	
-    })
-    
+    }) */
+    $(document).on("click","#searchbnt",function(event) {
+			$("#best3cont").empty();
+			$.ajax({
+				url : "${pageContext.request.contextPath }/best.do",
+				type : "post",
+				data : {"lastrentalDate" : $("#lastrentalDate").val() , "fristrentalDate" : $("#fristrentalDate").val()},
+				dataType : "json", 
+				success : function(list) {
+					console.log(list);
+					$(list).each(function(index, obj) {
+						if(index==0){
+							$("#best3cont").append("<div id='best1'><input type='hidden' value='"+ obj.bookCode.bookCode +"' ><img src='${pageContext.request.contextPath }/upload/"+ obj.image.image +"'><h1>"+ (index+1) +".st  "+ obj.title.title +"</h1></div>");
+						}else if(index==1){
+							$("#best3cont").append("<div id='best1'><input type='hidden' value='"+ obj.bookCode.bookCode +"' ><img src='${pageContext.request.contextPath }/upload/"+ obj.image.image +"'><h1>"+ (index+1) +".st  "+ obj.title.title +"</h1></div>");
+						}else if(index==2){
+							$("#best3cont").append("<div id='best2'><input type='hidden' value='"+ obj.bookCode.bookCode +"' ><img src='${pageContext.request.contextPath }/upload/"+ obj.image.image +"'><h1>"+ (index+1) +".st  "+ obj.title.title +"</h1></div>");
+						}else{
+							
+						
+							$("#best3cont").append("<div class='other'><input type='hidden' value='"+ obj.bookCode.bookCode +"' ><img src='${pageContext.request.contextPath }/upload/"+ obj.image.image +"'><h1>"+ (index+1) +".st  "+ obj.title.title +"</h1></div>");
+						}
+					})
+				}
+				
+			})
+									
+		})
   } );
   </script>
 </head>
 <body>
 	<h1>Best!</h1>
-		<p>검색하실 날짜를선택해주세요 : 
-			<input type="text" id="lastrentalDate" value="${lastrentalDate }"> ~ 
-			<input type="text" id="fristrentalDate" value="${fristrentalDate }"> 		 
-			<input type="button" value="검색" id="searchbnt">
+		<p>날짜를선택해주세요 : 
+			<input type="text" id="lastrentalDate" value="${lastrentalDate }" readonly="readonly"> ~ 
+			<input type="text" id="fristrentalDate" value="${fristrentalDate }" readonly="readonly"><input type="button" value="검색" id="searchbnt">
 		</p>
 	<div id="best3cont">
 		
@@ -116,37 +149,35 @@
 			<c:choose>
 				<c:when test="${Index.index == 0 }">
 					<div id="best1">
-						<input type="hidden" value="${one.bookCode.bookCode }" >
-						<img src="${pageContext.request.contextPath }/images/1.jpg" class="lankimg">
-						<h1>.st</h1>
-						<img src="/BookMgnProj/upload/${one.image.image }">
-						<h1>${one.title.title }</h1>
+						<input type="hidden" value="${one.bookCode.bookCode }" >						
+						
+						<img src="${pageContext.request.contextPath }/upload/${one.image.image }">
+						<h1>${Index.index+1}.st  ${one.title.title }</h1>
 					</div>
 				</c:when>
 				<c:when test="${Index.index == 1 }">
 					<div id="best2">
 						<input type="hidden" value="${one.bookCode.bookCode }">
-						<img src="${pageContext.request.contextPath }/images/2.jpg" class="lankimg">
-						<h1>.st</h1>
-						<img src="/BookMgnProj/upload/${one.image.image }">
-						<h1> ${one.title.title }</h1>
+						
+						<img src="/BookMgnProj/upload/${one.image.image }"><br>
+						<h1>${Index.index+1}.st  ${one.title.title }</h1>
 					</div>
 				</c:when>
 				<c:when test="${Index.index == 2 }">
 					<div id="best3">
 						<input type="hidden" value="${one.bookCode.bookCode }">
-						<img src="${pageContext.request.contextPath }/images/3.jpg" class="lankimg">
-						<h1>.st</h1>
+						
+						
 						<img src="/BookMgnProj/upload/${one.image.image }">
-						<h1>${one.title.title }</h1>
+						<h1>${Index.index+1}.st ${one.title.title }</h1>
 					</div>
 				</c:when>
 				<c:otherwise>
 					<div class="other"> 
 						<input type="hidden" value="${one.bookCode.bookCode }">
-						<h2>${Index.index+1}.st</h2>
+						
 						<img src="/BookMgnProj/upload/${one.image.image }">
-						<b>${one.title.title }</b>
+						<h2>${Index.index+1}.st  ${one.title.title }</h2>
 					</div>
 				</c:otherwise>
 			</c:choose>

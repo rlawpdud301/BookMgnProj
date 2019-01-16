@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yi.BookMgnProj.dao.BookBest10Mapper">
 	<sql id="selectSql">
-		SELECT bc, title, author, pub_name, rental_date, cate_b_no,
+		SELECT bc, title, author, pub_name, rental_date, cate_b_no,image,
 		cate_m_no, cate_s_no,count(bc) as ranking
 		FROM bestsaler
 	</sql>

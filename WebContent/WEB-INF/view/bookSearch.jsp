@@ -16,7 +16,7 @@
 	top: 0;
 	left: 0;
 	margin-left:-100%;
-	height: 150%;
+	height: 4300px;
 	background-color: rgb(0,0,0,0.5);	
 }
 #inner{	
@@ -24,7 +24,7 @@
 	color: white;
 	position: absolute;
 	left: 30%;
-	top: 20%; 
+	top: 22%; 
 }
 #inner #bntx{
 	float: right;
@@ -78,7 +78,7 @@ table tr td{
 #selectOption{
 	width: 100%;
 	height:53px;
-	background: #510000;
+	background: #9FD4CA;
 	border-radius: 5px 5px 0 0;
 	line-height: 70px; 
 	/* border: 3px solid #AB4A12; */  
@@ -125,18 +125,18 @@ table tr td{
 	border: 0;
 	margin: 0;
 	padding: 0; 
-	border:2px solid #993800;  
+	border:2px solid #E1527D;  
 	
 }
 #search #bntBookSearch{ 
-	background:#993800;
+	background:#E1527D;
 	color:#FFFEC6;
 	width: 100px;
 	height: 24px;
 	border: 0;
 	margin-top: 0;
 	padding-top: 0;
-	border-bottom:3px solid #993800; 
+	border-bottom:3px solid #E1527D; 
 }
 #list img { 
 	float: left;
@@ -160,7 +160,7 @@ table tr td{
 	background: white;
 	clear: both;
 	list-style: none;
-	border-bottom: 5px solid #510000;
+	border-bottom: 5px solid #E1527D;
 	height: 220px;
 }
 span {
@@ -298,7 +298,7 @@ span {
 				
 					$("#list").append("<ul>");
 					$(list).each(function(index, obj) { 
-						$("#list").append("<li><a href='#' class='bookinfo' data-bcode='"+ obj.bookCode.bookCode +"' onclick='return false;'><img src=src='${pageContext.request.contextPath }/upload/"+ list[0].image.image +"'></a><p class='text'><span id='title'>제목 : <a href='#' class='bookinfo' data-bcode='"+ obj.bookCode.bookCode +"' onclick='return false;'>"
+						$("#list").append("<li><a href='#' class='bookinfo' data-bcode='"+ obj.bookCode.bookCode +"' onclick='return false;'><img src='${pageContext.request.contextPath }/upload/"+ obj.image.image +"'></a><p class='text'><span id='title'>제목 : <a href='#' class='bookinfo' data-bcode='"+ obj.bookCode.bookCode +"' onclick='return false;'>"
 											+ obj.title.title
 											+ "</a></span><br>저자 : <a href='https://search.naver.com/search.naver?sm=top_hty&fbm=1&ie=utf8&query="+ obj.author.author+"' target='_blank' >"
 											+ obj.author.author
@@ -333,7 +333,7 @@ span {
 				dataType : "json", 
 				success : function(list) {
 					console.log(list);
-					$("#inner").append("<img src='${pageContext.request.contextPath }/images/KakaoTalk_20190108_141119999.jpg' id='bimg'>");
+					$("#inner").append("<img src='${pageContext.request.contextPath }/upload/"+ list[0].image.image +"' id='bimg'>");
 					$("#inner").append("<p>");
 					$("#inner").append("<h1>"+list[0].title.title+"</h1>");
 					$("#inner").append("저자 : <a href='https://search.naver.com/search.naver?sm=top_hty&fbm=1&ie=utf8&query="+ list[0].author.author+"' target='_blank' >"
