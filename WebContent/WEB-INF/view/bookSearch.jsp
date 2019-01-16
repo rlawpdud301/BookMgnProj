@@ -298,7 +298,7 @@ span {
 				
 					$("#list").append("<ul>");
 					$(list).each(function(index, obj) { 
-						$("#list").append("<li><a href='#' class='bookinfo' data-bcode='"+ obj.bookCode.bookCode +"' onclick='return false;'><img src=src='${pageContext.request.contextPath }/upload/"+ list[0].image.image +"'></a><p class='text'><span id='title'>제목 : <a href='#' class='bookinfo' data-bcode='"+ obj.bookCode.bookCode +"' onclick='return false;'>"
+						$("#list").append("<li><a href='#' class='bookinfo' data-bcode='"+ obj.bookCode.bookCode +"' onclick='return false;'><img src='${pageContext.request.contextPath }/upload/"+ obj.image.image +"'></a><p class='text'><span id='title'>제목 : <a href='#' class='bookinfo' data-bcode='"+ obj.bookCode.bookCode +"' onclick='return false;'>"
 											+ obj.title.title
 											+ "</a></span><br>저자 : <a href='https://search.naver.com/search.naver?sm=top_hty&fbm=1&ie=utf8&query="+ obj.author.author+"' target='_blank' >"
 											+ obj.author.author
@@ -333,7 +333,7 @@ span {
 				dataType : "json", 
 				success : function(list) {
 					console.log(list);
-					$("#inner").append("<img src='${pageContext.request.contextPath }/images/KakaoTalk_20190108_141119999.jpg' id='bimg'>");
+					$("#inner").append("<img src='${pageContext.request.contextPath }/upload/"+ list[0].image.image +"' id='bimg'>");
 					$("#inner").append("<p>");
 					$("#inner").append("<h1>"+list[0].title.title+"</h1>");
 					$("#inner").append("저자 : <a href='https://search.naver.com/search.naver?sm=top_hty&fbm=1&ie=utf8&query="+ list[0].author.author+"' target='_blank' >"

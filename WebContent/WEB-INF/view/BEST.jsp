@@ -119,7 +119,7 @@
 						<input type="hidden" value="${one.bookCode.bookCode }" >
 						<img src="${pageContext.request.contextPath }/images/1.jpg" class="lankimg">
 						<h1>.st</h1>
-						<img src="/BookMgnProj/upload/${one.image.image }">
+						<img src="${pageContext.request.contextPath }/upload/${one.image.image }">
 						<h1>${one.title.title }</h1>
 					</div>
 				</c:when>
