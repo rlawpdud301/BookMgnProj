@@ -128,6 +128,8 @@ body,html{
 	border-bottom: 3px solid #510000; 
 	position: fixed;
 	background: white;
+	left:0;
+	top:0;
 }
 
 #header img {
