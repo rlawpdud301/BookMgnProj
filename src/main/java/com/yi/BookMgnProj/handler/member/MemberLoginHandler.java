@@ -37,7 +37,8 @@ public class MemberLoginHandler implements CommandHandler {
 					auth.setAdmin(member.isAdmin());
 					auth.setKorName(member.getKorName());
 					session.setAttribute("AUTH", auth);
-					return "/WEB-INF/view/home.jsp";
+					res.sendRedirect(req.getContextPath()+"/home.do");
+					return null;
 				} else {
 					return "/WEB-INF/view/home.jsp";
 				}
