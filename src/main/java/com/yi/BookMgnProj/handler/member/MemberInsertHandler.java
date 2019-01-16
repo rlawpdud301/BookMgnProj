@@ -1,6 +1,7 @@
 package com.yi.BookMgnProj.handler.member;
 
 import java.io.File;
+import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -9,6 +10,8 @@ import javax.swing.JOptionPane;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.yi.BookMgnProj.model.Member;
+import com.yi.BookMgnProj.model.MemberRentalInfo;
+import com.yi.BookMgnProj.model.Overdue;
 import com.yi.BookMgnProj.mvc.CommandHandler;
 import com.yi.BookMgnProj.service.MemberService;
 
@@ -67,6 +70,12 @@ public class MemberInsertHandler implements CommandHandler {
 				member.setUniqueness(uni);
 				member.setPhoto(photo);
 				
+				if(file1 == null){
+					member.setPhoto("noman.png");
+				}else{
+					member.setPhoto(photo);
+				}
+				
 				String make = multi.getParameter("engName").substring(0, 1);
 				System.out.println("make는:"+make);
 				int i = 0;
@@ -81,7 +90,8 @@ public class MemberInsertHandler implements CommandHandler {
 				mn = mn.toUpperCase();
 				member.setMemberNo(mn);
 				service.insertMember(member);
-				
+				insertRentailInfo();
+				insertOverdue();
 				return "/WEB-INF/view/member/insertSuccess.jsp";				
 			}catch(Exception e){
 				e.printStackTrace();
@@ -89,5 +99,21 @@ public class MemberInsertHandler implements CommandHandler {
 		}
 		return null;
 	}
-		
+	public void insertRentailInfo(){
+		MemberRentalInfo memberRentalInfo = new MemberRentalInfo();
+		memberRentalInfo.setMemberNo(mn);
+		memberRentalInfo.setGrade(1);
+		memberRentalInfo.setNowTotal(3);
+		memberRentalInfo.setTotal(0);
+		int res = service.insertMemberRentalInfo(memberRentalInfo);
+	}
+	public void insertOverdue(){
+		Overdue overdue = new Overdue();
+		overdue.setMemberNo(mn);
+		overdue.setStopDate(0);
+		overdue.setOverdueCount(0);
+		overdue.setRentalAuthority(true);
+		overdue.setStopEndDate(new Date());
+		service.insertoverDue(overdue);
+	}
 }
