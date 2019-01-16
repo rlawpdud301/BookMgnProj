@@ -14,9 +14,6 @@
 	#searchList th,tr,td{
 		border:1px solid black;
 	}
-
-
-
 </style>
 <script>
 	$(function(){
@@ -126,8 +123,7 @@
 </head>
 <body>
 	<header>
-		<jsp:include page="/WEB-INF/view/FooterHeader/admin.jsp"></jsp:include>
-	
+		<jsp:include page="FooterHeader/header.jsp" flush="false" />  
 	</header>
 	<section>
 	<div id="searchMember">

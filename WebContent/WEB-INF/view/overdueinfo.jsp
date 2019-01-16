@@ -205,17 +205,7 @@
 </head>
 <body>
 	<header>
-		<c:choose>
-			<c:when test="${AUTH == null }">
-				<jsp:include page="FooterHeader/header.jsp" flush="false" />
-			</c:when>
-			<c:when test="${AUTH.admin == true }">
-				<jsp:include page="FooterHeader/admin.jsp" flush="false" />
-			</c:when>
-			<c:when test="${AUTH.admin == false }">
-				<jsp:include page="FooterHeader/guest.jsp" flush="false" />
-			</c:when>
-		</c:choose>
+		<jsp:include page="FooterHeader/header.jsp" flush="false" />  
 	</header>
 	<div id="overduetable">
 	<input type="button" value="전채 보기" id="bntAll">

@@ -21,39 +21,22 @@
  
 </head>
 <body>   
-	<header> 
-		<c:choose>
-			<c:when test="${AUTH == null }">
-				<jsp:include page="FooterHeader/header.jsp" flush="false" />  
-			</c:when>   
-			<c:when test="${AUTH.admin == true }">
-				<jsp:include page="FooterHeader/admin.jsp" flush="false" />
-			</c:when>
-			<c:when test="${AUTH.admin == false }">
-				<jsp:include page="FooterHeader/guest.jsp" flush="false" />
-			</c:when>
-		</c:choose>
+	<header>
+		<jsp:include page="FooterHeader/header.jsp" flush="false" />  
 	</header>
+	
 	<section>
-<<<<<<< HEAD
-=======
-		<div id="img"><img alt="" src="${pageContext.request.contextPath }/images/3분만에_읽는_책.jpg"></div>
-		<div id="contaa">aaaaaaaaaa</div>
-	</section>
-	<%-- <section>
->>>>>>> branch 'master' of https://github.com/rlawpdud301/BookMgnProj.git
-		<div id="bookSearch">
+		<%-- <div id="bookSearch">
 			<jsp:include page="/WEB-INF/view/bookSearch.jsp" flush="false" />
-		</div>
+		</div> --%>
+		
+		<%-- <div id="best">
+			<jsp:include page="/WEB-INF/view/BEST.jsp" flush="false" />
+		</div> --%>
 	</section>
-	<%-- <section id="best">
-		<jsp:include page="/WEB-INF/view/BEST.jsp" flush="false" />
-	</section> --%>
 
 	<footer>
-
 		<jsp:include page="FooterHeader/footer.jsp" flush="false" />
-
 	</footer>
 
 </body>

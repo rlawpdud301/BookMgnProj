@@ -135,7 +135,7 @@ body, html {
 </head>
 <body>
 	<header>
-			<jsp:include page="../FooterHeader/admin.jsp" flush="false" />
+		<jsp:include page="../FooterHeader/header.jsp" flush="false" />  
 	</header>
 
 	<section>
