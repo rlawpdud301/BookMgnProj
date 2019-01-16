@@ -43,7 +43,7 @@ public class MemberfindHandler implements CommandHandler {
 				}
 				req.removeAttribute("name");
 				req.removeAttribute("phone");
-				req.setAttribute("result","고객님의 아이디는"+ member.getMemberNo() + "입니다");
+				req.setAttribute("result","고객님의 아이디는 <b>"+ member.getMemberNo() + "</b> 입니다.");
 				
 				/*res.sendRedirect("find.do");*/
 				/*return null;*/

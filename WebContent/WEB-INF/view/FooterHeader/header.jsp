@@ -6,20 +6,21 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
+
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/common.css">
 </head>
 	<div id="header">
 		<div id="menu">
 			<c:choose>
 				<c:when test="${AUTH == null }">
-					<a href="${pageContext.request.contextPath }/home.do"><img src="${pageContext.request.contextPath }/images/logo1.png"></a><a href="#">도서검색</a> | <a href="#">위치보기</a> | <a href="#">게시판</a> | <a href="${pageContext.request.contextPath }/best.do">BEST!</a>
-					<a href="${pageContext.request.contextPath }/member/insert.do" id="insert"> | 회원가입</a>					
+					<a href="${pageContext.request.contextPath }/home.do"><img src="${pageContext.request.contextPath }/images/logo1.png" id="logo"></a><a href="#bookSearch">도서검색</a> | <a href="#">위치보기</a> | <a href="#">게시판</a> | <a href="#best">BEST!</a>
+					<a href="${pageContext.request.contextPath }/member/insert.do" id="insert"> | 회원가입</a>					 
 					<a href="${pageContext.request.contextPath }/member/search.do" id="membersearch">회원찾기(테스트용)</a>
 					<a href="${pageContext.request.contextPath }/member/login.do" id="login">로그인</a>
 				</c:when>   
 			
 				<c:when test="${AUTH.admin == true }">
-					<a href="#"><img alt="" src="${pageContext.request.contextPath }/images/logo.png"></a><a href="#">도서검색</a> | <a href="#">위치보기</a> | <a href="#">게시판</a> | <a href="#">BEST!</a>
+					<a href="${pageContext.request.contextPath }/home.do"><img alt="" src="${pageContext.request.contextPath }/images/logo1.png" id="logo"></a><a href="#bookSearch">도서검색</a> | <a href="#">위치보기</a> | <a href="#">게시판</a> | <a href="#best">BEST!</a>
 					<a href="${pageContext.request.contextPath }/book/insert.do">도서추가</a>
 					<a href="/BookMgnProj/rent/bookRent.do">대여</a>
 					<a href="/BookMgnProj/rent/bookReturn.do">반납</a>

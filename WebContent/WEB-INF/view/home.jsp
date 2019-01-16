@@ -8,14 +8,48 @@
 <title>Insert title here</title>
 <style type="text/css">
 
-
-#img{
-	width: 60%;
-  
+section{
+	width: 60%; 
+	margin: 50px auto; 
 }
-#contaa{
-	width: 20%;
 
+#banner img{
+	width: 100%;
+}
+#searchBookTitle{
+	width: 30%;
+	height: 500px;
+	background: #5D5D5D;
+	color: white; 
+	text-align: center;
+	font-size: 30px;
+}
+#searchBookTitle p{
+	/* margin-top: 60px; */
+}
+#searchBookTitle #text { 
+	font-size: 30px;
+	width: 200px;
+}
+#searchBookTitle #bnt{
+	font-size: 26px;
+	background: white;
+	color: black;
+	border: 1px solid white;
+} 
+#searchBookTitle p{
+	margin-top: 200px;
+	margin-bottom: 10px;  
+}
+section #bookSearch{
+	width: 100%;
+	margin-top: 100px;
+	margin-bottom: 500px;
+}
+#best{
+	background: #9FD4CA;
+	/* border: 10px solid #E1527D; */
+	border-radius: 5px  5px 0 0;
 }
 </style>
  
@@ -23,19 +57,23 @@
 <body>   
 	<header>
 		<jsp:include page="FooterHeader/header.jsp" flush="false" />  
-	</header>
+	</header> 
 
 	
 
 	<section>
-		<div>
-			<img src="${pageContext.request.contextPath }/images/3분만에_읽는_책.jpg">
+		<div id="banner">
+			<img src="${pageContext.request.contextPath }/images/베너2.jpg">
+					
 		</div>
-		<%-- <div id="bookSearch">
+		<div id="bookSearch">
 			<jsp:include page="/WEB-INF/view/bookSearch.jsp" flush="false" />
-		</div> --%>
+		</div>
+		<div id="best">
+			<jsp:include page="/WEB-INF/view/BEST.jsp" flush="false" />
+		</div>				
 	</section>
-
+	
 	<footer>
 		<jsp:include page="FooterHeader/footer.jsp" flush="false" />
 	</footer>
