@@ -15,6 +15,7 @@
 	fieldset {
 		width: 600px;
 		margin: 100px auto;
+		padding 
 	}
 	
 	label {
@@ -24,6 +25,10 @@
 	
 	input {
 		width: 200px;
+	}
+	
+	p {
+		text-align: center;
 	}
 </style>
 </head>
@@ -39,8 +44,8 @@
 				<input type="text" name="id" placeholder="MemberNumber"><br>
 				<input type="password" name="password" placeholder="Password"><br>
 				<input type="submit" value="로그인"><br>
-				<a href="${pageContext.request.contextPath}/member/insert.do">회원 가입하기</a>
-				<a href="${pageContext.request.contextPath}/member/find.do">ID / PW 찾기</a>
+				<p><a href="${pageContext.request.contextPath}/member/insert.do">회원 가입하기</a>
+				<a href="${pageContext.request.contextPath}/member/find.do">ID / PW 찾기</a></p>
 			</fieldset>
 		</form>
 	</section>
