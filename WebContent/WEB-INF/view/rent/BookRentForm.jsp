@@ -117,6 +117,28 @@ body, html {
 }
 #MemberSearch {
 	display: none;
+	width: 1024px;
+	margin: 0 auto;
+}
+#form{
+	width: 1024px;
+	margin: 0 auto;
+	text-align: center;
+	margin-bottom: 100px;
+	margin-top: 20px;
+}
+section {
+	width:100%;
+	height:2000px;
+	background-image: url("../images/8840e0124b9faa3ab8353e644ca325c8.png");
+	background-size: 90% 100%;
+	background-repeat: no-repeat;
+	background-position: center center;
+	padding-top: 350px;
+}
+#MemberSearch{
+	width: 50%;
+	margin: 0 auto;
 }
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -139,11 +161,11 @@ body, html {
 	</header>
 
 	<section>
+	<div id="form">
 	<form action="bookRent.do" method="post">
-		<fieldset>
 			<p>
 				<label>회원 번호</label>
-				<input type="text" name="memberNo" id="memberNo">
+				<input type="text" name="memberNo" id="MemberNo">
 				<input type="button" value="회원 검색" class="butt" id="memBtn">
 			</p>
 			<p>
@@ -155,8 +177,8 @@ body, html {
 				<input type="submit" value="대여" id="btn" class="butt">
 				<input type="reset" value="취소" class="butt">
 			</p>
-		</fieldset>
 	</form>
+	</div>
 		<div id="bookSearch">
 			<jsp:include page="/WEB-INF/view/rent/bookRentSearch.jsp" flush="false" />
 		</div>
@@ -165,7 +187,6 @@ body, html {
 	</div>
 	</section>
 	<footer>
-
 		<jsp:include page="../FooterHeader/footer.jsp" flush="false" />
 
 	</footer>

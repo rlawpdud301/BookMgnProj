@@ -7,6 +7,15 @@
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <style>
+	#searchMember{
+		width: 80%;
+		margin: 0 auto;
+	}
+	#searchList{
+		width: 50%;
+		margin: 0 auto;
+		margin-left: 10px;
+	}
 	#searchList table{
 		border-collapse: collapse;
 		border:1px solid black;
@@ -125,7 +134,7 @@
 	$(function() {
 		$(document).on("click",".tr",function(event) {
 			var code = $(this).children("td").eq(0).text();
-			$("#memberNo").val(code);
+			$("#MemberNo").val(code);
 		})
 	})
 </script>
@@ -139,8 +148,9 @@
 		</select>
 		<input type="text" id="memberNo">
 		<input type="submit" value="검색" id="selected">
-	</div>	
 		<input type="button" value="초기화" id="btn1">
+	</div>	
+		
 
 	
 	<div id="searchList">

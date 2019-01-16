@@ -25,12 +25,18 @@ $(function() {
 				success : function(st) {
 					console.log(st);
 					alert(st);
+					location.reload();
 				}
 				
 			})
 		}
 	})
+	$("#bookBtn").click(function() {
+			$("#Overdueinfo").css("display","block");
+			
+		})
 });  
+
 </script>
 <style>
 	.butt {
@@ -131,6 +137,9 @@ body, html {
 	font-size: 14px;
 	color: #6F6F6F;
 }
+#Overdueinfo {
+	display: none;
+}
 </style>
 </head>
 <body>
@@ -143,7 +152,7 @@ body, html {
 			<p>
 				<label>도서 코드</label>
 				<input type="text" name="bookCode" id="bookCode">
-				<input type="button" id="search">
+				<input type="button" value="도서 검색" id="bookBtn">
 			</p>
 			<p>
 				<input type="submit" value="연장" id="go">

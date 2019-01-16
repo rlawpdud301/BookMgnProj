@@ -10,28 +10,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script>
-	$(function() {
-		$("#go").click(function() {
-			if($("#bookCode").val() == ""){
-				alert("도서코드를 입력해주세요");
-			}else{
-				$.ajax({
-					url : "bookReturn.do",
-					type : "post",
-					data : {"bookCode" : $("#bookCode").val()},
-					dataType : "json", 
-					success : function(st) {
-						console.log(st);
-						alert(st);
-					}
-					
-				})
-			}
-		})
-	});  
-</script>
+
 <style>
 	.butt {
 	width: 80px;
@@ -131,7 +110,40 @@ body, html {
 	font-size: 14px;
 	color: #6F6F6F;
 }
+#Overdueinfo {
+	display: none;
+}
 </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+	$(function() {
+		$("#go").click(function() {
+			if($("#bookCode").val() == ""){
+				alert("도서코드를 입력해주세요");
+			}else{
+				$.ajax({
+					url : "bookReturn.do",
+					type : "post",
+					data : {"bookCode" : $("#bookCode").val()},
+					dataType : "json", 
+					success : function(st) {
+						console.log(st);
+						alert(st);
+						location.reload();
+					}
+					
+				})
+				
+				
+			}
+			
+		})
+		$("#bookBtn").click(function() {
+			$("#Overdueinfo").css("display","block");
+			
+		})
+	});  
+</script>
 </head>
 <body>
 	<header>
@@ -143,7 +155,7 @@ body, html {
 			<p>
 				<label>도서 코드</label>
 				<input type="text" name="bookCode" id="bookCode">
-				<input type="button" id="search">
+				<input type="button" value="도서 검색" id="bookBtn">
 			</p>
 			<p>
 				<input type="button" value="반납" id="go">

@@ -71,8 +71,12 @@ table tr td{
 	width: 300px;
 	border: 1px solid #D2E5A8; 
 }
+h1{
+	width:	55%;
+	margin: 0 auto;
+}
 #SearchMethod{
-	width: 100%;
+	width: 55%;
 	margin: 0 auto;
 }
 #selectOption{
