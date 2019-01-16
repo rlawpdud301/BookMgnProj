@@ -21,7 +21,7 @@
 <script>
 	$(function(){
 		$.ajax({
-			url: "Rentsearch.do",
+			url: "rentSearch.do",
 			type: "post",
 			data: {"list":"a"},
 			dataType: "json",
@@ -31,7 +31,7 @@
 					 $("table").append("<tr><th>회원번호</th><th>이름</th><th>주민번호</th><th>전화번호</th></tr>")	
 				$(json).each(function(index, obj){
 					var jumin = obj.jumin
-					$("table").append("<tr><td>"+obj.memberNo+"</td><td>"+"<a href='searchDetail.do?no="+obj.memberNo+"'>"+obj.korName+"</a></td><td>"+jumin.substring(0,8)+"******"+"</td><td>"+obj.phone+"</td></tr>")
+					$("table").append("<tr class='tr'><td>"+obj.memberNo+"</td><td>"+obj.korName+"</a></td><td>"+jumin.substring(0,8)+"******"+"</td><td>"+obj.phone+"</td></tr>")
 				})
 					 $("#searchList").append("</table>")
 			}
@@ -42,7 +42,7 @@
 	$(document).on("click","#selected",function(event){
 		if($("#select").val()=="회원번호"){
 		$.ajax({
-			url : "Rentsearch.do",
+			url : "rentSearch.do",
 			type: "post",
 			data: {"memberNo":$("#memberNo").val()},
 			dataType : "json",
@@ -54,14 +54,14 @@
 				
 				$(mnojson).each(function(index,obj){
 					var jumin = obj.jumin
-					$("table").append("<tr><td>"+obj.memberNo+"</td><td>"+"<a href='searchDetail.do?no="+obj.memberNo+"'>"+obj.korName+"</a></td><td>"+jumin.substring(0,8)+"******"+"</td><td>"+obj.phone+"</td></tr>")
+					$("table").append("<tr class='tr'><td>"+obj.memberNo+"</td><td>"+obj.korName+"</a></td><td>"+jumin.substring(0,8)+"******"+"</td><td>"+obj.phone+"</td></tr>")
 				})
 				$("#searchList").append("</table>")			
 				}
 			})
 		}else if($("#select").val()=="회원이름"){
 			$.ajax({
-				url : "Rentsearch.do",
+				url : "rentSearch.do",
 				type: "post",
 				data:{"korName":$("#memberNo").val()},
 				dataType:"json",
@@ -73,14 +73,14 @@
 					
 					$(mnajson).each(function(index,obj){
 						var jumin = obj.jumin
-						$("table").append("<tr><td>"+obj.memberNo+"</td><td>"+"<a href='searchDetail.do?no="+obj.memberNo+"'>"+obj.korName+"</a></td><td>"+jumin.substring(0,8)+"******"+"</td><td>"+obj.phone+"</td></tr>")
+						$("table").append("<tr class='tr'><td>"+obj.memberNo+"</td><td>"+obj.korName+"</a></td><td>"+jumin.substring(0,8)+"******"+"</td><td>"+obj.phone+"</td></tr>")
 					})
 					$("#searchList").append("</table>")					
 				}			
 			})
 		}else if($("#select").val()=="회원전화번호"){
 			$.ajax({
-				url : "Rentsearch.do",
+				url : "rentSearch.do",
 				type: "post",
 				data:{"phone":$("#memberNo").val()},
 				dataType:"json",
@@ -92,7 +92,7 @@
 					
 					$(phonejson).each(function(index,obj){
 						var jumin = obj.jumin
-						$("table").append("<tr><td>"+obj.memberNo+"</td><td>"+"<a href='searchDetail.do?no="+obj.memberNo+"'>"+obj.korName+"</a></td><td>"+jumin.substring(0,8)+"******"+"</td><td>"+obj.phone+"</td></tr>")
+						$("table").append("<tr class='tr'><td>"+obj.memberNo+"</td><td>"+obj.korName+"</td><td>"+jumin.substring(0,8)+"******"+"</td><td>"+obj.phone+"</td></tr>")
 					})
 					$("#searchList").append("</table>")				
 				}										
@@ -103,7 +103,7 @@
 	$(function(){
 		$("#btn1").click(function(){
 			$.ajax({
-				url: "Rentsearch.do",
+				url: "rentSearch.do",
 				type: "post",
 				data: {"list":"a"},
 				dataType: "json",
@@ -114,13 +114,19 @@
 						 $("table").append("<tr><th>회원번호</th><th>이름</th><th>주민번호</th><th>전화번호</th></tr>")	
 					$(json).each(function(index, obj){
 						var jumin = obj.jumin
-						$("table").append("<tr><td>"+obj.memberNo+"</td><td>"+"<a href='searchDetail.do?no="+obj.memberNo+"'>"+obj.korName+"</a></td><td>"+jumin.substring(0,8)+"******"+"</td><td>"+obj.phone+"</td></tr>")
+						$("table").append("<tr class='tr'><td>"+obj.memberNo+"</td><td>"+obj.korName+"</td><td>"+jumin.substring(0,8)+"******"+"</td><td>"+obj.phone+"</td></tr>")
 					})
 						 $("#searchList").append("</table>")
 				}
 			})
 		})
 		
+	})
+	$(function() {
+		$(document).on("click",".tr",function(event) {
+			var code = $(this).children("td").eq(0).text();
+			$("#bookCode").val(code);
+		})
 	})
 </script>
 </head>

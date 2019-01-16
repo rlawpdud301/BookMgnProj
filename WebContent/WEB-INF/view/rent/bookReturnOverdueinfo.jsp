@@ -45,6 +45,7 @@
 		});
 		
 		$(document).on("click","#bntAll",function(event) {
+			$("#item").val(null);
 			var over = 0;
 			if($("#overdate").is(":checked")){
 	            over = 1;
@@ -146,6 +147,7 @@
 	        	$.ajax({
 					url : "returnOverduedtail.do",
 					type : "post",
+					data : {"over" : over},
 					dataType : "json", 
 					success : function(list) {
 						console.log(list);
