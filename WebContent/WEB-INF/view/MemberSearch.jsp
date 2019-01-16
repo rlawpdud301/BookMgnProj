@@ -7,12 +7,22 @@
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <style>
+	
 	#searchList table{
 		border-collapse: collapse;
 		border:1px solid black;
+		width:600px;
+		text-align: center; 		
+		margin:0 auto;
 	}
 	#searchList th,tr,td{
 		border:1px solid black;
+		padding: 5px;
+	}
+	section{
+		width:100%;
+		margin:0 auto;
+		text-align: center;
 	}
 </style>
 <script>
@@ -126,6 +136,7 @@
 		<jsp:include page="FooterHeader/header.jsp" flush="false" />  
 	</header>
 	<section>
+	<br>
 	<div id="searchMember">
 		<select name="select" id="select">
 			<option value="회원번호">회원번호</option>
@@ -134,10 +145,9 @@
 		</select>
 		<input type="text" id="memberNo">
 		<input type="submit" value="검색" id="selected">
-	</div>	
 		<input type="button" value="초기화" id="btn1">
-
-	
+	</div>	
+	<br>	
 	<div id="searchList">
 	
 	</div>

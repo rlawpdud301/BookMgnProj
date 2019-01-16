@@ -38,9 +38,10 @@ public class MemberLoginHandler implements CommandHandler {
 					auth.setKorName(member.getKorName());
 					session.setAttribute("AUTH", auth);
 					res.sendRedirect(req.getContextPath()+"/home.do");
-					return null;
 				} else {
-					return "/WEB-INF/view/home.jsp";
+					String error = "회원번호 또는 비밀번호를 다시 한 번 확인해주세요.";
+					req.setAttribute("Error", error);
+					return "/WEB-INF/view/member/memberLoginForm.jsp";
 				}
 			} catch (Exception e) {
 				e.printStackTrace();

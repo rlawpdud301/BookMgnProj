@@ -51,6 +51,14 @@ section #bookSearch{
 	/* border: 10px solid #E1527D; */
 	border-radius: 5px  5px 0 0;
 }
+
+#img{
+	width: 60%;
+}
+#contaa{
+	width: 20%;
+}
+
 </style>
  
 </head>
@@ -77,6 +85,5 @@ section #bookSearch{
 	<footer>
 		<jsp:include page="FooterHeader/footer.jsp" flush="false" />
 	</footer>
-
 </body>
 </html>

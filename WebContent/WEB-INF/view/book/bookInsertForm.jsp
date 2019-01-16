@@ -31,7 +31,6 @@
 	
 	#submit, #reset {
 	}
-	
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
@@ -83,6 +82,7 @@
 
 			reader.onload = function(e) {
 				$('#blah').attr('src', e.target.result);
+
 			}
 
 			reader.readAsDataURL(input.files[0]);
@@ -91,6 +91,10 @@
 </script>
 </head>
 <body>
+	<header>
+		<jsp:include page="../FooterHeader/header.jsp" flush="false" />  
+	</header>
+
 	<form action="${pageContext.request.contextPath }/book/insert.do" method="post" enctype="multipart/form-data" runat="server">
 		<fieldset>
 			<legend>도서 추가</legend>
@@ -133,7 +137,7 @@
 			<p>
 				<label>이미지</label>
 				<input type="file" name="image" id="imgInp"><br>
-				<img alt="" src="" id="blah">
+				<img alt="" src="" id="blah" width=200 height=200>
 			</p>
 			
 			<p>
@@ -142,5 +146,9 @@
 			</p>
 		</fieldset>
 	</form>
+	
+	<footer>
+		<jsp:include page="../FooterHeader/footer.jsp" flush="false" />
+	</footer>
 </body>
 </html>
