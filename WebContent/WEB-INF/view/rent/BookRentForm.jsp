@@ -111,11 +111,25 @@ body, html {
 	font-size: 14px;
 	color: #6F6F6F;
 }
+
+#bookSearch {
+	display: none;
+}
+#MemberSearch {
+	display: none;
+}
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
 	$(function() {
-		
+		$("#bookBtn").click(function() {
+			$("#bookSearch").css("display","block");
+			$("#MemberSearch").css("display","none");
+		})
+		$("#memBtn").click(function() {
+			$("#MemberSearch").css("display","block");
+			$("#bookSearch").css("display","none");
+		})
 	})
 </script>
 </head>
@@ -130,12 +144,12 @@ body, html {
 			<p>
 				<label>회원 번호</label>
 				<input type="text" name="memberNo" id="memberNo">
-				<input type="button" value="회원 검색" class="butt" id="search">
+				<input type="button" value="회원 검색" class="butt" id="memBtn">
 			</p>
 			<p>
 				<label>도서 코드</label>
 				<input type="text" name="bookCode" id="bookCode">
-				<input type="button" value="도서 검색" class="butt" id="search">
+				<input type="button" value="도서 검색" class="butt" id="bookBtn">
 			</p>
 			<p>
 				<input type="submit" value="대여" id="btn" class="butt">

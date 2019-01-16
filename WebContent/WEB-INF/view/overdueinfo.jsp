@@ -24,7 +24,7 @@
 
 </style>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <link rel="stylesheet" href="/resources/demos/style.css">
+
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -46,13 +46,13 @@
 		
 		$(document).on("click","#bntAll",function(event) {
 			var over = 0;
+			$("#item").val(null);
 			if($("#overdate").is(":checked")){
 	            over = 1;
 	        }else{
 	        	over = 0;
 	        }
-			$("#overduetable table").empty();
-			$("#overduetable table").append("<tr><th>대여번호</th><th>회원 이름</th><th>회원 번호</th><th>도서 제목</th><th>도서 코드</th><th>전화 번호</th><th>연채 일수</th></tr>");
+			
 			$.ajax({
 				url : "overduedtail.do",
 				type : "post",
@@ -60,6 +60,8 @@
 				dataType : "json", 
 				success : function(list) {
 					console.log(list);
+					$("#overduetable table").empty();
+					$("#overduetable table").append("<tr><th>대여번호</th><th>회원 이름</th><th>회원 번호</th><th>도서 제목</th><th>도서 코드</th><th>전화 번호</th><th>연채 일수</th></tr>");
 					$(list).each(function(index, obj) {
 						$("#overduetable table").append("<tr class='tr'><td>"+obj.rentalNo+"</td><td>"
 								+obj.korName.korName+"</td><td>"
@@ -86,8 +88,7 @@
 	        }else{
 	        	over = 0;
 	        }
-			$("#overduetable table").empty();
-			$("#overduetable table").append("<tr><th>대여번호</th><th>회원 이름</th><th>회원 번호</th><th>도서 제목</th><th>도서 코드</th><th>전화 번호</th><th>연채 일수</th></tr>");
+			
 			
 			$.ajax({
 				url : "overduedtail.do",
@@ -96,6 +97,8 @@
 				dataType : "json", 
 				success : function(list) {
 					console.log(list);
+					$("#overduetable table").empty();
+					$("#overduetable table").append("<tr><th>대여번호</th><th>회원 이름</th><th>회원 번호</th><th>도서 제목</th><th>도서 코드</th><th>전화 번호</th><th>연채 일수</th></tr>");
 					$(list).each(function(index, obj) {
 						$("#overduetable table").append("<tr class='tr'><td>"+obj.rentalNo+"</td><td>"
 								+obj.korName.korName+"</td><td>"
@@ -128,6 +131,8 @@
 					dataType : "json", 
 					success : function(list) {
 						console.log(list);
+						$("#overduetable table").empty();
+						$("#overduetable table").append("<tr><th>대여번호</th><th>회원 이름</th><th>회원 번호</th><th>도서 제목</th><th>도서 코드</th><th>전화 번호</th><th>연채 일수</th></tr>");
 						$(list).each(function(index, obj) {
 							$("#overduetable table").append("<tr class='tr'><td>"+obj.rentalNo+"</td><td>"
 									+obj.korName.korName+"</td><td>"
@@ -143,10 +148,13 @@
 	        }else{
 	        	$.ajax({
 					url : "overduedtail.do",
+					data : {"over" : over},
 					type : "post",
 					dataType : "json", 
 					success : function(list) {
 						console.log(list);
+						$("#overduetable table").empty();
+						$("#overduetable table").append("<tr><th>대여번호</th><th>회원 이름</th><th>회원 번호</th><th>도서 제목</th><th>도서 코드</th><th>전화 번호</th><th>연채 일수</th></tr>");
 						$(list).each(function(index, obj) {
 							$("#overduetable table").append("<tr class='tr'><td>"+obj.rentalNo+"</td><td>"
 									+obj.korName.korName+"</td><td>"
@@ -196,6 +204,19 @@
 </script>
 </head>
 <body>
+	<header>
+		<c:choose>
+			<c:when test="${AUTH == null }">
+				<jsp:include page="FooterHeader/header.jsp" flush="false" />
+			</c:when>
+			<c:when test="${AUTH.admin == true }">
+				<jsp:include page="FooterHeader/admin.jsp" flush="false" />
+			</c:when>
+			<c:when test="${AUTH.admin == false }">
+				<jsp:include page="FooterHeader/guest.jsp" flush="false" />
+			</c:when>
+		</c:choose>
+	</header>
 	<div id="overduetable">
 	<input type="button" value="전채 보기" id="bntAll">
 	<select>
@@ -237,5 +258,10 @@
 		</div>
 
 	</div>
+	<footer>
+
+		<jsp:include page="FooterHeader/footer.jsp" flush="false" />
+
+	</footer>
 </body>
 </html>
