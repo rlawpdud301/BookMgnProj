@@ -12,7 +12,7 @@
 		<div id="menu">
 			<c:choose>
 				<c:when test="${AUTH == null }">
-					<a href="${pageContext.request.contextPath }/home.do"><img src="${pageContext.request.contextPath }/images/logo.png"></a><a href="#">도서검색</a> | <a href="#">위치보기</a> | <a href="#">게시판</a> | <a href="${pageContext.request.contextPath }/best.do">BEST!</a>
+					<a href="${pageContext.request.contextPath }/home.do"><img src="${pageContext.request.contextPath }/images/logo1.png"></a><a href="#">도서검색</a> | <a href="#">위치보기</a> | <a href="#">게시판</a> | <a href="${pageContext.request.contextPath }/best.do">BEST!</a>
 					<a href="${pageContext.request.contextPath }/member/insert.do" id="insert"> | 회원가입</a>					
 					<a href="${pageContext.request.contextPath }/member/search.do" id="membersearch">회원찾기(테스트용)</a>
 					<a href="${pageContext.request.contextPath }/member/login.do" id="login">로그인</a>
