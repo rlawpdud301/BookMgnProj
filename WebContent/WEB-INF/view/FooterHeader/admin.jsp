@@ -218,6 +218,7 @@ section{
 			<a href="${pageContext.request.contextPath }/overduedtail.do" id="overduedtail">대여정보보기</a>
 			<a href="${pageContext.request.contextPath }/member/info.do">내 정보 보기</a>
 			<a href="${pageContext.request.contextPath }/member/logout.do">로그아웃</a>
+			<a href="${pageContext.request.contextPath }/member/search.do">회원 정보보기</a>
 			[관리자] ${AUTH.korName }님 환영합니다.
 		</div>
 	</div>
