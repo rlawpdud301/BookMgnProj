@@ -51,8 +51,7 @@
 	        }else{
 	        	over = 0;
 	        }
-			$("#overduetable table").empty();
-			$("#overduetable table").append("<tr><th>대여번호</th><th>회원 이름</th><th>회원 번호</th><th>도서 제목</th><th>도서 코드</th><th>전화 번호</th><th>연채 일수</th></tr>");
+			
 			$.ajax({
 				url : "returnOverduedtail.do",
 				type : "post",
@@ -60,6 +59,8 @@
 				dataType : "json", 
 				success : function(list) {
 					console.log(list);
+					$("#overduetable table").empty();
+					$("#overduetable table").append("<tr><th>대여번호</th><th>회원 이름</th><th>회원 번호</th><th>도서 제목</th><th>도서 코드</th><th>전화 번호</th><th>연채 일수</th></tr>");
 					$(list).each(function(index, obj) {
 						$("#overduetable table").append("<tr class='tr'><td>"+obj.rentalNo+"</td><td>"
 								+obj.korName.korName+"</td><td>"
@@ -86,8 +87,7 @@
 	        }else{
 	        	over = 0;
 	        }
-			$("#overduetable table").empty();
-			$("#overduetable table").append("<tr><th>대여번호</th><th>회원 이름</th><th>회원 번호</th><th>도서 제목</th><th>도서 코드</th><th>전화 번호</th><th>연채 일수</th></tr>");
+			
 			
 			$.ajax({
 				url : "returnOverduedtail.do",
@@ -96,6 +96,8 @@
 				dataType : "json", 
 				success : function(list) {
 					console.log(list);
+					$("#overduetable table").empty();
+					$("#overduetable table").append("<tr><th>대여번호</th><th>회원 이름</th><th>회원 번호</th><th>도서 제목</th><th>도서 코드</th><th>전화 번호</th><th>연채 일수</th></tr>");
 					$(list).each(function(index, obj) {
 						$("#overduetable table").append("<tr class='tr'><td>"+obj.rentalNo+"</td><td>"
 								+obj.korName.korName+"</td><td>"
@@ -112,8 +114,6 @@
 		})
 		$("#overdate").change(function(){
 			var over = 0;
-			 $("#overduetable table").empty();
-				$("#overduetable table").append("<tr><th>대여번호</th><th>회원 이름</th><th>회원 번호</th><th>도서 제목</th><th>도서 코드</th><th>전화 번호</th><th>연채 일수</th></tr>");
 	        if($("#overdate").is(":checked")){
 	            over = 1;
 	            
@@ -128,6 +128,8 @@
 					dataType : "json", 
 					success : function(list) {
 						console.log(list);
+						 $("#overduetable table").empty();
+							$("#overduetable table").append("<tr><th>대여번호</th><th>회원 이름</th><th>회원 번호</th><th>도서 제목</th><th>도서 코드</th><th>전화 번호</th><th>연채 일수</th></tr>");
 						$(list).each(function(index, obj) {
 							$("#overduetable table").append("<tr class='tr'><td>"+obj.rentalNo+"</td><td>"
 									+obj.korName.korName+"</td><td>"
@@ -147,6 +149,8 @@
 					dataType : "json", 
 					success : function(list) {
 						console.log(list);
+						 $("#overduetable table").empty();
+							$("#overduetable table").append("<tr><th>대여번호</th><th>회원 이름</th><th>회원 번호</th><th>도서 제목</th><th>도서 코드</th><th>전화 번호</th><th>연채 일수</th></tr>");
 						$(list).each(function(index, obj) {
 							$("#overduetable table").append("<tr class='tr'><td>"+obj.rentalNo+"</td><td>"
 									+obj.korName.korName+"</td><td>"
