@@ -1,93 +1,113 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>    
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+	fieldset {
+		width: 600px;
+	}
+
+	label {
+		width: 120px;
+		float: left;
+	}
+
+	.telbox {
+		width: 41px;
+	}
+	
+	.emailbox {
+		width: 70px;
+	}
+
+	#emailbox {
+		width: 70px;
+	}
+
+	#ebox {
+		width: 90px;
+		height: 25px;
+	}
+	.error,.error2,.error3{
+			color:red;
+			display: none;
+			font-size:12px;
+	}
+	
+	#input_text{
+		display:none;
+	}
+	
+	#adminpass{
+		display:none;
+	}
+	.ju{
+		width:75px;
+	}
+</style>
 </head>
 <body>
-	<form action="modify.do" method="post" id="f1" enctype="multipart/form-data">
+	<form action="update.do" method="post">
 		<fieldset>
-			<legend>회원가입하기</legend>
+			<legend>회원정보수정</legend>
 			<p>
-				<label>비밀번호</label> <input type="password" name="password" id="password">
-				<span class="error">비밀번호를 입력하세요</span>
-				<span class="error2">영어,숫자,특수문자(8~15)자로 입력해주세요</span>
-			</p>
-			<p>
-				<label>비밀번호 확인</label> <input type="password" name="repassword" id="repassword">
-				<span class="error">비밀번호를 입력하세요</span>
-				<span class="error2">비밀번호가 일치하지않음</span>
+				<label>회원번호</label>
+				<input type="text" name="no" value="${Member.memberNo }"> 
 			</p>
 			<p>
 				<label>한글이름</label> 
-				<input type="text" name="korName" maxlength="4" id="korName" value="${Member.korName }">
-				<span class="error">이름을 입력해주세요</span>
+				<c:set var="kname" value="${Member.korName }"></c:set>
+				<input type="text" name="korName" maxlength="4" id="korName" value="${fn:substring(kname,0,2)}*" >
 			</p>
 			<p>
-				<label>영어이름</label> <input type="text" name="engName" maxlength="50" id="engName" value="${Member.engName }">
-				<span class="error">영어로만 입력해주세요</span>
-				<span class='error2'>영어이름을 입력해주세요</span>
+				<c:set var="ename" value="${Member.engName }"></c:set>
+				<label>영어이름</label> <input type="text" name="engName" maxlength="50" id="engName" value="${fn:substring(ename,0,2)}*">
 			</p>
 			<p>
 				<label>전화번호</label> 
-				<select name="tel1">
-					<option>010</option>
-					<option>017</option>
-					<option>011</option>
-					<option>016</option>		
-				</select>
-				<span class="error">앞자리를 입력해주세요</span> 
-				- <input type="text" name="tel2" class="telbox" maxlength="4" id="tel2">			
-				- <input type="text" name="tel3" class="telbox" maxlength="4" id="tel3">
-				<span class="error2">중간자리를 입력해주세요</span> 
-				<span class="error3">마지막 자리를 입력해주세요</span> 
+				<c:set var='phone' value="${Member.phone }"></c:set>
+				<input type="text"  class="telbox" value="${fn:substring(phone,0,3)}">
+				- <input type="text" name="tel2" class="telbox" maxlength="4" id="tel2" value="${fn:substring(phone,4,8)}">			
+				- <input type="text" name="tel3" class="telbox" maxlength="4" id="tel3" value="${fn:substring(phone,0,0)}****">
 			</p>
 			<p>	
 				<label>주민등록번호</label>
-				<input type="text" name="jumin1" class="ju" id="jumin1" maxlength="6">
-				- <input type="password" name="jumin2" class="ju" id="jumin2" maxlength="7">
-				<input type="button" id="duplejumin" name="duplejumin" value="중복체크">
-				<span class="error">주민등록 앞번호자리를 입력해주세요</span>
-				<span class="error2">주민등록번호 뒷자리를 입력해주세요</span>
+				<c:set var='jumin' value="${Member.jumin }"></c:set>
+				<input type="text" name="jumin1" class="ju" id="jumin1" maxlength="6" value="${fn:substring(jumin,0,6) }">
+				- <input type="password" name="jumin2" class="ju" id="jumin2" maxlength="7" value="${fn:substring(jumin,0,0)}******">
 			</p>	
 			<p>
 			
 			<p>
+			<c:set var="email" value="${fn:split(Member.email,'@')}"></c:set>
 			<label>이메일</label> 
-			<input type="text" class="emailbox" name="email1" id="email1">
-			@ <input type="text" class="emailbox" name="email2" id="email2">
-			<select name="emailbox" id="emailbox">
-				<option value="" selected>선택하세요</option>
-				<option value="naver.com">naver.com</option>
-				<option value="google.com">google.com</option>
-				<option value="daum.net">daum.net</option>
-				<option value="1">직접입력</option>
-			</select>				
-				<span class="error">이메일 앞자리를 입력하세요</span>
-				<span class="error2">이메일 뒷자리를 입력하세요</span>
+			<input type="text" class="emailbox" name="email1" id="email1" value="${email[0] }">
+			@ <input type="text" class="emailbox" name="email2" id="email2" value="${fn:substring(email[1],0,0) }*******">				
 			</p>
 			<p>
+				<c:set var="address" value="${fn:split(Member.address,',') }"></c:set>
 				<label>우편번호</label> 
-				<input type="text" size="20" id="address" name="address" id="address">
-				<input type="button" value="검색" id="button">
-				<span class="error">우편번호를 입력해주세요</span> 
+				<input type="text" size="20" id="address" name="address" id="address" value="${address[0]}">
 			</p>
 			<p>
 				<label>주소</label> 
-				<input type="text" id="address2" name="address2" id="address2">
-				<span class=error>상세주소를 입력해주세요</span>
+				<input type="text" id="address2" name="address2" id="address2" value="${fn:substring(address[1],0,0) }*******">
 			</p>
 			<p>
-				<label>관리자</label> <input type="checkbox" id="checkbox" name="checkbox">관리
+			<label>사진</label>
+			<img src="${pageContext.request.contextPath }/upload/${Member.photo }">
 			</p>
 			<p>
-			<label>파일명선택</label>
-			<input type="file" name="file1" id="file1">
+			<label>특이사항</label>
+			<input type="text" name="uni" id="uni">
 			</p>
 			<p align="center">
-				<input type="submit" value="수정하기">
+				<input type="submit" value="완료">
 				<input type="reset" value="취소">
 			</p>
 			<input type="text" maxlength="0" id="input_text">

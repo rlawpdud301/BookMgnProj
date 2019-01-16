@@ -55,9 +55,13 @@
 		<th>사진</th>
 		<td><img src="${pageContext.request.contextPath }/upload/${mno.photo }"></td>
 		</tr>
-	
+		<tr>
+		<th>특이사항</th>
+		<td>${mno.uniqueness}</td>
+		</tr>
 	</table>
-	<a href="modify.do">[수정]</a>
+	<a href="update.do?no=${mno.memberNo}">[특이사항작성]</a>
 	<a href="memberrent.do?no=${mno.memberNo }" onclick="window.open(this.href,'도서대여확인','width=600,height=400');return false;">[도서대여목록 보기]</a>
+	<a href="out.do?no=${mno.memberNo}&password=${mno.password}">[탈퇴하기]</a>
 </body>
 </html>
