@@ -7,7 +7,15 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<header>
+		<jsp:include page="/WEB-INF/view/FooterHeader/admin.jsp"></jsp:include>
+	</header>
+	<section>
 	멤버 아웃 처리되었습니다.
 	<a href="search.do">돌아가기</a>
+	</section>
+	<footer>
+	<jsp:include page="/WEB-INF/view/FooterHeader/footer.jsp" flush="false" />
+	</footer>
 </body>  
 </html>
