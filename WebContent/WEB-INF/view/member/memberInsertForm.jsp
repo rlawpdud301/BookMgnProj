@@ -274,6 +274,11 @@ label {
 </style>
 </head>
 <body>
+	<header>
+		<jsp:include page="/WEB-INF/view/FooterHeader/header.jsp"></jsp:include>
+	
+	</header>
+	<section>
 	<form action="insert.do" method="post" id="f1" enctype="multipart/form-data">
 		<fieldset>
 			<legend>회원가입하기</legend>
@@ -360,5 +365,10 @@ label {
 			<input type="text" maxlength="0" id="input_text">
 		</fieldset>
 	</form>
+	</section>
+	<header>
+		<jsp:include page="/WEB-INF/view/FooterHeader/footer.jsp"></jsp:include>
+	
+	</header>
 </body>
 </html>

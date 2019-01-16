@@ -125,6 +125,11 @@
 </script>
 </head>
 <body>
+	<header>
+		<jsp:include page="/WEB-INF/view/FooterHeader/admin.jsp"></jsp:include>
+	
+	</header>
+	<section>
 	<div id="searchMember">
 		<select name="select" id="select">
 			<option value="회원번호">회원번호</option>
@@ -140,5 +145,9 @@
 	<div id="searchList">
 	
 	</div>
+	</section>
+	<footer>
+	<jsp:include page="/WEB-INF/view/FooterHeader/footer.jsp" flush="false" />
+	</footer>
 </body>
 </html>
