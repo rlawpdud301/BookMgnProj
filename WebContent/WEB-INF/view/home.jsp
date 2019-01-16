@@ -7,16 +7,12 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-
-
-#img{
-	width: 60%;
-  
-}
-#contaa{
-	width: 20%;
-
-}
+	#img{
+		width: 60%;
+	}
+	#contaa{
+		width: 20%;
+	}
 </style>
  
 </head>
@@ -38,6 +34,5 @@
 	<footer>
 		<jsp:include page="FooterHeader/footer.jsp" flush="false" />
 	</footer>
-
 </body>
 </html>
