@@ -7,9 +7,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
- section {
- 	width: 60%;
- }
 
 </style>
  
@@ -29,13 +26,10 @@
 		</c:choose>
 	</header>
 	<section>
-		<div id=""></div>
-	</section>
-	<%-- <section>
 		<div id="bookSearch">
 			<jsp:include page="/WEB-INF/view/bookSearch.jsp" flush="false" />
 		</div>
-	</section> --%>
+	</section>
 	<%-- <section id="best">
 		<jsp:include page="/WEB-INF/view/BEST.jsp" flush="false" />
 	</section> --%>

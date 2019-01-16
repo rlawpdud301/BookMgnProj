@@ -254,7 +254,7 @@ span {
 				dataType : "json", 
 				success : function(list) {
 					console.log(list);
-					$("#inner").append("<img src='../images/KakaoTalk_20190108_141119999.jpg' id='bimg'>");
+					$("#inner").append("<img src='${pageContext.request.contextPath }/upload/"+ list[0].image.image +"' id='bimg'>");
 					$("#inner").append("<p>");
 					$("#inner").append("<h1>"+list[0].title.title+"</h1>");
 					$("#inner").append("저자 : <a href='https://search.naver.com/search.naver?sm=top_hty&fbm=1&ie=utf8&query="+ list[0].author.author+"' target='_blank' >"
