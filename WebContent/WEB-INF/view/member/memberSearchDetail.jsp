@@ -22,8 +22,7 @@
 </head>
 <body>
 	<header>
-		<jsp:include page="/WEB-INF/view/FooterHeader/admin.jsp"></jsp:include>
-	
+		<jsp:include page="../FooterHeader/header.jsp" flush="false" />  
 	</header>
 	<section>
 	<table>

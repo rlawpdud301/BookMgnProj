@@ -134,8 +134,8 @@ body, html {
 </style>
 </head>
 <body>
-<header>
-			<jsp:include page="../FooterHeader/admin.jsp" flush="false" />
+	<header>
+		<jsp:include page="../FooterHeader/header.jsp" flush="false" />  
 	</header>
 
 	<section>
