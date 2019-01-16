@@ -191,49 +191,69 @@
 								"display", "none");
 					}
 				});
+		
+		$("#imgInp").on('change', function() {
+			readURL(this);
+		})
+		
 	});
+	
+	function readURL(input) {
+		if (input.files && input.files[0]) {
+			var reader = new FileReader();
+
+			reader.onload = function(e) {
+				$('#blah').attr('src', e.target.result);
+			}
+
+			reader.readAsDataURL(input.files[0]);
+		}
+	}
 </script>
 <style>
 	fieldset {
 		width: 600px;
+		margin: 0 auto;
 	}
-
+	
 	label {
 		width: 120px;
 		float: left;
 	}
-
+	
 	.telbox {
 		width: 41px;
 	}
-
+	
 	.emailbox {
 		width: 70px;
 	}
-
+	
 	#emailbox {
 		width: 70px;
 	}
-
+	
 	#ebox {
 		width: 90px;
 		height: 25px;
 	}
-	.error,.error2,.error3{
-			color:red;
-			display: none;
-			font-size:12px;
+	
+	.error, .error2, .error3 {
+		color: red;
+		display: none;
+		font-size: 12px;
 	}
 	
-	#input_text{
-		display:none;
+	#input_text {
+		display: none;
 	}
 	
-	#adminpass{
-		display:none;
+	#adminpass {
+		display: none;
 	}
-	.ju{
-		width:75px;
+	
+	.ju {
+		width: 75px;
 	}
 </style>
 <body>
@@ -328,8 +348,8 @@
 				
 				<p>
 					<label>사진</label>
-					<input type="file" name="photo" id="file1">
-					<img src="/BookMgnProj/upload/${Member.photo }">
+					<input type="file" name="photo" id="imgInp">
+					<img src="/BookMgnProj/upload/${Member.photo }" id="blah">
 				</p>
 	
 				<p align="center">
