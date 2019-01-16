@@ -227,18 +227,39 @@
 			}
 		})	
 	})
-	
-	
+		$("#imgInp").on('change', function() {
+			readURL(this);
+		})
 });
+	
+	function readURL(input) {
+		if (input.files && input.files[0]) {
+			var reader = new FileReader();
+
+			reader.onload = function(e) {
+				$('#blah').attr('src', e.target.result);
+			}
+
+			reader.readAsDataURL(input.files[0]);
+		}
+	}
 </script>
 <style>
+secsion{
+}
 fieldset {
 	width: 600px;
+	margin:0 auto;
+	padding:10px;
 }
-
+#f1{
+	margin-top: 30px;
+}
 label {
 	width: 120px;
 	float: left;
+	padding-left:147px;
+	
 }
 
 .telbox {
@@ -271,6 +292,27 @@ label {
 .ju{
 	width:75px;
 }
+section{
+	width:100%;
+	margin:0 auto;
+}
+section img{
+	/* position: absolute; */
+	width:200px;
+	height:100px;
+	/* right:560px;
+	top:110px; */
+}
+section #img{
+	width:100%;
+	padding-top:20px;
+	text-align: center;
+}
+#imgbox{
+	width:200px;
+	margin:0 auto;
+	text-align: center;
+}
 </style>
 </head>
 <body>
@@ -279,29 +321,36 @@ label {
 	
 	</header>
 	<section>
+	<div id="img">
+	<img src="../images/logo.png">
+	</div>
 	<form action="insert.do" method="post" id="f1" enctype="multipart/form-data">
 		<fieldset>
-			<legend>회원가입하기</legend>
+			<legend>회원가입</legend>
 			<p>
 				<label>비밀번호</label> <input type="password" name="password" id="password">
 				<span class="error">비밀번호를 입력하세요</span>
 				<span class="error2">영어,숫자,특수문자(8~15)자로 입력해주세요</span>
 			</p>
+			<br>
 			<p>
 				<label>비밀번호 확인</label> <input type="password" name="repassword" id="repassword">
 				<span class="error">비밀번호를 입력하세요</span>
 				<span class="error2">비밀번호가 일치하지않음</span>
 			</p>
+			<br>
 			<p>
 				<label>한글이름</label> 
 				<input type="text" name="korName" maxlength="4" id="korName">
 				<span class="error">이름을 입력해주세요</span>
 			</p>
+			<br>
 			<p>
 				<label>영어이름</label> <input type="text" name="engName" maxlength="50" id="engName">
 				<span class="error">영어로만 입력해주세요</span>
 				<span class='error2'>영어이름을 입력해주세요</span>
 			</p>
+			<br>
 			<p>
 				<label>전화번호</label> 
 				<select name="tel1">
@@ -316,6 +365,7 @@ label {
 				<span class="error2">중간자리를 입력해주세요</span> 
 				<span class="error3">마지막 자리를 입력해주세요</span> 
 			</p>
+			<br>
 			<p>	
 				<label>주민등록번호</label>
 				<input type="text" name="jumin1" class="ju" id="jumin1" maxlength="6">
@@ -323,9 +373,8 @@ label {
 				<input type="button" id="duplejumin" name="duplejumin" value="중복체크">
 				<span class="error">주민등록 앞번호자리를 입력해주세요</span>
 				<span class="error2">주민등록번호 뒷자리를 입력해주세요</span>
-			</p>	
-			<p>
-			
+			</p>
+			<br>				
 			<p>
 			<label>이메일</label> 
 			<input type="text" class="emailbox" name="email1" id="email1">
@@ -340,24 +389,33 @@ label {
 				<span class="error">이메일 앞자리를 입력하세요</span>
 				<span class="error2">이메일 뒷자리를 입력하세요</span>
 			</p>
+			<br>
 			<p>
 				<label>주소</label> 
 				<input type="text" size="20" id="address" name="address" id="address">
 				<input type="button" value="검색" id="button">
 				<span class="error">우편번호를 입력해주세요</span> 
 			</p>
+			<br>
 			<p>
 				<label>상세주소</label> 
 				<input type="text" id="address2" name="address2" id="address2">
 				<span class=error>상세주소를 입력해주세요</span>
 			</p>
+			<br>
 			<p>
 				<label>관리자</label> <input type="checkbox" id="checkbox" name="checkbox">관리
 			</p>
+			<br>
 			<p>
 			<label>파일명선택</label>
-			<input type="file" name="file1" id="file1">
+				<input type="file" name="file1" id="imgInp"><br>
 			</p>
+			<br>
+			<div id="imgbox">
+				<img alt="" src="" id="blah">
+			</div>
+			<br>
 			<p align="center">
 				<input type="submit" value="가입하기">
 				<input type="reset" value="취소">

@@ -92,6 +92,7 @@ public class MemberInsertHandler implements CommandHandler {
 				service.insertMember(member);
 				insertRentailInfo();
 				insertOverdue();
+				req.setAttribute("result","고객님의 아이디는"+mn+"입니다.");
 				return "/WEB-INF/view/member/insertSuccess.jsp";				
 			}catch(Exception e){
 				e.printStackTrace();

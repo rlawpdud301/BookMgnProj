@@ -31,7 +31,6 @@
 	
 	#submit, #reset {
 	}
-	
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
@@ -83,6 +82,7 @@
 
 			reader.onload = function(e) {
 				$('#blah').attr('src', e.target.result);
+
 			}
 
 			reader.readAsDataURL(input.files[0]);
@@ -133,7 +133,7 @@
 			<p>
 				<label>이미지</label>
 				<input type="file" name="image" id="imgInp"><br>
-				<img alt="" src="" id="blah">
+				<img alt="" src="" id="blah" width=200 height=200>
 			</p>
 			
 			<p>
