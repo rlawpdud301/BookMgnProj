@@ -336,13 +336,13 @@ label {
 				<span class="error2">이메일 뒷자리를 입력하세요</span>
 			</p>
 			<p>
-				<label>우편번호</label> 
+				<label>주소</label> 
 				<input type="text" size="20" id="address" name="address" id="address">
 				<input type="button" value="검색" id="button">
 				<span class="error">우편번호를 입력해주세요</span> 
 			</p>
 			<p>
-				<label>주소</label> 
+				<label>상세주소</label> 
 				<input type="text" id="address2" name="address2" id="address2">
 				<span class=error>상세주소를 입력해주세요</span>
 			</p>

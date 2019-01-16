@@ -8,12 +8,20 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.yi.BookMgnProj.dao.MemberMapper;
 import com.yi.BookMgnProj.dao.MemberMapperImpl;
+import com.yi.BookMgnProj.dao.MemberRentalInfoMapper;
+import com.yi.BookMgnProj.dao.MemberRentalInfoMapperImpl;
+import com.yi.BookMgnProj.dao.OverdueMapper;
+import com.yi.BookMgnProj.dao.OverdueMapperImpl;
 import com.yi.BookMgnProj.model.Member;
+import com.yi.BookMgnProj.model.MemberRentalInfo;
+import com.yi.BookMgnProj.model.Overdue;
 import com.yi.BookMgnProj.mvc.MyBatisSqlSessionFactory;
 
 public class MemberService {
 	private static MemberMapper dao = MemberMapperImpl.getInstance();
-
+	private static MemberRentalInfoMapper dao1 = MemberRentalInfoMapperImpl.getInstance();
+	private static OverdueMapper dao2 = OverdueMapperImpl.getInstance();
+	
 	public int insertMember(Member member) {
 		return dao.insertMember(member);
 	}
@@ -77,5 +85,11 @@ public class MemberService {
 	}
 	public int updateDetail(Member member){
 		return dao.updateDetail(member);
+	}
+	public int insertMemberRentalInfo(MemberRentalInfo memberRentalInfo){
+		return dao1.insertMemberRentalInfo(memberRentalInfo);
+	}
+	public int insertoverDue(Overdue overdue) {
+		return dao2.insertOverdue(overdue);
 	}
 }
