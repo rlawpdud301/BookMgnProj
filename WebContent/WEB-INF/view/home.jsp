@@ -223,9 +223,9 @@ section{
 			<jsp:include page="/WEB-INF/view/bookSearch.jsp" flush="false" />
 		</div>
 	</section>
-	<section id="best">
+	<%-- error 수정필요 <section id="best">
 		<jsp:include page="/WEB-INF/view/BEST.jsp" flush="false" />
-	</section>
+	</section> --%>
 
 	<footer>
 

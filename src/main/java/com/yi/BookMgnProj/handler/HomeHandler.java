@@ -18,7 +18,8 @@ public class HomeHandler implements CommandHandler {
 
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {
-		Map<String, Object> map = new HashMap<>();
+		//error 수정필요
+		/*Map<String, Object> map = new HashMap<>();
 		if(req.getMethod().equalsIgnoreCase("get")){
 			Best3Service service = new Best3Service();
 			Date fristrentalDate = new Date();
@@ -55,7 +56,7 @@ public class HomeHandler implements CommandHandler {
 			req.setAttribute("list2", list2);
 			
 			return "/WEB-INF/view/home.jsp";
-		}
+		}*/
 		
 		return "/WEB-INF/view/home.jsp";
 	}
