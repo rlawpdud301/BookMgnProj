@@ -8,6 +8,15 @@
 <title>Insert title here</title>
 <style type="text/css">
 
+
+#img{
+	width: 60%;
+  
+}
+#contaa{
+	width: 20%;
+
+}
 </style>
  
 </head>
@@ -26,6 +35,13 @@
 		</c:choose>
 	</header>
 	<section>
+<<<<<<< HEAD
+=======
+		<div id="img"><img alt="" src="${pageContext.request.contextPath }/images/3분만에_읽는_책.jpg"></div>
+		<div id="contaa">aaaaaaaaaa</div>
+	</section>
+	<%-- <section>
+>>>>>>> branch 'master' of https://github.com/rlawpdud301/BookMgnProj.git
 		<div id="bookSearch">
 			<jsp:include page="/WEB-INF/view/bookSearch.jsp" flush="false" />
 		</div>

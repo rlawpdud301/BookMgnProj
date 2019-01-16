@@ -265,10 +265,10 @@ span {
 						+ "<br>출판사 : "
 						+ "<a href='https://search.naver.com/search.naver?sm=top_hty&fbm=1&ie=utf8&query="+ list[0].pubName.pubName +"' target='_blank' >"
 						+list[0].pubName.pubName+"</a>");
-					$("#inner").append("<table>");
-						$("table").append("<tr><th>도서코드</th><th>대여기능여부</th><.tr>");
+					$("#inner").append("<table id='ta'>");
+						$("#ta").append("<tr><th>도서코드</th><th>대여기능여부</th><.tr>");
 					$(list).each(function(index, obj) {
-							$("table").append("<tr><td><a href='#'><span class='code'>"+ obj.bookCode.bookCode +"</span></a></td><td>"+ obj.rentalPossible +"</td></tr>");
+							$("#ta").append("<tr><td><a href='#'><span class='code'>"+ obj.bookCode.bookCode +"</span></a></td><td>"+ obj.rentalPossible +"</td></tr>");
 					})
 					$("#inner").append("</p>");
 										}
@@ -280,7 +280,6 @@ span {
 			$("#BookDetail").css("margin-left","-100%").css("opacity",0);v
 		})
 		$(document).on("click",".code",function(event) {
-			alert($(this).text());
 			var code = $(this).text();
 			$("#bookCode").val(code);
 		})
