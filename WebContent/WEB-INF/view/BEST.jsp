@@ -53,33 +53,8 @@
 </style>
 <script>
   $( function() {
-	  google.charts.load('current', {'packages':['corechart']});
-      google.charts.setOnLoadCallback(drawVisualization);
-      $(list).each(function(index, obj) {
-    	  
-      })
-      function drawVisualization() {
-          var data = google.visualization.arrayToDataTable([
-            ['제목', '${fristrentalDate}', '${lastrentalDate}', 'Average'],
-            ['2004/05',    998,           450,      614.6],
-            ['2005/06',    1268,          288,      682],
-            ['2006/07',     807,           397,      623],
-            ['2007/08',  968,           215,      609.4],
-            ['2008/09',    1026,          366,      569.6],         
-          ]);
-
-          var options = {
-            title : 'Monthly Coffee Production by Country',
-            vAxis: {title: 'Cups'},
-            hAxis: {title: 'Month'},
-            seriesType: 'bars',
-            series: {2: {type: 'line'}} 
-          };
-
-          var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
-          chart.draw(data, options);
-        }
-	  
+	 
+      
 	var rangeDate = 31; // set limit day
 	var setSdate, setEdate;
     $( "#fristrentalDate" ).datepicker({
