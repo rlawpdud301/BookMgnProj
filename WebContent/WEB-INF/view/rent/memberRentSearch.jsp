@@ -125,7 +125,7 @@
 	$(function() {
 		$(document).on("click",".tr",function(event) {
 			var code = $(this).children("td").eq(0).text();
-			$("#bookCode").val(code);
+			$("#memberNo").val(code);
 		})
 	})
 </script>

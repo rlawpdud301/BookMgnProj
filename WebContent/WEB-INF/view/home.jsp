@@ -6,14 +6,20 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+ section {
+ 	width: 60%;
+ }
 
+</style>
+ 
 </head>
-<body>
-	<header>
+<body>   
+	<header> 
 		<c:choose>
 			<c:when test="${AUTH == null }">
-				<jsp:include page="FooterHeader/header.jsp" flush="false" />
-			</c:when>
+				<jsp:include page="FooterHeader/header.jsp" flush="false" />  
+			</c:when>   
 			<c:when test="${AUTH.admin == true }">
 				<jsp:include page="FooterHeader/admin.jsp" flush="false" />
 			</c:when>
@@ -22,22 +28,23 @@
 			</c:when>
 		</c:choose>
 	</header>
-
 	<section>
+		<div id=""></div>
+	</section>
+	<%-- <section>
 		<div id="bookSearch">
 			<jsp:include page="/WEB-INF/view/bookSearch.jsp" flush="false" />
 		</div>
-	</section>
-	<section id="best">
+	</section> --%>
+	<%-- <section id="best">
 		<jsp:include page="/WEB-INF/view/BEST.jsp" flush="false" />
-	</section>
+	</section> --%>
 
 	<footer>
 
 		<jsp:include page="FooterHeader/footer.jsp" flush="false" />
 
 	</footer>
-
 
 </body>
 </html>
