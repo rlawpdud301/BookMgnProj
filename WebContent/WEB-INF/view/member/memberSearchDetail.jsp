@@ -81,9 +81,11 @@
 	<a href="memberrent.do?no=${mno.memberNo }" onclick="window.open(this.href,'도서대여확인','width=600,height=400');return false;">[도서대여목록 보기]</a>
 	<a href="out.do?no=${mno.memberNo}&password=${mno.password}">[탈퇴하기]</a>
 	</div>
+
 	</section>
+	
 	<footer>
-	<jsp:include page="/WEB-INF/view/FooterHeader/footer.jsp" flush="false" />
+		<jsp:include page="../FooterHeader/footer.jsp" flush="false" />
 	</footer>
 </body>
 </html>

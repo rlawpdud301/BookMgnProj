@@ -91,6 +91,10 @@
 </script>
 </head>
 <body>
+	<header>
+		<jsp:include page="../FooterHeader/header.jsp" flush="false" />  
+	</header>
+
 	<form action="${pageContext.request.contextPath }/book/insert.do" method="post" enctype="multipart/form-data" runat="server">
 		<fieldset>
 			<legend>도서 추가</legend>
@@ -142,5 +146,9 @@
 			</p>
 		</fieldset>
 	</form>
+	
+	<footer>
+		<jsp:include page="../FooterHeader/footer.jsp" flush="false" />
+	</footer>
 </body>
 </html>

@@ -25,9 +25,8 @@
 </head>
 <body>
 	<header>
-		<jsp:include page="/WEB-INF/view/FooterHeader/header.jsp"></jsp:include>
+		<jsp:include page="../FooterHeader/header.jsp" flush="false" />  
 	</header>
-
 	<section>
 	<div id="hi">
 	환영합니다. ${result }
@@ -36,8 +35,9 @@
 	</p>
 	</div>
 	</section>
+	
 	<footer>
-	<jsp:include page="/WEB-INF/view/FooterHeader/footer.jsp" flush="false" />
+		<jsp:include page="../FooterHeader/footer.jsp" flush="false" />
 	</footer>
 </body>
 </html>

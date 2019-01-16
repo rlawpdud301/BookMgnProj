@@ -317,9 +317,9 @@ section #img{
 </head>
 <body>
 	<header>
-		<jsp:include page="/WEB-INF/view/FooterHeader/header.jsp"></jsp:include>
-	
+		<jsp:include page="../FooterHeader/header.jsp" flush="false" />  
 	</header>
+	
 	<section>
 	<div id="img">
 	<img src="../images/logo.png">
@@ -424,9 +424,9 @@ section #img{
 		</fieldset>
 	</form>
 	</section>
-	<header>
-		<jsp:include page="/WEB-INF/view/FooterHeader/footer.jsp"></jsp:include>
 	
-	</header>
+	<footer>
+		<jsp:include page="../FooterHeader/footer.jsp" flush="false" />
+	</footer>
 </body>
 </html>

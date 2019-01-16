@@ -32,7 +32,6 @@ public class MemberInfoHandler implements CommandHandler {
 
 		List<BookStat> listCateB = service.selectRentalBookInfoByCategoryB(member);
 		req.setAttribute("ListCateB", listCateB);
-		System.out.println(listCateB);
 
 		return "/WEB-INF/view/member/memberInfoForm.jsp";
 	}
