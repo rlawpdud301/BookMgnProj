@@ -10,12 +10,17 @@
 	fieldset {
 		width: 800px;
 		height: 600px;
-		margin: 0 auto;
+		margin: 50px auto;
 		padding: 50px;
+	}
+	
+	fieldset p:LAST-CHILD {
+		text-align: center;
 	}
 	
 	label {
 		width: 100px;
+		margin-left: 50px;
   		display: inline-block;
 	}
 	
@@ -30,22 +35,26 @@
 	
 	p {
 		height: 30px;
+		margin-bottom: 10px;
 	}
 	
 	input {
 		width: 200px;
+		height: 20px;
 	}
-	
-	img {
-		
-	}
+
 	
 	#submit, #reset {
 		
 	}
 	
 	#img {
+		padding-top: 10px;
 		height: 250px;
+	}
+	
+	img {
+		margin-left: 150px;
 	}
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

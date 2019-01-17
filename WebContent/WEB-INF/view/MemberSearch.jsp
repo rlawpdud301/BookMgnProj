@@ -19,6 +19,9 @@
 		border:1px solid black;
 		padding: 5px;
 	}
+	#searchList tr:FIRST-CHILD{
+		background-color: #FFFED7;
+	}
 	section{
 		width:100%;
 		margin:0 auto;

@@ -77,7 +77,7 @@
 	table {
 		margin-top: 10px;
 		border-collapse: collapse;
-		width: 90%;
+		width: 95%;
 		margin: 0 auto;
 		text-align: center;
 	}
@@ -110,6 +110,32 @@
 	.td8 {
 		width: 5%;
 	}
+	
+	fieldset {
+		width: 600px;
+		margin: 0 auto;
+		padding: 10px;
+		font-size: 18px;
+	}
+	
+	label {
+		width: 120px;
+		float: left;
+		padding-left:147px;
+	}
+	
+	fieldset p {
+		margin-bottom: 10px;
+	}
+	
+	fieldset p:LAST-CHILD {
+		text-align: center;
+	}
+	
+	fieldset a {
+		font-size: 20px;
+	}
+	
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
