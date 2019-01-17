@@ -134,6 +134,11 @@
 	
 	fieldset a {
 		font-size: 20px;
+		text-decoration: none;
+	}
+	
+	input {
+		width: 200px;
 	}
 	
 </style>
@@ -260,7 +265,6 @@
 				<div id="tab4" class="tab_content">
 					<form action="modify.do" method="post">
 						<fieldset>
-							<legend>나의 정보 보기</legend>
 							<p>
 								<label>회원 번호</label>
 								<input type="text" value="${Member.memberNo }" readonly="readonly">

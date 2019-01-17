@@ -31,7 +31,6 @@ a{
 	</header>
 	<section>
 		<p>${result }<a href="${pageContext.request.contextPath }/member/login.do">로그인 하러가기.</a></p>
-		
 	</section>	
 	<footer>
 		<jsp:include page="/WEB-INF/view/FooterHeader/footer.jsp" flush="false" />
