@@ -9,8 +9,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Insert title here</title>
 <style type="text/css">
+#overduetable{
+	width: 900px;
+	margin: 0 auto;
+	text-align: center;
+	margin-bottom: 10px;
+}
 #overduetable table {
 	border-collapse: collapse;
+	width: 900px;
+	margin: 0 auto;
+	text-align: center;
+	margin-top: 10px;
 }
 #overduetable th,td{
 	border: 1px solid black;
@@ -20,6 +30,34 @@
 	color: white;
 	border: 1px solid white;
 	
+}
+#searchMenu{
+	margin-bottom: 10px;
+}
+#bntAll{
+	width: 80px;
+	height: 30px;
+	color: white;
+	background-color: #E1527D;
+	border-radius: 15px;
+}
+select{
+	height: 30px;
+}
+#item{
+	width: 150px;
+	height: 26px;
+}
+#search{
+	width: 80px;
+	height: 30px;
+	color: white;
+	background-color: #E1527D;
+	border-radius: 15px;
+}
+#overdate{
+	width: 15px;   
+	height: 15px;
 }
 
 </style>
@@ -209,6 +247,7 @@
 </head>
 <body>
 	<div id="overduetable">
+	<div id="searchMenu">
 	<input type="button" value="전체 보기" id="bntAll">
 	<select>
 		<option value="memberNo">회원 번호</option>
@@ -220,6 +259,7 @@
 	<input type="button" value="검색" id="search">
 	
 	<input type="checkbox" id="overdate">연체회원만 보기
+	</div>
 		<table>
 			<tr>
 				<th>대여번호</th>

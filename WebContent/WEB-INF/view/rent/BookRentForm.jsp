@@ -127,17 +127,42 @@ body, html {
 	margin-bottom: 100px;
 	margin-top: 20px;
 }
+#form p{ 
+	height: 30px;
+	padding-top: 10px;
+}
+#form label{
+	width: 200px;
+	color: rgba(159, 212, 202, 0.9);
+	font-weight: bold;
+}
+.butt{
+	width: 100px;
+	color: white;
+	background-color: #E1527D;
+	height: 30px;
+	border-radius: 15px;
+}
+#MemberNo{
+	height: 25px;
+	width: 250px;
+}
+#bookCode{
+	height: 25px;
+	width: 250px;
+}
 section {
 	width:100%;
-	height:2000px;
-	background-image: url("../images/8840e0124b9faa3ab8353e644ca325c8.png");
+	padding-bottom: 10px;
+	/* height:2000px; */
+	/* background-image: url("../images/8840e0124b9faa3ab8353e644ca325c8.png");
 	background-size: 90% 100%;
 	background-repeat: no-repeat;
-	background-position: center center;
-	padding-top: 350px;
+	background-position: center center; */
+/* 	padding-top: 350px; */
 }
 #MemberSearch{
-	width: 38%;
+	width: 40%;
 	margin: 0 auto;
 }
 </style>
