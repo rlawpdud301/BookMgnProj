@@ -8,17 +8,21 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <style>
 	#searchMember{
-		width: 80%;
+		width: 70%;
 		margin: 0 auto;
 	}
 	#searchList{
 		width: 50%;
 		margin: 0 auto;
 		margin-left: 10px;
+		text-align: center;
 	}
 	#searchList table{
 		border-collapse: collapse;
 		border:1px solid black;
+		width:550px; 
+		margin: 0 auto;
+		
 	}
 	#searchList th,tr,td{
 		border:1px solid black;
