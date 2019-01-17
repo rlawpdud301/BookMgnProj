@@ -48,6 +48,7 @@
 		clear: both;
 		float: left;
 		width: 100%;
+		min-height: 500px;
 		background: #FFFFFF;
 	}
 	
@@ -69,17 +70,45 @@
 	}
 
 	#container {
-		width: 80%;
-		margin: 0 auto;
+		width: 60%;
+		margin: 50px auto;
 	}
 	
 	table {
+		margin-top: 10px;
 		border-collapse: collapse;
-		width: 1200px;
+		width: 90%;
+		margin: 0 auto;
+		text-align: center;
 	}
 	
 	th, td {
 		border: 1px solid black;
+		font-size: 15px;
+	}
+	
+	.td1 {
+		width: 10%;
+	}
+	
+	.td2 {
+		width: 25%;
+	}
+	
+	.td3 {
+		width: 10%;
+	}
+	
+	.td4 {
+		width: 10%;
+	}
+	
+	.td5, .td6, .td7 {
+		width: 10%;
+	}
+	
+	.td8 {
+		width: 5%;
 	}
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -98,7 +127,7 @@
 			</c:forEach>
 		]);
 
-		var options = { title : '나의 선호장르' };
+		var options = { 'title' : '나의 선호장르', 'width': 800, 'height': 500 };
 		var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
 		chart.draw(data, options);
 	}
@@ -145,13 +174,13 @@
 						</tr>
 						<c:forEach var="lists" items="${Lists }">
 							<tr>
-								<td>${lists.bookCode.bookCode }</td>
-								<td>${lists.bookCode.title }</td>
-								<td>${lists.publisher }</td>
-								<td>${lists.bookCode.author }</td>
-								<td><fmt:formatDate value="${lists.rentalDate }"
+								<td class="td1">${lists.bookCode.bookCode }</td>
+								<td class="td2">${lists.bookCode.title }</td>
+								<td class="td3">${lists.publisher }</td>
+								<td class="td4">${lists.bookCode.author }</td>
+								<td class="td5"><fmt:formatDate value="${lists.rentalDate }"
 										pattern="yyyy-MM-dd" /></td>
-								<td><fmt:formatDate value="${lists.returnSchedule }"
+								<td class="td6"><fmt:formatDate value="${lists.returnSchedule }"
 										pattern="yyyy-MM-dd" /></td>
 							</tr>
 						</c:forEach>
@@ -173,21 +202,24 @@
 						</tr>
 						<c:forEach var="list" items="${List }">
 							<tr>
-								<td>${list.bookCode.bookCode }</td>
-								<td>${list.bookCode.title }</td>
-								<td>${list.publisher }</td>
-								<td>${list.bookCode.author }</td>
-								<td><fmt:formatDate value="${list.rentalDate }"
+								<td class="td1">${list.bookCode.bookCode }</td>
+								<td class="td2">${list.bookCode.title }</td>
+								<td class="td3">${list.publisher }</td>
+								<td class="td4">${list.bookCode.author }</td>
+								<td class="td5"><fmt:formatDate value="${list.rentalDate }"
 										pattern="yyyy-MM-dd" /></td>
-								<td><fmt:formatDate value="${list.returnDate }"
+								<td class="td7"><fmt:formatDate value="${list.returnDate }"
 										pattern="yyyy-MM-dd" /></td>
-								<td><fmt:formatDate value="${list.returnSchedule }"
+								<td class="td6"><fmt:formatDate value="${list.returnSchedule }"
 										pattern="yyyy-MM-dd" /></td>
-								<td><c:if test="${list.returnDate == null}">
-								미반납
-							</c:if> <c:if test="${list.returnDate != null}">
-								반납
-							</c:if></td>
+								<td class="td8">
+									<c:if test="${list.returnDate == null}">
+										미반납
+									</c:if>
+									<c:if test="${list.returnDate != null}">
+										반납
+									</c:if>
+								</td>
 							</tr>
 						</c:forEach>
 					</table>

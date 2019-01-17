@@ -413,7 +413,7 @@ section #img{
 			</p>
 			<br>
 			<div id="imgbox">
-				<img alt="" src="" id="blah">
+				<img alt="" src="${pageContext.request.contextPath }/images/noman.jpg" id="blah">
 			</div>
 			<br>
 			<p align="center">
