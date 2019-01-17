@@ -139,7 +139,7 @@ section{
 			<jsp:include page="/WEB-INF/view/BEST.jsp" flush="false" />
 		</div> --%>				
 	</section>
-	
+	<jsp:include page="map.jsp" flush="false" />
 	
 	
 	<footer>
