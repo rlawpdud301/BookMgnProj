@@ -76,6 +76,7 @@ table tr td{
 	margin: 0 auto;
 	min-height: 800px;
 	margin-top: 50px; 
+	margin-bottom: 100px;
 }
 
 #selectOption{
@@ -305,7 +306,7 @@ span {
 				
 					$("#list").append("<ul>");
 					$(list).each(function(index, obj) { 
-						$("#list").append("<li><a href='#' class='bookinfo' data-bcode='"+ obj.bookCode.bookCode +"' onclick='return false;'><img src='${pageContext.request.contextPath }/upload/"+ obj.image.image +"'></a><p class='text'><span id='title'>제목 : <a href='#' class='bookinfo' data-bcode='"+ obj.bookCode.bookCode +"' onclick='return false;'>"
+						$("#list").append("<li><a href='#' class='bookinfo' data-bcode='"+ obj.bookCode.bookCode +"' onclick='return false;'><img src='${pageContext.request.contextPath }/upload/"+ obj.image.image +"'></a><p class='text'><span class='title'>제목 : <a href='#' class='bookinfo' data-bcode='"+ obj.bookCode.bookCode +"' onclick='return false;'>"
 											+ obj.title.title
 											+ "</a></span><br>저자 : <a href='https://search.naver.com/search.naver?sm=top_hty&fbm=1&ie=utf8&query="+ obj.author.author+"' target='_blank' >"
 											+ obj.author.author
@@ -387,11 +388,41 @@ span {
 					<option value="제목">제목으로</option>
 					<option value="도서 번호">도서 번호로</option>				
 					<option value="상세정보">상세정보</option>
-				</select> <input type="text" id="BookCode"><input type="button" value="검색" id="bntBookSearch"> <span>아무것도입력하지않으면 모든책정보를확인하실수 있습니다.</span>
+				</select> <input type="text" id="title"><input type="button" value="검색" id="bntBookSearch"> <span>아무것도입력하지않으면 모든책정보를확인하실수 있습니다.</span>
 				
 			</dir> 
 		</div>
-		<dir id="list" style="overflow:auto; height:0;">
+		<dir id="list" style="overflow:auto; height:800px;">
+			<ul>
+			<c:forEach var="one" items="${list}" >
+				<li>
+					<a href='#' class='bookinfo' data-bcode='${one.bookCode.bookCode }' onclick='return false;'>
+						<img src='${pageContext.request.contextPath }/upload/${one.image.image }'>
+					</a>
+					<p class='text'>
+						<span class='title'>제목 : 
+							<a href='#' class='bookinfo' data-bcode='${one.bookCode.bookCode }' onclick='return false;'>
+								${one.title.title }
+							</a>
+						</span><br>
+						저자 : <a href='https://search.naver.com/search.naver?sm=top_hty&fbm=1&ie=utf8&query=${one.author.author }' target='_blank' >
+						${one.author.author}
+						</a><br>
+						역자 : <a href='https://search.naver.com/search.naver?sm=top_hty&fbm=1&ie=utf8&query=${one.translator.translator}' target='_blank' >
+						${one.translator.translator}
+						</a><br>
+						출판사 : <a href='https://search.naver.com/search.naver?sm=top_hty&fbm=1&ie=utf8&query=${one.pubName.pubName}' target='_blank' >
+						${one.pubName.pubName}
+						</a><br>
+						가격 : ${one.price.price}
+						<br>
+						보유 권수 : ${one.hap}
+						<br>
+						${one.rentalPossible}
+					</p>
+				</li>     			
+			</c:forEach>
+			</ul>
 		</dir>
 	</div>
 	<footer>
