@@ -8,6 +8,9 @@
 <meta charset="UTF-8">
 <title>도서대여확인</title>
 <style>
+	section{
+		margin-top: 10px;
+	}
 	table{
 		border: 1px solid black;
 		border-collapse: collapse;
@@ -16,15 +19,31 @@
 	}
 	tr,th,td{
 		border:1px solid black;
+		padding:10px;
 	}
 	#menu{
 		width:600px;
 		margin:0 auto;
 		text-align: center;
 	}
+	table td:FIRST-CHILD {
+		text-align: center;
+	}
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
+	$(function(){
+		$("#out").click(function(){
+			var con_test = confirm("정말로 탈퇴하시겠습니까?");
+			if(con_test == true){
+				location.href = "out.do";
+				return true;
+			}else if(con_test == false){
+				return false;
+			}
+		})
+	})	
+
 </script>
 </head>
 <body>
@@ -34,8 +53,7 @@
 	<section>
 	<table>
 		<tr>
-		<th></th>
-		<td><img src="${pageContext.request.contextPath }/upload/${mno.photo }" width="200" height="200"></td>
+		<td colspan="2"><img src="${pageContext.request.contextPath }/upload/${mno.photo }" width="200" height="200"></td>
 		</tr>
 		<tr>
 		<th>회원번호</th>
@@ -78,8 +96,8 @@
 	</table>
 	<div id="menu">
 	<a href="update.do?no=${mno.memberNo}">[특이사항작성]</a>
-	<a href="memberrent.do?no=${mno.memberNo }" onclick="window.open(this.href,'도서대여확인','width=600,height=400');return false;">[도서대여목록 보기]</a>
-	<a href="out.do?no=${mno.memberNo}&password=${mno.password}">[탈퇴하기]</a>
+	<a href="memberrent.do?no=${mno.memberNo }" onclick="window.open(this.href,'도서대여확인','width=900,height=200');return false;">[도서대여목록 보기]</a>
+	<a href="out.do?no=${mno.memberNo}&password=${mno.password}" id="out">[탈퇴하기]</a>
 	</div>
 
 	</section>

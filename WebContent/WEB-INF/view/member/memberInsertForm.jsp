@@ -27,7 +27,7 @@
 			$("input[name=checkbox]:checked").each(function(){
 			var password = "1234";
 /* 			window.open("/BookMgnProj/admin.do","window",'width=200, height=200'); */
- 	 		var inputString = prompt('문자열을 입력하세요', '기본 값 문자열'); 
+ 	 		var inputString = prompt('번호를 입력하세요', '숫자'); 
  
 			if(inputString == password){
 				$('input[name=checkbox]').prop('checked',true);
@@ -159,7 +159,7 @@
 				return false;
 			}
 			if(idck == 0){
-				alert("아이디 중복체크를 해주세요")
+				alert("주민등록번호 중복체크를 해주세요")
 				return false;
 			}
 		})
@@ -297,11 +297,9 @@ section{
 	margin:0 auto;
 }
 section img{
-	/* position: absolute; */
-	width:200px;
-	height:100px;
-	/* right:560px;
-	top:110px; */
+	width:176px;
+	height:260px;
+	
 }
 section #img{
 	width:100%;
@@ -321,9 +319,6 @@ section #img{
 	</header>
 	
 	<section>
-	<div id="img">
-	<img src="../images/logo.png">
-	</div>
 	<form action="insert.do" method="post" id="f1" enctype="multipart/form-data">
 		<fieldset>
 			<legend>회원가입</legend>
