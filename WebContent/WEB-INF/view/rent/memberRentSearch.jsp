@@ -8,8 +8,30 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <style>
 	#searchMember{
-		width: 70%;
+		width: 80%;
 		margin: 0 auto;
+		margin-bottom: 10px;
+	}
+	#selected{
+		width: 100px;
+		height: 30px;
+		background-color: #E1527D;
+		border-radius: 15px;
+		color: white;
+	}
+	#select{
+		height: 30px;
+	}
+	#memberNo{
+		width: 200px;
+		height: 30px;
+	}
+	#btn1{
+		width: 100px;
+		height: 30px;
+		background-color: #E1527D;
+		border-radius: 15px;
+		color: white;
 	}
 	#searchList{
 		width: 50%;
@@ -20,8 +42,9 @@
 	#searchList table{
 		border-collapse: collapse;
 		border:1px solid black;
-		width:550px; 
+		width:600px; 
 		margin: 0 auto;
+		margin-left: 20px;
 		
 	}
 	#searchList th,tr,td{
