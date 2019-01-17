@@ -213,12 +213,22 @@
 <style>
 	fieldset {
 		width: 600px;
-		margin: 0 auto;
+		margin:0 auto;
+		padding:10px;
+	}
+	
+	#f1{
+		margin-top: 30px;
+	}
+	
+	p {
+		margin-bottom: 10px;
 	}
 	
 	label {
 		width: 120px;
 		float: left;
+		padding-left: 50px;
 	}
 	
 	.telbox {
@@ -226,35 +236,53 @@
 	}
 	
 	.emailbox {
-		width: 70px;
+		width: 100px;
 	}
 	
 	#emailbox {
-		width: 70px;
+		width: 100px;
 	}
 	
 	#ebox {
-		width: 90px;
+		width: 100px;
 		height: 25px;
 	}
-	
 	.error, .error2, .error3 {
-		color: red;
+		color:red;
 		display: none;
-		font-size: 12px;
+		font-size:12px;
 	}
 	
-	#input_text {
-		display: none;
+	#input_text{
+		display:none;
 	}
 	
-	#adminpass {
-		display: none;
+	#adminpass{
+		display:none;
 	}
 	
-	.ju {
-		width: 75px;
+	.ju{
+		width:75px;
 	}
+	
+	#img {
+		padding-top: 10px;
+		height: 250px;
+	}
+	
+	img {
+		margin-top: 10px;
+		margin-left: 170px;
+	}
+	
+	.btn {
+		width: 80px;
+	}
+	
+	legend {
+		text-align: center;
+	}
+	
 </style>
 <body>
 	<header>
@@ -264,7 +292,7 @@
 	<section>
 		<form action="modify.do" method="post" id="f1" enctype="multipart/form-data">
 			<fieldset>
-				<legend>내 정보수정</legend>
+				<legend><h1> 내 정보수정 </h1></legend>
 				
 				<p>
 					<label>회원번호</label>
@@ -303,8 +331,8 @@
 						<option value="016" ${phone1=='016'?'selected':''}>016</option>		
 					</select>
 					<span class="error">앞자리를 입력해주세요</span> - 
-					<input type="text" name="tel2" value="${fn:substring(Member.phone, 4, 4+fn:indexOf(fn:substringAfter(Member.phone,'-'),'-')) }"> - 
-					<input type="text" name="tel3" value="${fn:substring(Member.phone, 9, 13) }">
+					<input type="text" name="tel2" class="telbox" value="${fn:substring(Member.phone, 4, 4+fn:indexOf(fn:substringAfter(Member.phone,'-'),'-')) }"> - 
+					<input type="text" name="tel3" class="telbox" value="${fn:substring(Member.phone, 9, 13) }">
 					<span class="error2">중간자리를 입력해주세요</span>
 					<span class="error3">마지막 자리를 입력해주세요</span>
 				</p>
@@ -335,7 +363,7 @@
 				<p>
 					<c:set var="address" value="${fn:split(Member.address,',')}" />
 					<label>우편번호</label> 
-					<input type="text" size="20" id="address" name="address" id="address" value="${address[0] }">
+					<input type="text" size="28" id="address" name="address" id="address" value="${address[0] }">
 					<input type="button" value="검색" id="button">
 					<span class="error">우편번호를 입력해주세요</span> 
 				</p>
@@ -353,8 +381,8 @@
 				</p>
 	
 				<p align="center">
-					<input type="submit" value="수정하기">
-					<input type="reset" value="취소">
+					<input type="submit" value="수정하기" class="btn">
+					<input type="reset" value="취소" class="btn">
 				</p>
 			</fieldset>
 		</form>

@@ -42,11 +42,6 @@
 		width: 200px;
 		height: 20px;
 	}
-
-	
-	#submit, #reset {
-		
-	}
 	
 	#img {
 		padding-top: 10px;
@@ -55,6 +50,7 @@
 	
 	img {
 		margin-left: 150px;
+		margin-top: 20px;
 	}
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -123,7 +119,7 @@
 	<section>
 		<form action="${pageContext.request.contextPath }/book/insert.do" method="post" enctype="multipart/form-data" runat="server">
 			<fieldset>
-				<legend><h1>도서 추가</h1></legend>
+				<legend><h1> 도서 추가 </h1></legend>
 				<p>
 					<label>도서 분류</label>
 					<select id="cateB" name="cateB">
