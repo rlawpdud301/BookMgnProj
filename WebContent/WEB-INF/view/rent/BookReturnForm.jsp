@@ -113,6 +113,36 @@ body, html {
 #Overdueinfo {
 	display: none;
 }
+#form{
+	width: 700px;
+	margin: 0 auto;
+	text-align: center;
+	margin-bottom: 100px;
+	margin-top: 20px;
+}
+#form p{ 
+	height: 30px;
+	padding-top: 10px;
+}
+#form label{
+	width: 200px;
+	color: rgba(159, 212, 202, 0.9);
+	font-weight: bold;
+}
+.butt{
+	width: 100px;
+	color: white;
+	background-color: #E1527D;
+	height: 30px;
+	border-radius: 15px;
+}
+#bookCode{
+	height: 25px;
+	width: 250px;
+}
+#Overdueinfo{
+	
+}
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
@@ -151,17 +181,17 @@ body, html {
 	</header>
 	
 	<section>
-		<fieldset>
+	<div id="form">
 			<p>
 				<label>도서 코드</label>
 				<input type="text" name="bookCode" id="bookCode">
-				<input type="button" value="도서 검색" id="bookBtn">
+				<input type="button" value="도서 검색" id="bookBtn"  class="butt">
 			</p>
 			<p>
-				<input type="button" value="반납" id="go">
-				<input type="reset" value="취소">
+				<input type="button" value="반납" id="go"  class="butt">
+				<input type="reset" value="취소"  class="butt">
 			</p>
-		</fieldset>
+	</div>
 		<div id="Overdueinfo">
 			<jsp:include page="/WEB-INF/view/rent/bookReturnOverdueinfo.jsp" flush="false" />
 		</div>

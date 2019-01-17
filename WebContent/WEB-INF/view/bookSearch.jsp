@@ -16,7 +16,7 @@
 	top: 0;
 	left: 0;
 	margin-left:-100%;
-	height: 4300px;
+	height: 100%;
 	background-color: rgb(0,0,0,0.5);	
 }
 #inner{	
@@ -72,9 +72,13 @@ table tr td{
 	border: 1px solid #D2E5A8; 
 }
 #SearchMethod{
-	width: 100%;
+	width: 70%;
 	margin: 0 auto;
+	min-height: 800px;
+	margin-top: 50px; 
+	margin-bottom: 100px;
 }
+
 #selectOption{
 	width: 100%;
 	height:53px;
@@ -98,15 +102,15 @@ table tr td{
 	font-size: 12px;
 }
 #each label {
-	float:left;
-	display:inline-block;
-	width: 100px;	
-	text-align: right;
-	margin-right: 10px;
+	/* float:left;
+	width: 100px;
+	height: 20px; */
+	/* text-align: right; */
+	margin: 10px; 
 }
 
 #search{
-	margin-left: 40px; 
+	margin-left: 40px;
 }
 #search span{
 	color: white;
@@ -119,7 +123,7 @@ table tr td{
 	margin: 0;
 	padding: 0;
 } 
-#search #BookCode{
+#search #BookCode,#title{
 	width: 170px;
 	height: 20px;
 	border: 0;
@@ -191,21 +195,21 @@ span {
 		
 		$(document).on("change","#Method",function(event) {
 			$("#list").css("height","0px");
-			if($("#Method").val()=="상세정보" || $("#Method").val()=="제목"){
-				$("#selectOption").css("height","580px");
+			if($("#Method").val()=="상세정보"){
+				$("#selectOption").css("height","450px");
 				$("#list").empty();
 				$("#BookCode").remove();
+				$("#title").remove();
 				$("#each").remove();
 				$("#Method").after("<fieldset id='each'></fieldset>");
 				$("#each").append("<legend>상세 정보로 검색</legend>");
-				$("#each").append("<label>제목 </label> <input type='text' id='title'><br>");
 				$("#each").append("<label>저자 </label> <input type='text' id='author'><br>");
 				$("#each").append("<label>역자 </label> <input type='text' id='translator'><br>");
 				$("#each").append("<label>출판사 </label> <input type='text' id='pubName'><br>");
 				
 				$.ajax({
 					url :"${pageContext.request.contextPath }/book/category.do",
-					type : "get",
+					type : "post",
 					dataType : "json", 
 					success : function(list) {
 						console.log(list);
@@ -221,13 +225,17 @@ span {
 				
 				/* $("#search").empty();
 				$("#search").append("<select name='Method' id='Method'><option value='도서 번호'>도서 번호로</option><option value='제목'>제목으로</option>	<option value='상세정보'>상세정보</option></select> <input type='button' value='검색' id='bntBookSearch'>"); */				
+			}else if($("#Method").val()=="제목"){
+				$("#selectOption").css("height","53px");
+				$("#search").empty();
+				$("#each").remove();
+				$("#search").append("<select name='Method' id='Method'><option value='제목'>제목으로</option><option value='도서 번호'>도서 번호로</option><option value='상세정보'>상세정보</option></select> <input type='text' id='title'><input type='button' value='검색' id='bntBookSearch'>");	
 			}else{
 				$("#selectOption").css("height","53px");
 				$("#search").empty();
 				$("#each").remove();
-				$("#search").append("<select name='Method' id='Method'><option value='도서 번호'>도서 번호로</option><option value='제목'>제목으로</option>	<option value='상세정보'>상세정보</option></select> <input type='text' id='BookCode'><input type='button' value='검색' id='bntBookSearch'>");
-				
-	
+				$("#search").append("<select name='Method' id='Method'><option value='도서 번호'>도서 번호로</option><option value='제목'>제목으로</option><option value='상세정보'>상세정보</option></select> <input type='text' id='BookCode'><input type='button' value='검색' id='bntBookSearch'>");	
+			
 			}
 		})
 		
@@ -244,7 +252,7 @@ span {
 				$("#cateS").remove();
 				$.ajax({
 					url:"${pageContext.request.contextPath }/book/category.do",
-					type:"get",
+					type:"post",
 					data:{"cateB":$("#cateB").val()},
 					dataType:"json",
 					success:function(json){
@@ -269,7 +277,7 @@ span {
 				$("#cateS").remove();
 				$.ajax({
 					url:"${pageContext.request.contextPath }/book/category.do",
-					type:"get",
+					type:"post",
 					data:{"cateM":$("#cateM").val(),"cateB":$("#cateB").val()},
 					dataType:"json",
 					success:function(json){
@@ -290,7 +298,7 @@ span {
 			$("#list").empty();
 			$.ajax({
 				url : "${pageContext.request.contextPath }/bookSearch.do",
-				type : "get",
+				type : "post",
 				data : {"BookCode" : $("#BookCode").val(),"title" : $("#title").val(),"author" : $("#author").val(),"translator" : $("#translator").val(),"pubName" : $("#pubName").val(),"cateM":$("#cateM").val(),"cateB":$("#cateB").val(),"cateS":$("#cateS").val()},
 				dataType : "json", 
 				success : function(list) {
@@ -298,7 +306,7 @@ span {
 				
 					$("#list").append("<ul>");
 					$(list).each(function(index, obj) { 
-						$("#list").append("<li><a href='#' class='bookinfo' data-bcode='"+ obj.bookCode.bookCode +"' onclick='return false;'><img src='${pageContext.request.contextPath }/upload/"+ obj.image.image +"'></a><p class='text'><span id='title'>제목 : <a href='#' class='bookinfo' data-bcode='"+ obj.bookCode.bookCode +"' onclick='return false;'>"
+						$("#list").append("<li><a href='#' class='bookinfo' data-bcode='"+ obj.bookCode.bookCode +"' onclick='return false;'><img src='${pageContext.request.contextPath }/upload/"+ obj.image.image +"'></a><p class='text'><span class='title'>제목 : <a href='#' class='bookinfo' data-bcode='"+ obj.bookCode.bookCode +"' onclick='return false;'>"
 											+ obj.title.title
 											+ "</a></span><br>저자 : <a href='https://search.naver.com/search.naver?sm=top_hty&fbm=1&ie=utf8&query="+ obj.author.author+"' target='_blank' >"
 											+ obj.author.author
@@ -328,7 +336,7 @@ span {
 			$("#BookDetail").animate({"margin-left":"0", "opacity":1});
 			$.ajax({
 				url : "${pageContext.request.contextPath }/bookSearch.do",
-				type : "get",
+				type : "post",
 				data : {"BookCodeDetail" : $(this).attr("data-bcode")},
 				dataType : "json", 
 				success : function(list) {
@@ -362,24 +370,63 @@ span {
 	})
 </script>
 </head>
-<nav id="BookDetail">
-	<div id="inner">
-		<img src="${pageContext.request.contextPath }/images/xbutton_83749.png" id="bntx">
+<body>
+	<header>
+		<jsp:include page="FooterHeader/header.jsp" flush="false" />  
+	</header>
+	<nav id="BookDetail">
+		<div id="inner">
+			<img src="${pageContext.request.contextPath }/images/xbutton_83749.png" id="bntx">
+		</div>
+	</nav>
+	
+	<div id="SearchMethod">
+	<h1>도서검색</h1>
+		<div id="selectOption">		
+			<dir id="search">
+				<select name="Method" id="Method"> 
+					<option value="제목">제목으로</option>
+					<option value="도서 번호">도서 번호로</option>				
+					<option value="상세정보">상세정보</option>
+				</select> <input type="text" id="title"><input type="button" value="검색" id="bntBookSearch"> <span>아무것도입력하지않으면 모든책정보를확인하실수 있습니다.</span>
+				
+			</dir> 
+		</div>
+		<dir id="list" style="overflow:auto; height:800px;">
+			<ul>
+			<c:forEach var="one" items="${list}" >
+				<li>
+					<a href='#' class='bookinfo' data-bcode='${one.bookCode.bookCode }' onclick='return false;'>
+						<img src='${pageContext.request.contextPath }/upload/${one.image.image }'>
+					</a>
+					<p class='text'>
+						<span class='title'>제목 : 
+							<a href='#' class='bookinfo' data-bcode='${one.bookCode.bookCode }' onclick='return false;'>
+								${one.title.title }
+							</a>
+						</span><br>
+						저자 : <a href='https://search.naver.com/search.naver?sm=top_hty&fbm=1&ie=utf8&query=${one.author.author }' target='_blank' >
+						${one.author.author}
+						</a><br>
+						역자 : <a href='https://search.naver.com/search.naver?sm=top_hty&fbm=1&ie=utf8&query=${one.translator.translator}' target='_blank' >
+						${one.translator.translator}
+						</a><br>
+						출판사 : <a href='https://search.naver.com/search.naver?sm=top_hty&fbm=1&ie=utf8&query=${one.pubName.pubName}' target='_blank' >
+						${one.pubName.pubName}
+						</a><br>
+						가격 : ${one.price.price}
+						<br>
+						보유 권수 : ${one.hap}
+						<br>
+						${one.rentalPossible}
+					</p>
+				</li>     			
+			</c:forEach>
+			</ul>
+		</dir>
 	</div>
-</nav>
-<h1>도서검색</h1>
-<div id="SearchMethod">
-	<div id="selectOption">		
-		<dir id="search">
-			<select name="Method" id="Method"> 
-				<option value="도서 번호">도서 번호로</option>
-				<option value="제목">제목으로</option>
-				<option value="상세정보">상세정보</option>
-			</select> <input type="text" id="BookCode"><input type="button" value="검색" id="bntBookSearch"> <span>아무것도입력하지않으면 모든책정보를확인하실수 있습니다.</span>
-			
-		</dir> 
-	</div>
-	<dir id="list" style="overflow:auto; height:0;">
-	</dir>
-</div>
+	<footer>
+		<jsp:include page="FooterHeader/footer.jsp" flush="false" />
+	</footer>
+</body>
 </html>

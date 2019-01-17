@@ -82,7 +82,7 @@ h1{
 #selectOption{
 	width: 100%;
 	height:53px;
-	background: #510000;
+	background: #9FD4CA;
 	border-radius: 5px 5px 0 0;
 	line-height: 70px; 
 	/* border: 3px solid #AB4A12; */  
@@ -103,18 +103,18 @@ h1{
 	border: 0;
 	margin: 0;
 	padding: 0; 
-	border:2px solid #993800;  
+	border:2px solid #E1527D;  
 	
 }
 #search #bntBookSearch{ 
-	background:#993800;
+	background:#E1527D;
 	color:#FFFEC6;
 	width: 100px;
 	height: 24px;
 	border: 0;
 	margin-top: 0;
 	padding-top: 0;
-	border-bottom:3px solid #993800; 
+	 
 }
 #list img { 
 	float: left;
@@ -138,7 +138,7 @@ h1{
 	background: white;
 	clear: both;
 	list-style: none;
-	border-bottom: 5px solid #510000;
+	border-bottom: 5px solid #E1527D;
 	height: 220px;
 }
 span {
@@ -187,7 +187,7 @@ span {
 				
 				$.ajax({
 					url :"book/category.do",
-					type : "get",
+					type : "post",
 					dataType : "json", 
 					success : function(list) {
 						console.log(list);
@@ -215,7 +215,7 @@ span {
 			$("#list").empty();
 			$.ajax({
 				url : "../bookSearch.do",
-				type : "get",
+				type : "post",
 				data : {"BookCode" : $("#BookCode").val()},
 				dataType : "json", 
 				success : function(list) {
@@ -253,7 +253,7 @@ span {
 			$("#BookDetail").animate({"margin-left":"0", "opacity":1});
 			$.ajax({
 				url : "../bookSearch.do",
-				type : "get",
+				type : "post",
 				data : {"BookCodeDetail" : $(this).attr("data-bcode")},
 				dataType : "json", 
 				success : function(list) {
@@ -309,6 +309,7 @@ span {
 		</dir> 
 	</div>
 	<dir id="list" style="overflow:auto; height:0;">
+		
 	</dir>
 </div>
 </html>

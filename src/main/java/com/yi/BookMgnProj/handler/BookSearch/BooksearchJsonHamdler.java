@@ -17,11 +17,25 @@ import com.yi.BookMgnProj.mvc.CommandHandler;
 import com.yi.BookMgnProj.service.BookSearchService;
 
 public class BooksearchJsonHamdler implements CommandHandler {
-
+	
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		Map<String, Object> map = new HashMap<>();
-
+		BookSearchService service = new BookSearchService();
+		if(req.getMethod().equalsIgnoreCase("get")){
+			if (null != req.getParameter("title") && (req.getParameter("title")).trim().equalsIgnoreCase("") == false) {
+				String title = req.getParameter("title");
+				map.put("title", title);
+			}else{
+				map.put("bookCode", 0);
+			}
+			List<BookDetail> list = service.selectBookDetailByMap(map);
+			System.out.println(list);
+			req.setAttribute("list", list);
+			return "/WEB-INF/view/bookSearch.jsp";
+		}
+		
+		
 		if (req.getParameter("BookCode") == null || req.getParameter("BookCode").trim().equals("") != false) {
 
 		} else {
@@ -37,7 +51,6 @@ public class BooksearchJsonHamdler implements CommandHandler {
 		}
 
 		if (null != req.getParameter("title") && (req.getParameter("title")).trim().equalsIgnoreCase("") == false) {
-			/* JOptionPane.showConfirmDialog(null, "aa"); */
 			String title = req.getParameter("title");
 			map.put("title", title);
 		}
@@ -67,7 +80,7 @@ public class BooksearchJsonHamdler implements CommandHandler {
 			map.put("cateSNo", cateS);
 		}
 
-		BookSearchService service = new BookSearchService();
+		
 
 		List<BookDetail> list = service.selectBookDetailByMap(map);
 
