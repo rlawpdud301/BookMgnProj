@@ -15,7 +15,7 @@
 		border: 1px solid black;
 		width:600px;
 		height:200px;
-		line-height:70px;
+		line-height:100px;
 		margin:0 auto;
 		font-size: 20px;
 		margin-top: 200px;
@@ -28,8 +28,10 @@
 	</header>
 	
 	<section>
-		지금까지 이용해주셔서 감사합니다.
-		<a href="home.do">돌아가기</a>
+	<div id="bye">	
+		지금까지 이용해주셔서 감사합니다.<br>
+		<a href="search.do">돌아가기</a>
+	</div>
 	</section>
 	
 	<footer>
