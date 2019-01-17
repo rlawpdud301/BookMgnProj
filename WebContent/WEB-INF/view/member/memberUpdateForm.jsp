@@ -64,6 +64,13 @@
 		text-align: center;
 		padding-left: 177px;
 	}
+	.btn1{
+	width:100px;
+	height:30px;
+	color:white; 
+	background-color: #F361A6;
+	border-radius: 15px; 
+}
 </style>
 </head>
 <body>
@@ -135,8 +142,8 @@
 				</p>
 				<br>
 				<p align="center">
-					<input type="submit" value="완료">
-					<input type="button" value="돌아가기" id="reset">
+					<input type="submit" value="완료" class="btn1">
+					<input type="button" value="돌아가기" id="reset" class="btn1">
 				</p>
 				<input type="text" maxlength="0" id="input_text">
 			</fieldset>

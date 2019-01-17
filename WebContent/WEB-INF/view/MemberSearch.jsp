@@ -27,6 +27,13 @@
 		margin:0 auto;
 		text-align: center;
 	}
+	.btn2{
+	width:100px;
+	height:30px;
+	color:white; 
+	background-color: #F361A6;
+	border-radius: 15px; 
+}
 </style>
 <script>
 	$(function(){
@@ -147,8 +154,8 @@
 			<option value="회원전화번호">회원전화번호</option>
 		</select>
 		<input type="text" id="memberNo">
-		<input type="submit" value="검색" id="selected">
-		<input type="button" value="초기화" id="btn1">
+		<input type="submit" value="검색" id="selected" class="btn2">
+		<input type="button" value="초기화" id="btn1" class="btn2">
 	</div>	
 	<br>	
 	<div id="searchList">
