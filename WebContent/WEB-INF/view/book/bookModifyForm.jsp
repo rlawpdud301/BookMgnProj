@@ -55,11 +55,6 @@
 		margin-bottom: 10px;
 	}
 	
-	input {
-		width: 200px;
-		height: 20px;
-	}
-	
 	#img {
 		padding-top: 10px;
 		height: 250px;
@@ -67,7 +62,25 @@
 	
 	img {
 		margin-left: 150px;
+		margin-top: 20px;
 	}
+	
+	section a {
+		text-decoration: none;
+		color: black;
+		border: 1px solid black;
+		background-color: light gray;
+		bor
+	}
+	
+	.inp {
+		width: 150px;
+		height: 20px;
+	}/* 
+	
+	{
+		
+	} */
 </style>
 </head>
 <body>
@@ -138,9 +151,9 @@
 				</p>
 				<c:if test="${AUTH.admin == true }">
 					<p>
-						<input type="submit" id="submit" value="수정">
+						<input type="submit" id="submit" value="수정" class="inp">
 						<a href="delete.do?no=${Book.bookCode.bookCode }">삭제</a>
-						<input type="reset" id="reset" value="취소">
+						<input type="reset" id="reset" value="취소"  class="inp">
 					</p>
 				</c:if>
 			</fieldset>
