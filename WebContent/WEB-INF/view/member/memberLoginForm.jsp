@@ -14,21 +14,22 @@
 <style>
 	fieldset {
 		width: 600px;
-		margin: 100px auto;
-		padding 
+		margin: 50px auto;
+		text-align: center;
+		padding: 10px;
 	}
 	
-	label {
-		width: 100px;
-		display: block;
+	h1, input {
+		margin-bottom: 10px;
 	}
 	
 	input {
-		width: 200px;
+		width: 300px;
 	}
 	
-	p {
-		text-align: center;
+	a {
+		font-size: 12px;
+		text-decoration: none;
 	}
 </style>
 </head>
@@ -40,11 +41,11 @@
 	<section>
 		<form action="login.do" method="post">
 			<fieldset>
-				<p>OO도서관에 오신 것을 환영합니다.</p>
+				<h1>OO도서관에 오신 것을 환영합니다.</h1>
 				<input type="text" name="id" placeholder="MemberNumber"><br>
 				<input type="password" name="password" placeholder="Password"><br>
 				<input type="submit" value="로그인"><br>
-				<p><a href="${pageContext.request.contextPath}/member/insert.do">회원 가입하기</a>
+				<p><a href="${pageContext.request.contextPath}/member/insert.do">회원 가입하기</a> or
 				<a href="${pageContext.request.contextPath}/member/find.do">ID / PW 찾기</a></p>
 			</fieldset>
 		</form>
