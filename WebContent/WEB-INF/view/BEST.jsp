@@ -34,29 +34,9 @@ best3cont img{
 	width: 150px;
 }
 
-#best1 {
-	/* border: 5px solid #FFD700; */	
-} 
-#best1 h1{
-	/* color: #FFD700; */
-}
-
-#best2 {
-	/* border: 5px solid #B8B8B2;  */
-}
-#best2 h1{
-	/* color: #B8B8B2; */
-}
-#best3 { 
-	/* border: 5px solid #964b00; */
-}
-#best3 h1{
-	/* color: #964b00; */
-}
-.other{
-
-	/* border: 5px solid black; */
-
+#allcont{
+	width: 60%;
+	margin: 0 auto; 
 }
 </style>
 <script>
@@ -138,6 +118,10 @@ best3cont img{
   </script>
 </head>
 <body>
+	<header>
+		<jsp:include page="FooterHeader/header.jsp" flush="false" />  
+	</header>
+	<div id="allcont">
 	<h1>Best!</h1>
 		<p>날짜를선택해주세요 : 
 			<input type="text" id="lastrentalDate" value="${lastrentalDate }" readonly="readonly"> ~ 
@@ -181,6 +165,11 @@ best3cont img{
 					</div>
 				</c:otherwise>
 			</c:choose>
-		</c:forEach>	
+		</c:forEach>
+	</div>
+	</div>
+	<footer>
+		<jsp:include page="FooterHeader/footer.jsp" flush="false" />
+	</footer>	
 </body>
 </html>

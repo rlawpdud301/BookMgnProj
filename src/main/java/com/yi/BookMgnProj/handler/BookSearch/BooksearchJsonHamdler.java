@@ -30,6 +30,7 @@ public class BooksearchJsonHamdler implements CommandHandler {
 				map.put("bookCode", 0);
 			}
 			List<BookDetail> list = service.selectBookDetailByMap(map);
+			System.out.println(list);
 			req.setAttribute("list", list);
 			return "/WEB-INF/view/bookSearch.jsp";
 		}
