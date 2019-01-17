@@ -311,6 +311,13 @@ section #img{
 	margin:0 auto;
 	text-align: center;
 }
+.btn1{
+	width:100px;
+	height:30px;
+	color:white; 
+	background-color: #F361A6;
+	border-radius: 15px; 
+}
 </style>
 </head>
 <body>
@@ -365,7 +372,7 @@ section #img{
 				<label>주민등록번호</label>
 				<input type="text" name="jumin1" class="ju" id="jumin1" maxlength="6">
 				- <input type="password" name="jumin2" class="ju" id="jumin2" maxlength="7">
-				<input type="button" id="duplejumin" name="duplejumin" value="중복체크">
+				<input type="button" id="duplejumin" name="duplejumin" value="중복체크" class="btn1">
 				<span class="error">주민등록 앞번호자리를 입력해주세요</span>
 				<span class="error2">주민등록번호 뒷자리를 입력해주세요</span>
 			</p>
@@ -388,7 +395,7 @@ section #img{
 			<p>
 				<label>주소</label> 
 				<input type="text" size="20" id="address" name="address" id="address">
-				<input type="button" value="검색" id="button">
+				<input type="button" value="검색" id="button" class="btn1">
 				<span class="error">우편번호를 입력해주세요</span> 
 			</p>
 			<br>
@@ -408,12 +415,12 @@ section #img{
 			</p>
 			<br>
 			<div id="imgbox">
-				<img alt="" src="${pageContext.request.contextPath }/images/noman.jpg" id="blah">
+				<img alt="" src="../images/noman.png" id="blah">
 			</div>
 			<br>
 			<p align="center">
-				<input type="submit" value="가입하기">
-				<input type="reset" value="취소">
+				<input type="submit" value="가입하기" class="btn1">
+				<input type="reset" value="취소" class="btn1">
 			</p>
 			<input type="text" maxlength="0" id="input_text">
 		</fieldset>
