@@ -121,7 +121,7 @@ body, html {
 	margin: 0 auto;
 }
 #form{
-	width: 1024px;
+	width: 700px;
 	margin: 0 auto;
 	text-align: center;
 	margin-bottom: 100px;
@@ -137,7 +137,7 @@ section {
 	padding-top: 350px;
 }
 #MemberSearch{
-	width: 50%;
+	width: 38%;
 	margin: 0 auto;
 }
 </style>
