@@ -154,12 +154,12 @@ body, html {
 section {
 	width:100%;
 	padding-bottom: 10px;
-	/* height:2000px; */
-	/* background-image: url("../images/8840e0124b9faa3ab8353e644ca325c8.png");
+	/* height:2000px;
+	background-image: url("../images/8840e0124b9faa3ab8353e644ca325c8.png");
 	background-size: 90% 100%;
 	background-repeat: no-repeat;
-	background-position: center center; */
-/* 	padding-top: 350px; */
+	background-position: center center;
+	padding-top: 350px;   */
 }
 #MemberSearch{
 	width: 40%;

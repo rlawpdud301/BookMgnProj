@@ -187,7 +187,7 @@ span {
 				
 				$.ajax({
 					url :"book/category.do",
-					type : "get",
+					type : "post",
 					dataType : "json", 
 					success : function(list) {
 						console.log(list);
@@ -215,7 +215,7 @@ span {
 			$("#list").empty();
 			$.ajax({
 				url : "../bookSearch.do",
-				type : "get",
+				type : "post",
 				data : {"BookCode" : $("#BookCode").val()},
 				dataType : "json", 
 				success : function(list) {
@@ -253,7 +253,7 @@ span {
 			$("#BookDetail").animate({"margin-left":"0", "opacity":1});
 			$.ajax({
 				url : "../bookSearch.do",
-				type : "get",
+				type : "post",
 				data : {"BookCodeDetail" : $(this).attr("data-bcode")},
 				dataType : "json", 
 				success : function(list) {
@@ -309,6 +309,7 @@ span {
 		</dir> 
 	</div>
 	<dir id="list" style="overflow:auto; height:0;">
+		
 	</dir>
 </div>
 </html>
