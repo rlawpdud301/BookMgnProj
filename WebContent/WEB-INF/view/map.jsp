@@ -9,6 +9,7 @@
 #map {
 	width: 1000px;
 	margin: 0 auto;
+	margin-bottom: 200px; 
 }
 #map img{
 	margin: 20px;
@@ -38,8 +39,7 @@ dt{
 }
 </style>
 </head>
-<body>
-	
+<body>	
 	<div id="map">
 		<h1>우리도서관 오시는길.</h1><br>
 		<hr>

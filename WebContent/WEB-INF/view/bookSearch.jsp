@@ -16,7 +16,7 @@
 	top: 0;
 	left: 0;
 	margin-left:-100%;
-	height: 100%;
+	height: 120%;
 	background-color: rgb(0,0,0,0.5);	
 }
 #inner{	

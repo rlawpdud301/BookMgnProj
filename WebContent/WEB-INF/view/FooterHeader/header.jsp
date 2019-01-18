@@ -18,7 +18,7 @@
 					<a href="${pageContext.request.contextPath }/bookSearch.do">도서검색</a> | 
 					<a href="${pageContext.request.contextPath }/home.do#map">위치보기</a> | 
 					<a href="#">게시판</a> | 
-					<a href="${pageContext.request.contextPath }//best.do">BEST!</a>
+					<a href="${pageContext.request.contextPath }/best.do">BEST!</a>
 					<a href="${pageContext.request.contextPath }/member/insert.do" id="insert"> | 회원가입</a>
 					<a href="${pageContext.request.contextPath }/member/login.do" id="login">로그인</a>
 				</c:when>   

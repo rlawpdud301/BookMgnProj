@@ -14,7 +14,8 @@
 <style>
 	fieldset {
 		width: 600px;
-		margin: 50px auto;
+		margin: 0 auto;
+		margin-top:50px;
 		text-align: center;
 		padding: 10px;
 	}
