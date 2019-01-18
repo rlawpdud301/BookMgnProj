@@ -1,5 +1,6 @@
 package com.yi.BookMgnProj.handler.book;
 
+import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -26,8 +27,9 @@ public class BookDeleteHandler implements CommandHandler {
 		map.put("newBookCode", newBookCode);
 		
 		service.deleteBook(map);
+		res.sendRedirect(req.getContextPath() + "/bookSearch.do");
 		
-		return "/WEB-INF/view/book/bookDeleteSuccess.jsp";
+		return null;
 	}
 
 }
