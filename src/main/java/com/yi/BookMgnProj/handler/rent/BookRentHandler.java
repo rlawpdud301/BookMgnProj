@@ -54,7 +54,6 @@ public class BookRentHandler implements CommandHandler {
 					req.setAttribute("st", st);
 					return "/WEB-INF/view/rent/BookRentForm.jsp";
 				}
-				
 				int no = service.nextCode();
 				Date date = new Date();
 				Date date1 = new Date();
@@ -62,7 +61,6 @@ public class BookRentHandler implements CommandHandler {
 				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 				sdf.format(date1);
 				date1.setDate(date1.getDate() + 7);
-				
 				
 				BookRentalInfo bookRentalInfo = new BookRentalInfo();
 				bookRentalInfo.setRentalNo(no);
@@ -72,11 +70,10 @@ public class BookRentHandler implements CommandHandler {
 				bookRentalInfo.setMemberNo(member);
 				bookRentalInfo.setBookCode(book);
 				
-				
 				book.setRentalPossible(false);
+				
 				/*대여+도서 대여가능여부 false+회원 대여가능권수 -1, 총대여권수 +1*/
 				service.tra_book_rent(bookRentalInfo, book, memberRentalInfo);
-				
 				/*service.insertBookRentalInfo(bookRentalInfo);
 				 도서 대여가능여부 false
 				service.updateBookPossible(book);
@@ -93,7 +90,6 @@ public class BookRentHandler implements CommandHandler {
 					overdue.setRentalAuthority(false);
 					service.updateAuthority(overdue);
 				}
-				
 				return "/WEB-INF/view/rent/BookRentResult.jsp";
 				
 			}catch (Exception e) {

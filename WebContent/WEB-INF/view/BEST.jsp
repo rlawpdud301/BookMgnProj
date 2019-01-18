@@ -88,7 +88,7 @@ best3cont img{
     	
     }) */
     $(document).on("click","#searchbnt",function(event) {
-			$("#best3cont").empty();
+			
 			$.ajax({
 				url : "${pageContext.request.contextPath }/best.do",
 				type : "post",
@@ -96,6 +96,7 @@ best3cont img{
 				dataType : "json", 
 				success : function(list) {
 					console.log(list);
+					$("#best3cont").empty();
 					$(list).each(function(index, obj) {
 						if(index==0){
 							$("#best3cont").append("<div id='best1'><input type='hidden' value='"+ obj.bookCode.bookCode +"' ><img src='${pageContext.request.contextPath }/upload/"+ obj.image.image +"'><h1>"+ (index+1) +".st  "+ obj.title.title +"</h1></div>");
