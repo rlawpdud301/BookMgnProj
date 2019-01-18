@@ -1,6 +1,7 @@
 package com.yi.BookMgnProj.handler.book;
 
 import java.io.File;
+import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -102,7 +103,7 @@ public class BookModifyHandler implements CommandHandler {
 				
 				service.updateBookMap(map);
 				
-				return "/WEB-INF/view/book/bookModifySuccess.jsp";
+				res.sendRedirect(req.getContextPath() + "/bookSearch.do?title=" + URLEncoder.encode(title, "utf-8"));
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

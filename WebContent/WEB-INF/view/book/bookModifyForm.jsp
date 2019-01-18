@@ -31,14 +31,16 @@
 		padding: 50px;
 	}
 	
-	fieldset p:LAST-CHILD {
+	#lp {
 		text-align: center;
 	}
 	
 	label {
 		width: 100px;
 		margin-left: 50px;
-  		display: inline-block;
+		float: left;
+		/* 
+  		display: inline-block; */
 	}
 	
 	select {
@@ -55,32 +57,36 @@
 		margin-bottom: 10px;
 	}
 	
+	input {
+		width: 150px;
+		height: 20px;
+	}
+	
 	#img {
 		padding-top: 10px;
 		height: 250px;
 	}
 	
 	img {
-		margin-left: 150px;
-		margin-top: 20px;
+		<c:if test="${AUTH.admin == true }">
+			margin-left: 150px;
+			margin-top: 20px;
+		</c:if>
 	}
+	
 	
 	section a {
-		text-decoration: none;
-		color: black;
-		border: 1px solid black;
-		background-color: light gray;
-		bor
-	}
-	
-	.inp {
+		border: 1px solid #ccc;
 		width: 150px;
 		height: 20px;
-	}/* 
-	
-	{
-		
-	} */
+		text-decoration: none;
+		color: black;
+		display: inline-block;
+		text-align: center;
+		font-size: 15px;
+		border-radius: 3px;
+		background-color: lightgray;
+	}
 </style>
 </head>
 <body>
@@ -150,10 +156,10 @@
 					<img alt="" src="/BookMgnProj/upload/${Book.image.image }" id="blah" width=200 height=200>
 				</p>
 				<c:if test="${AUTH.admin == true }">
-					<p>
-						<input type="submit" id="submit" value="수정" class="inp">
+					<p id="lp">
+						<input type="submit" id="submit" value="수정" >
 						<a href="delete.do?no=${Book.bookCode.bookCode }">삭제</a>
-						<input type="reset" id="reset" value="취소"  class="inp">
+						<input type="reset" id="reset" value="취소">
 					</p>
 				</c:if>
 			</fieldset>

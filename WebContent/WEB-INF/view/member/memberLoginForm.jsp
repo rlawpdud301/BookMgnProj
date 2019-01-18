@@ -13,11 +13,12 @@
 </c:if>
 <style>
 	fieldset {
-		width: 600px;
-		margin: 0 auto;
-		margin-top:50px;
+
+		width: 800px;
+		margin: 50px auto;
 		text-align: center;
-		padding: 10px;
+		padding: 20px;
+		background-color: white;
 	}
 	
 	h1, input {
@@ -26,10 +27,11 @@
 	
 	input {
 		width: 300px;
+		height: 30px;
 	}
 	
 	a {
-		font-size: 12px;
+		font-size: 14px;
 		text-decoration: none;
 	}
 </style>

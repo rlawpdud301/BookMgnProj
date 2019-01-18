@@ -108,7 +108,6 @@ section{
 <script type="text/javascript">
 	$(function() {
 		$(document).on("click","#bntBookSearch",function(event) {
-			alert($("#BookCode").val());
 			location.href = "bookSearch.do?title="+$("#BookCode").val();
 		})
 		
