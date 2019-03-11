@@ -356,7 +356,7 @@ section #img{
 			<p>
 				<label>전화번호</label> 
 				<select name="tel1">
-					<option>010</option>
+					<option selected="selected">010</option>
 					<option>017</option>
 					<option>011</option>
 					<option>016</option>		
